@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include("dbconnect.php");
+date_default_timezone_set("Asia/Kuala_Lumpur");
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +11,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <style>
+    
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	<style>
         :root{--admin-primary:#00ADEF;--admin-primary-dark:#0088BF;--admin-accent:#004B6E;--admin-dark:#0A1628;--admin-white:#FFFFFF;--admin-off-white:#F4F7FA;--admin-border:#E2E8F0;--admin-text:#2C3E50;--admin-text-light:#6B7B8D;--admin-success:#10B981;--admin-danger:#EF4444;--font-heading:'DM Serif Display',serif;--font-body:'Outfit',sans-serif}
         *{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}body{font-family:var(--font-body);color:var(--admin-text);background:var(--admin-off-white);overflow-x:hidden}
 
@@ -141,10 +149,10 @@
                 <p>Sign in to access the admin panel</p>
             </div>
 
-            <div class="credentials-hint">
+            <!--<div class="credentials-hint">
                 <i class="bi bi-info-circle"></i>
                 <div>Default credentials: Username <code>admin</code> &bull; Password <code>admin123</code></div>
-            </div>
+            </div>-->
 
             <div class="login-error" id="loginError">
                 <i class="bi bi-exclamation-circle"></i>
@@ -186,98 +194,86 @@
             </div>
         </div>
     </div>
+	
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <script>
     // Default credentials (in production, this would be server-side authentication)
-    const VALID_USERS = [
-        { username: 'admin', password: 'admin123', name: 'Administrator', role: 'Super Admin' }
-    ];
+    // const VALID_USERS = [
+        // { username: 'admin', password: 'admin123', name: 'Administrator', role: 'Super Admin' }
+    // ];
 
-    // Check if already logged in
-    //(function(){
-      //  const session = JSON.parse(localStorage.getItem('rw_admin_session') || 'null');
-      //  if(session && session.loggedIn){
-      //      window.location.href = 'admin-dashboard.html';
-       // }
-        // Auto-fill if remember me was set
-      //  const saved = JSON.parse(localStorage.getItem('rw_admin_remember') || 'null');
-       // if(saved){
-      //      document.getElementById('loginUser').value = saved.username;
-      //      document.getElementById('rememberMe').checked = true;
-       // }
-    //})();
+    // function togglePassword(){
+        // const input = document.getElementById('loginPass');
+        // const icon = document.getElementById('pwIcon');
+        // if(input.type === 'password'){
+            // input.type = 'text';
+            // icon.classList.remove('bi-eye');
+            // icon.classList.add('bi-eye-slash');
+        // } else {
+            // input.type = 'password';
+            // icon.classList.remove('bi-eye-slash');
+            // icon.classList.add('bi-eye');
+        // }
+    // }
 
-    function togglePassword(){
-        const input = document.getElementById('loginPass');
-        const icon = document.getElementById('pwIcon');
-        if(input.type === 'password'){
-            input.type = 'text';
-            icon.classList.remove('bi-eye');
-            icon.classList.add('bi-eye-slash');
-        } else {
-            input.type = 'password';
-            icon.classList.remove('bi-eye-slash');
-            icon.classList.add('bi-eye');
-        }
-    }
+    // function handleLogin(e){
+        // e.preventDefault();
+        // const username = document.getElementById('loginUser').value.trim();
+        // const password = document.getElementById('loginPass').value;
+        // const remember = document.getElementById('rememberMe').checked;
+        // const btn = document.getElementById('btnLogin');
+        // const errorEl = document.getElementById('loginError');
 
-    function handleLogin(e){
-        e.preventDefault();
-        const username = document.getElementById('loginUser').value.trim();
-        const password = document.getElementById('loginPass').value;
-        const remember = document.getElementById('rememberMe').checked;
-        const btn = document.getElementById('btnLogin');
-        const errorEl = document.getElementById('loginError');
+        // // Hide previous errors
+        // errorEl.classList.remove('show');
 
-        // Hide previous errors
-        errorEl.classList.remove('show');
+        // // Show loading
+        // btn.classList.add('loading');
 
-        // Show loading
-        btn.classList.add('loading');
+        // // Simulate authentication delay
+        // setTimeout(() => {
+            // const user = VALID_USERS.find(u => u.username === username && u.password === password);
 
-        // Simulate authentication delay
-        setTimeout(() => {
-            const user = VALID_USERS.find(u => u.username === username && u.password === password);
+            // if(user){
+                // // Save session
+                // localStorage.setItem('rw_admin_session', JSON.stringify({
+                    // loggedIn: true,
+                    // username: user.username,
+                    // name: user.name,
+                    // role: user.role,
+                    // loginTime: new Date().toISOString()
+                // }));
 
-            if(user){
-                // Save session
-                localStorage.setItem('rw_admin_session', JSON.stringify({
-                    loggedIn: true,
-                    username: user.username,
-                    name: user.name,
-                    role: user.role,
-                    loginTime: new Date().toISOString()
-                }));
+                // // Remember me
+                // if(remember){
+                    // localStorage.setItem('rw_admin_remember', JSON.stringify({ username: user.username }));
+                // } else {
+                    // localStorage.removeItem('rw_admin_remember');
+                // }
 
-                // Remember me
-                if(remember){
-                    localStorage.setItem('rw_admin_remember', JSON.stringify({ username: user.username }));
-                } else {
-                    localStorage.removeItem('rw_admin_remember');
-                }
+                // // Redirect
+                // window.location.href = 'admin/index.php';
+            // } else {
+                // btn.classList.remove('loading');
+                // errorEl.classList.add('show');
+                // document.getElementById('loginErrorMsg').textContent = 'Invalid username or password. Please try again.';
+                // // Shake effect
+                // document.getElementById('loginForm').style.animation = 'shake .4s ease';
+                // setTimeout(() => document.getElementById('loginForm').style.animation = '', 400);
+            // }
+        // }, 800);
+    // }
 
-                // Redirect
-                window.location.href = 'admin-dashboard.html';
-            } else {
-                btn.classList.remove('loading');
-                errorEl.classList.add('show');
-                document.getElementById('loginErrorMsg').textContent = 'Invalid username or password. Please try again.';
-                // Shake effect
-                document.getElementById('loginForm').style.animation = 'shake .4s ease';
-                setTimeout(() => document.getElementById('loginForm').style.animation = '', 400);
-            }
-        }, 800);
-    }
+    // // Shake animation
+    // const style = document.createElement('style');
+    // style.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}';
+    // document.head.appendChild(style);
 
-    // Shake animation
-    const style = document.createElement('style');
-    style.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}';
-    document.head.appendChild(style);
-
-    // Enter key support
-    document.getElementById('loginPass').addEventListener('keydown', e => {
-        if(e.key === 'Enter') document.getElementById('loginForm').requestSubmit();
-    });
+    // // Enter key support
+    // document.getElementById('loginPass').addEventListener('keydown', e => {
+        // if(e.key === 'Enter') document.getElementById('loginForm').requestSubmit();
+    // });
     </script>
 </body>
 </html>
