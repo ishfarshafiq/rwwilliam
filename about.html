@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | RW William PLT</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --rw-primary: #00ADEF;
+            --rw-primary-dark: #0088BF;
+            --rw-primary-deeper: #006A94;
+            --rw-primary-light: #E6F7FD;
+            --rw-primary-lighter: #F0FAFF;
+            --rw-accent: #004B6E;
+            --rw-dark: #00ADEF;
+            --rw-footer: #0b252f;
+            --rw-text: #2C3E50;
+            --rw-text-light: #6B7B8D;
+            --rw-white: #FFFFFF;
+            --rw-off-white: #F8FBFD;
+            --rw-border: #D6EAF4;
+            --rw-gold: #C9A84C;
+            --font-heading: 'DM Serif Display', serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--rw-text);
+            background-color: var(--rw-white);
+            overflow-x: hidden;
+        }
+
+        #mainNavbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: var(--font-heading);
+            color: var(--rw-accent);
+        }
+
+        p {
+            line-height: 1.8;
+            color: var(--rw-text-light);
+            font-weight: 300;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            background: var(--rw-dark);
+            padding: 8px 0;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.3px;
+        }
+
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .top-bar a:hover {
+            color: var(--rw-primary);
+        }
+
+        .top-bar .separator {
+            margin: 0 12px;
+            opacity: 0.3;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: -webkit-sticky;
+            background: var(--rw-white);
+            padding: 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1050;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            padding: 12px 0;
+        }
+
+        .navbar-brand .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .navbar-brand .brand-name {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            color: var(--rw-accent);
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-brand .brand-sub {
+            font-size: 9px;
+            color: var(--rw-text-light);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .navbar-brand .brand-logo {
+            width: 80px;
+            height: 50px;
+            background: #00ADEF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 35px;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Desktop Nav */
+        .navbar .nav-link {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--rw-text) !important;
+            padding: 28px 16px !important;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 16px;
+            height: 3px;
+            background: var(--rw-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--rw-primary) !important;
+        }
+
+        .navbar .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            padding: 10px;
+            margin-top: 0;
+            border-top: 3px solid var(--rw-primary);
+        }
+
+        .navbar .dropdown-item {
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--rw-text);
+            transition: all 0.2s ease;
+        }
+
+        .navbar .dropdown-item:hover {
+            background: var(--rw-primary-light);
+            color: var(--rw-primary);
+        }
+
+        .dropdown-item .fi {
+            width: 22px;
+            margin-right: 8px;
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+            position: relative;
+            z-index: 1060;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .hamburger {
+            width: 28px;
+            height: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            background: var(--rw-accent);
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+        }
+
+        .navbar-toggler.active .hamburger span:nth-child(1) {
+            transform: translateY(8.75px) rotate(45deg);
+            background: var(--rw-white);
+        }
+
+        .navbar-toggler.active .hamburger span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .navbar-toggler.active .hamburger span:nth-child(3) {
+            transform: translateY(-8.75px) rotate(-45deg);
+            background: var(--rw-white);
+        }
+
+        /* Mobile Slide Menu */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 22, 40, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: auto;
+            width: 320px;
+            max-width: 85vw;
+            height: 100vh;
+            background: var(--rw-primary);
+            z-index: 1055;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Mobile menu close button */
+        .mobile-menu-close {
+            margin-left: auto;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            background: rgba(5, 4, 66, 0.5);
+            color: var(--rw-white);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .25s ease, transform .25s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, .28)
+        }
+
+        .mobile-menu-close:active {
+            transform: scale(.96)
+        }
+
+        .mobile-menu-close.spinning {
+            animation: rwSpin .45s linear
+        }
+
+        @keyframes rwSpin {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* Optional: a smoother closing state */
+        .mobile-menu.closing {
+            transform: translateX(-100%)
+        }
+
+        .mobile-menu-header .brand-logo-m {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            margin-right: 12px;
+        }
+
+        .mobile-menu-header .brand-info h5 {
+            color: white;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .mobile-menu-header .brand-info span {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .mobile-menu-nav {
+            padding: 16px 0;
+            flex: 1;
+        }
+
+        .mobile-menu-nav .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .mobile-menu-nav .mobile-nav-link:hover,
+        .mobile-menu-nav .mobile-nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: white;
+            padding-left: 28px;
+        }
+
+        .mobile-menu-nav .mobile-nav-link i {
+            font-size: 12px;
+            opacity: 0.5;
+        }
+
+        .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.15);
+            transition: max-height 0.4s ease;
+        }
+
+        .mobile-submenu.open {
+            max-height: 300px;
+        }
+
+        .mobile-submenu a {
+            display: block;
+            padding: 12px 24px 12px 40px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-submenu a:hover {
+            color: white;
+            padding-left: 48px;
+        }
+
+        .mobile-menu-footer {
+            padding: 20px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .mobile-menu-footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .mobile-menu-footer .social-icons a {
+            color: rgba(255, 255, 255, 0.6);
+            margin-right: 16px;
+            font-size: 18px;
+        }
+
+        .mobile-menu-footer .social-icons a:hover {
+            color: white;
+        }
+
+        /* ===== HERO / PAGE HEADER ===== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--rw-dark) 0%, var(--rw-accent) 50%, var(--rw-primary-dark) 100%);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 173, 239, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 173, 239, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-hero .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .page-hero h1 {
+            font-size: 52px;
+            color: var(--rw-white);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .page-hero .hero-line {
+            width: 60px;
+            height: 4px;
+            background: var(--rw-primary);
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 17px;
+            max-width: 550px;
+        }
+
+        .breadcrumb-nav {
+            position: relative;
+        }
+
+        .breadcrumb-nav a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--rw-primary);
+        }
+
+        .breadcrumb-nav span {
+            color: var(--rw-primary);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-nav .divider {
+            color: rgba(255, 255, 255, 0.3);
+            margin: 0 10px;
+        }
+
+        /* ===== OVERVIEW SECTION ===== */
+        .overview-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .overview-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: var(--rw-primary-lighter);
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+            z-index: 0;
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--rw-primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--rw-primary);
+            border-radius: 1px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            color: var(--rw-accent);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .overview-text {
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .overview-highlight {
+            background: var(--rw-primary-light);
+            border-left: 4px solid var(--rw-primary);
+            padding: 24px 28px;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+        }
+
+        .overview-highlight p {
+            color: var(--rw-accent);
+            font-weight: 400;
+            font-size: 16px;
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--rw-accent) 0%, var(--rw-primary-deeper) 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 173, 239, 0.2), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            color: var(--rw-white);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-number span {
+            color: var(--rw-primary);
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        /* ===== FOUNDER SECTION ===== */
+        .founder-section {
+            padding: 100px 0;
+            background: var(--rw-off-white);
+            position: relative;
+        }
+
+        .founder-card {
+            background: var(--rw-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 75, 110, 0.08);
+        }
+
+        .founder-image-placeholder {
+            height: 100%;
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--rw-primary-dark), var(--rw-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .founder-initials {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 42px;
+            color: white;
+            position: relative;
+        }
+
+        .founder-content {
+            padding: 50px;
+        }
+
+        .founder-content h3 {
+            font-size: 32px;
+            margin-bottom: 4px;
+        }
+
+        .founder-content .role {
+            color: var(--rw-primary);
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .founder-content .founder-quote {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 20px;
+            color: var(--rw-accent);
+            line-height: 1.6;
+            position: relative;
+            padding-left: 24px;
+            border-left: 3px solid var(--rw-primary);
+        }
+
+        /* ===== OBJECTIVES SECTION ===== */
+        .objectives-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .objective-card {
+            background: var(--rw-white);
+            border: 1px solid var(--rw-border);
+            border-radius: 16px;
+            padding: 40px 32px;
+            height: 100%;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rw-primary), var(--rw-primary-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .objective-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .objective-card:hover {
+            border-color: transparent;
+            box-shadow: 0 20px 50px rgba(0, 173, 239, 0.12);
+            transform: translateY(-6px);
+        }
+
+        .objective-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--rw-primary-light);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.4s ease;
+        }
+
+        .objective-icon i {
+            font-size: 28px;
+            color: var(--rw-primary);
+        }
+
+        .objective-card:hover .objective-icon {
+            background: var(--rw-primary);
+        }
+
+        .objective-card:hover .objective-icon i {
+            color: white;
+        }
+
+        .objective-card h4 {
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+
+        .objective-card p {
+            font-size: 15px;
+        }
+
+        /* ===== OFFICES / NETWORK SECTION ===== */
+        .network-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--rw-off-white) 0%, var(--rw-white) 100%);
+        }
+
+        .office-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--rw-white);
+            border: 1px solid var(--rw-border);
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--rw-text);
+            transition: all 0.3s ease;
+            margin: 6px;
+        }
+
+        .office-tag:hover {
+            background: var(--rw-primary);
+            color: white;
+            border-color: var(--rw-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 173, 239, 0.25);
+        }
+
+        .office-tag i {
+            color: var(--rw-primary);
+            font-size: 16px;
+        }
+
+        .office-tag:hover i {
+            color: white;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--rw-dark) 0%, var(--rw-accent) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 173, 239, 0.15), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section h2 {
+            color: var(--rw-white);
+            font-size: 38px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 17px;
+        }
+
+        .btn-rw-primary {
+            background: var(--rw-primary);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--rw-primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-rw-primary:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 173, 239, 0.3);
+        }
+
+        .btn-rw-outline {
+            background: transparent;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-rw-outline:hover {
+            background: white;
+            color: var(--rw-accent);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: var(--rw-footer);
+            padding: 80px 0 0;
+        }
+
+        .footer-brand .brand-name {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--rw-white);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            margin-top: 16px;
+            max-width: 320px;
+        }
+
+        .footer-title {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--rw-white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--rw-primary);
+            padding-left: 6px;
+        }
+
+        .footer-contact li {
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 14px;
+        }
+
+        .footer-contact i {
+            color: var(--rw-primary);
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 24px 0;
+            margin-top: 60px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.4);
+            margin-left: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--rw-primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 991.98px) {
+            .desktop-nav {
+                display: none !important;
+            }
+
+            .page-hero {
+                padding: 80px 0 60px;
+            }
+
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .overview-section::before {
+                display: none;
+            }
+
+            .overview-section,
+            .founder-section,
+            .objectives-section,
+            .network-section {
+                padding: 60px 0;
+            }
+
+            .founder-content {
+                padding: 30px;
+            }
+
+            .founder-image-placeholder {
+                min-height: 280px;
+            }
+
+            .stats-bar {
+                padding: 30px 20px;
+                margin-top: 40px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .stat-item {
+                margin-bottom: 24px;
+            }
+
+            .stat-item:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            .navbar-toggler,
+            .mobile-menu,
+            .mobile-menu-overlay {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .page-hero h1 {
+                font-size: 30px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .top-bar {
+                display: none;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ===== STICKY SOCIAL SIDEBAR ===== */
+        .social-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1030;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .social-sidebar-toggle {
+            width: 48px;
+            height: 48px;
+            background: var(--rw-primary);
+            border: none;
+            border-radius: 0 12px 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 15px rgba(0, 173, 239, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-sidebar-toggle:hover {
+            background: var(--rw-primary-dark);
+            width: 52px;
+        }
+
+        .social-sidebar-toggle .toggle-icon {
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .social-sidebar.open .social-sidebar-toggle .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .social-sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            pointer-events: none;
+        }
+
+        .social-sidebar.open .social-sidebar-links {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .social-sidebar-links a {
+            width: 48px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .social-sidebar-links a:hover {
+            width: 56px;
+        }
+
+        /* Tooltip on hover */
+        .social-sidebar-links a .social-tooltip {
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--rw-dark);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .social-sidebar-links a .social-tooltip::before {
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 5px solid transparent;
+            border-right-color: var(--rw-dark);
+        }
+
+        .social-sidebar-links a:hover .social-tooltip {
+            opacity: 1;
+            margin-left: 14px;
+        }
+
+        /* Individual brand colors */
+        .social-sidebar-links .social-facebook {
+            background: #1877F2;
+        }
+
+        .social-sidebar-links .social-tiktok {
+            background: #010101;
+        }
+
+        .social-sidebar-links .social-viber {
+            background: #7360F2;
+        }
+
+        .social-sidebar-links .social-whatsapp {
+            background: #25D366;
+        }
+
+        .social-sidebar-links .social-linkedin {
+            background: #0A66C2;
+        }
+
+        .social-sidebar-links .social-email {
+            background: #6B7B8D;
+        }
+
+        .social-sidebar-links .social-twitter {
+            background: #1DA1F2;
+        }
+
+        .social-sidebar-links .social-instagram {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-sidebar-links .social-youtube {
+            background: #FF0000;
+        }
+
+        /* Hover brightness */
+        .social-sidebar-links a:hover {
+            filter: brightness(1.15);
+        }
+
+        /* Stagger animation for each link */
+        .social-sidebar.open .social-sidebar-links a:nth-child(1) {
+            transition-delay: 0.03s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(2) {
+            transition-delay: 0.06s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(3) {
+            transition-delay: 0.09s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(4) {
+            transition-delay: 0.12s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(5) {
+            transition-delay: 0.15s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(6) {
+            transition-delay: 0.18s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(7) {
+            transition-delay: 0.21s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(8) {
+            transition-delay: 0.24s;
+        }
+
+        .social-sidebar.open .social-sidebar-links a:nth-child(9) {
+            transition-delay: 0.27s;
+        }
+
+        .social-sidebar-links a {
+            transform: translateX(-60px);
+        }
+
+        .social-sidebar.open .social-sidebar-links a {
+            transform: translateX(0);
+        }
+
+        /* Pulse animation on toggle */
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 173, 239, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(0, 173, 239, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 173, 239, 0);
+            }
+        }
+
+        .social-sidebar-toggle {
+            animation: pulse-ring 2.5s infinite;
+        }
+
+        .social-sidebar.open .social-sidebar-toggle {
+            animation: none;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 767.98px) {
+            .social-sidebar {
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                transform: none;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .social-sidebar-toggle {
+                width: 100%;
+                height: 44px;
+                border-radius: 12px 12px 0 0;
+                box-shadow: 0 -4px 15px rgba(0, 173, 239, 0.2);
+                flex-direction: row;
+                gap: 8px;
+                font-size: 14px;
+            }
+
+            .social-sidebar-toggle .toggle-label {
+                display: inline;
+                font-family: var(--font-body);
+                font-weight: 600;
+                font-size: 13px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .social-sidebar.open .social-sidebar-toggle .toggle-icon {
+                transform: rotate(180deg);
+            }
+
+            .social-sidebar-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0;
+                background: var(--rw-dark);
+                padding: 12px 8px;
+                transform: translateY(100%);
+            }
+
+            .social-sidebar.open .social-sidebar-links {
+                transform: translateY(0);
+            }
+
+            .social-sidebar-links a {
+                width: 44px;
+                height: 44px;
+                border-radius: 10px;
+                margin: 3px;
+                transform: translateY(30px);
+            }
+
+            .social-sidebar.open .social-sidebar-links a {
+                transform: translateY(0);
+            }
+
+            .social-sidebar-links a .social-tooltip {
+                display: none;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar d-none d-lg-block">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="mailto:richard@rwwilliam.com.my"><i class="bi bi-envelope me-1"></i>
+                        richard@rwwilliam.com.my</a>
+                    <span class="separator">|</span>
+                    <a href="tel:+6037805 3859"><i class="bi bi-telephone me-1"></i> +603-7805 3859</a>
+                </div>
+                <div>
+                    <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="me-3"><i
+                            class="bi bi-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/rwwilliam" target="_blank" class="me-3"><i
+                            class="bi bi-linkedin"></i></a>
+                    <a href="https://www.instagram.com/rw_william/" target="_blank"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="brand-logo">RW</div>
+                <div class="brand-text">
+                    <span class="brand-name">RW William</span>
+                    <span class="brand-sub"> Bridging Your Business</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="desktop-nav d-none d-xl-flex align-items-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clients.html">Our Client</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news-announcement.html">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="career.html">Career</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Country
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">🇲🇾 Malaysia</a></li>
+                            <li><a class="dropdown-item" href="#">🇹🇭 Thailand</a></li>
+                            <li><a class="dropdown-item" href="#">🇸🇬 Singapore</a></li>
+                            <li><a class="dropdown-item" href="#">🇮🇩 Jakarta</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Mobile Toggle (Right Side) -->
+            <button class="navbar-toggler d-xl-none ms-auto" type="button" id="mobileToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="brand-logo-m">RW</div>
+            <div class="brand-info">
+                <h5>RW William</h5>
+                <span>Bridging Your Business</span>
+            </div>
+            <button id="mobileCloseBtn" class="mobile-menu-close" type="button" aria-label="Close menu"><i
+                    class="bi bi-x-lg"></i></button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-nav-link">Home <i class="bi bi-chevron-right"></i></a>
+            <a href="about.html" class="mobile-nav-link active">About Us <i class="bi bi-chevron-right"></i></a>
+            <a href="services.html" class="mobile-nav-link">Services <i class="bi bi-chevron-right"></i></a>
+            <a href="team.html" class="mobile-nav-link">Our Team <i class="bi bi-chevron-right"></i></a>
+            <a href="gallery.html" class="mobile-nav-link">Gallery <i class="bi bi-chevron-right"></i></a>
+            <a href="clients.html" class="mobile-nav-link">Our Client <i class="bi bi-chevron-right"></i></a>
+             <a href="news-announcement.html" class="mobile-nav-link">News<i class="bi bi-chevron-right"></i></a>
+            <a href="career.html" class="mobile-nav-link">Career <i class="bi bi-chevron-right"></i></a>
+            <a href="contact.html" class="mobile-nav-link">Contact <i class="bi bi-chevron-right"></i></a>
+            <a href="#" class="mobile-nav-link" id="countryToggle">Country <i class="bi bi-chevron-down"></i></a>
+            <div class="mobile-submenu" id="countrySubmenu">
+                <a href="#">🇲🇾 Malaysia</a>
+                <a href="#">🇹🇭 Thailand</a>
+                <a href="#">🇸🇬 Singapore</a>
+                <a href="#">🇮🇩 Jakarta</a>
+            </div>
+        </nav>
+        <div class="mobile-menu-footer">
+            <div class="social-icons mb-3">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+            <p>&copy; 2026 RW William PLT. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-pattern"></div>
+        <div class="container position-relative">
+            <div class="breadcrumb-nav mb-4" data-aos="fade-down" data-aos-delay="100">
+                <a href="index.html">Home</a>
+                <span class="divider">/</span>
+                <span>About Us</span>
+            </div>
+            <div class="hero-line" data-aos="fade-right" data-aos-delay="200"></div>
+            <h1 data-aos="fade-up" data-aos-delay="300">About Us</h1>
+            <p data-aos="fade-up" data-aos-delay="400">More than two decades of trusted expertise in chartered
+                accounting, built
+                on integrity and excellence across Malaysia and beyond.</p>
+            <img src="img/rwwilliam-group.jpg" class="img-fluid" style="border-radius: 20px;">
+        </div>
+
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-6 pe-lg-5 position-relative" style="z-index: 1;">
+                    <div class="section-label" data-aos="fade-right">Who We Are</div>
+                    <h2 class="section-title" data-aos="fade-up">A Legacy of Professional<br>Excellence Since 2003</h2>
+                    <p class="overview-text" data-aos="fade-up" data-aos-delay="100">
+                        RW William (RW) was formed in the year 2003, in Petaling Jaya, Selangor Darul Ehsan, as a
+                        chartered accounting firm after having obtained the relevant statutory approvals from the
+                        Malaysian Treasury, the Malaysian Institute of Accountants and the Inland Revenue Board of
+                        Malaysia.
+                    </p>
+                    <p class="overview-text" data-aos="fade-up" data-aos-delay="150">
+                        The formation of RW stems from the vision of its founder member, Mr. Richard William, whose
+                        initial and on-going objectives have been to provide a higher standard of services and
+                        efficiency to various clients and to provide a large firm know-how to smaller businesses.
+                    </p>
+                    <div class="overview-highlight" data-aos="fade-up" data-aos-delay="200">
+                        <p>"RW WILLIAM PLT (201906003458 (LLP0022270-LCA) & AF 1490) was registered on 19 November 2019
+                            and with effect from that date, RW WILLIAM (AF 1490), a conventional partnership was
+                            converted to a limited liability partnership."</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 position-relative" style="z-index: 1;">
+                    <p class="overview-text" data-aos="fade-up" data-aos-delay="100">
+                        Today, RW has established its own network of professional firms as RW William Network. With
+                        offices in Petaling Jaya, Penang, Seremban, Johor Bahru, Ipoh and Klang comprising
+                        3 partners and above 50 professional and dedicated staff, RW serves more than 2,000 clients
+                        throughout Malaysia.
+                    </p>
+                    <p class="overview-text" data-aos="fade-up" data-aos-delay="150">
+                        Drawing on our combined comprehensive range of skills and expertise coupled with our sense of
+                        professional duty, our principal objectives will continue to be maximising client satisfaction
+                        by providing personal service and focusing on the particular goals and objectives of our
+                        clients, to help their business grow.
+                    </p>
+                    <p class="overview-text" data-aos="fade-up" data-aos-delay="200">
+                        To this end, we seek to alleviate, if not eliminate, problems faced by our clients by presenting
+                        imaginative, sound and feasible proposals that will best address our clients' needs.
+                    </p>
+
+                    <!-- Stats Bar -->
+                    <div class="stats-bar" data-aos="fade-up" data-aos-delay="300">
+                        <div class="row g-4">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number">23<span>+</span></div>
+                                    <div class="stat-label">Years</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number">6</div>
+                                    <div class="stat-label">Offices</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number">2.5K<span>+</span></div>
+                                    <div class="stat-label">Clients</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number">80<span>+</span></div>
+                                    <div class="stat-label">Staff</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center" data-aos="fade-up">Our Founder</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Visionary Leadership</h2>
+            </div>
+            <div class="founder-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="row g-0">
+                    <div class="col-lg-5">
+                        <div class="founder-image-placeholder">
+                            <img src="img/team/richard.jpg" alt="richard">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 d-flex align-items-center">
+                        <div class="founder-content">
+                            <h3>Mr. Richard William</h3>
+                            <div class="role">Founder & Managing Partner</div>
+                            <div class="founder-quote">
+                                "To provide a higher standard of services and efficiency to various clients and to
+                                provide a large firm know-how to smaller businesses — this has always been the driving
+                                force behind RW William. <br><br>To top all of this, we value the strength of our staff—their
+                                unique talents, skills and capabilities which are the cornerstone of our firm’s high
+                                performance."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section class="objectives-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center" data-aos="fade-up">Our Commitment</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Objectives &amp; Strategy</h2>
+                <p class="mx-auto" style="max-width: 600px;" data-aos="fade-up" data-aos-delay="150">
+                    RW is committed to develop and manage a network of professional capabilities organised to deliver
+                    excellence across every engagement.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
+                        <h4>Quality Services</h4>
+                        <p>Providing quality services while conforming to the highest standards of the profession,
+                            ensuring every engagement meets our rigorous benchmarks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h4>Progressive Growth</h4>
+                        <p>Assisting our clients develop progressively in consonant with technological, economic and
+                            social changes for sustainable long-term success.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="objective-card">
+                        <div class="objective-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h4>Rewarding Careers</h4>
+                        <p>Providing rewarding careers and opportunities for our staff, investing in their professional
+                            development and creating pathways for growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network / Offices Section -->
+    <section class="network-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="section-label" data-aos="fade-right">Our Network</div>
+                    <h2 class="section-title" data-aos="fade-up">RW William Network<br>Across Malaysia</h2>
+                    <p data-aos="fade-up" data-aos-delay="100">
+                        With 6 strategic office locations, RW William Network ensures we are always within reach to
+                        serve our diverse clientele across the nation.
+                    </p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-lg-end" data-aos="fade-left">
+                        <a href="contact.html" class="office-tag">
+                            <i class="bi bi-building"></i> Petaling Jaya (HQ)
+                        </a>
+
+                        <a href="contact.html" class="office-tag">
+                            <i class="bi bi-building"></i> Penang
+                        </a>
+                        <a href="contact.html" class="office-tag">
+                            <i class="bi bi-building"></i> Johor Bahru
+                        </a>
+                        <a href="contact.html" class="office-tag">
+                            <i class="bi bi-building"></i> Seremban
+                        </a>
+                        <a href="contact.html" class="office-tag">
+                            <i class="bi bi-building"></i> Ipoh
+                        </a>
+                        <a href="contact.html" class="office-tag">
+                            <i class="bi bi-building"></i> Klang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-right">
+                    <h2>Ready to Work with Us?</h2>
+                    <p class="mb-0">Let us help your business grow with our comprehensive range of professional
+                        accounting services.</p>
+                </div>
+                <div class="col-lg-5 text-lg-end" data-aos="fade-left">
+                    <a href="contact.html" class="btn-rw-primary me-2 d-inline-block mb-2">Get in Touch</a>
+                    <a href="services.html" class="btn-rw-outline d-inline-block mb-2">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <div class="brand-name">RW William PLT</div>
+                        <p>A trusted name in chartered accounting since 2003. Providing professional excellence across
+                            Malaysia with offices in 7 strategic locations.</p>
+                        <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:8px">201906003458
+                            (LLP0022270-LCA) & AF 1490</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Company</h5>
+                    <ul class="footer-links p-0">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links p-0">
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="clients.html">Our Clients</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="footer-title">Head Office</h5>
+                    <ul class="footer-contact p-0">
+                        <li><i class="bi bi-geo-alt"></i><span>No. 9-3A, Mayang Plaza, Jalan SS 26/4, Taman Mayang Jaya,
+                                47301 Petaling Jaya</span></li>
+                        <li><i class="bi bi-telephone"></i><span>+603-7805 3859</span></li>
+                        <li><i class="bi bi-envelope"></i><span><a href="mailto:richard@rwwilliam.com.my"
+                                    target="_blank">richard@rwwilliam.com.my</a></span></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-12 text-center">
+                        <p class="copyright"> <span>Copyright</span> ©
+                            <script> document.write(new Date().getFullYear())  </script>
+                            <span class="copyright">RW WILLIAM PLT </span> (201906003458 (LLP0022270-LCA) & AF1490)|
+                            <span> All Rights Reserved | Powered by :<a href="http://www.webprotechnologi.com/"
+                                    target="_blank"> WebPro Design </span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Social Sidebar -->
+    <div id="socialSidebar" class="social-sidebar open">
+        <div class="social-sidebar-links">
+            <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="social-facebook">
+                <i class="bi bi-facebook"></i>
+                <span class="social-tooltip">Facebook</span>
+            </a>
+            <a href="https://www.tiktok.com/@rwwilliamplt" target="_blank" class="social-tiktok">
+                <i class="bi bi-tiktok"></i>
+                <span class="social-tooltip">TikTok</span>
+            </a>
+
+            <a href="https://wa.me/60123806039?text=Enquiry from Website: Hi There! I am Looking for Audit and Assurance..."
+                target="_blank" class="social-whatsapp">
+                <i class="bi bi-whatsapp"></i>
+                <span class="social-tooltip">WhatsApp</span>
+            </a>
+            <a href="https://www.linkedin.com/in/rwwilliam" target="_blank" class="social-linkedin">
+                <i class="bi bi-linkedin"></i>
+                <span class="social-tooltip">LinkedIn</span>
+            </a>
+            <a href="mailto:richard@rwwilliam.com.my" class="social-email">
+                <i class="bi bi-envelope-fill"></i>
+                <span class="social-tooltip">Email Us</span>
+            </a>
+            <a href="https://twitter.com/rwwilliamplt" target="_blank" class="social-twitter">
+                <i class="bi bi-twitter"></i>
+                <span class="social-tooltip">Twitter</span>
+            </a>
+            <a href="https://www.instagram.com/rw_william/" target="_blank" class="social-instagram">
+                <i class="bi bi-instagram"></i>
+                <span class="social-tooltip">Instagram</span>
+            </a>
+            <a href="https://www.youtube.com/channel/UCesZWUo9bHkU7soOS_0huFg" target="_blank" class="social-youtube">
+                <i class="bi bi-youtube"></i>
+                <span class="social-tooltip">YouTube</span>
+            </a>
+        </div>
+        <button class="social-sidebar-toggle" id="socialToggle" title="Connect with us">
+            <span class="toggle-icon"><i class="bi bi-share-fill"></i></span>
+            <span class="toggle-label d-none d-md-none">Follow Us</span>
+        </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 80
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+
+        function openMobileMenu() {
+            if (!mobileToggle || !mobileMenu || !mobileOverlay) return;
+            mobileToggle.classList.add('active');
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu(animate = true) {
+            if (!mobileToggle || !mobileMenu || !mobileOverlay) return;
+
+            // Spin animation on close button while closing
+            if (animate && mobileCloseBtn) {
+                mobileCloseBtn.classList.add('spinning');
+                window.setTimeout(() => mobileCloseBtn.classList.remove('spinning'), 520);
+            }
+
+            mobileToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                (mobileMenu && mobileMenu.classList.contains('active')) ? closeMobileMenu(false) : openMobileMenu();
+            });
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', () => closeMobileMenu(true));
+        }
+
+        if (mobileCloseBtn) {
+            mobileCloseBtn.addEventListener('click', () => closeMobileMenu(true));
+        }
+
+        // Close when a menu link is clicked
+        document.querySelectorAll('.mobile-menu-nav a:not(#countryToggle), .mobile-menu-nav .mobile-nav-link:not(#countryToggle)').forEach(a => {
+            a.addEventListener('click', () => closeMobileMenu(true));
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                closeMobileMenu(true);
+            }
+        });
+
+
+        // Country Submenu Toggle
+        const countryToggle = document.getElementById('countryToggle');
+        const countrySubmenu = document.getElementById('countrySubmenu');
+
+        if (countryToggle && countrySubmenu) countryToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            countrySubmenu.classList.toggle('open');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('bi-chevron-down');
+            icon.classList.toggle('bi-chevron-up');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link:not(#countryToggle)').forEach(link => {
+            link.addEventListener('click', () => closeMobileMenu(true));
+        });
+
+        // Close mobile menu on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Social Sidebar Toggle
+        const socialSidebar = document.getElementById('socialSidebar');
+        const socialToggle = document.getElementById('socialToggle');
+        socialToggle.addEventListener('click', function () {
+            socialSidebar.classList.toggle('open');
+        });
+        // Close social sidebar when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!socialSidebar.contains(e.target) && socialSidebar.classList.contains('open')) {
+                socialSidebar.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+
+</html>
