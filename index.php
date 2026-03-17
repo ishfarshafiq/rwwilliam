@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include("dbconnect.php");
+date_default_timezone_set("Asia/Kuala_Lumpur");
+?>
 <html lang="en">
 
 <head>
@@ -17,212 +21,126 @@
 
 <body>
 
+	<?php include_once('includes/navbar.php'); ?>
 
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-xl" id="mainNavbar">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="brand-logo">RW</div>
-                <div class="brand-text">
-                    <span class="brand-name">RW William</span>
-                    <span class="brand-sub">Bridging Your Business</span>
-                </div>
-            </a>
-
-            <!-- Desktop Navigation -->
-            <div class="desktop-nav d-none d-xl-flex align-items-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="team.html">Our Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery.html">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="clients.html">Our Client</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="news-announcement.html">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="career.html">Career</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Country
-                        </a>
-                        <ul class="dropdown-menu" id="desktopCountryMenu">
-                            <li><a class="dropdown-item" href="#">🇲🇾 Malaysia</a></li>
-                            <li><a class="dropdown-item" href="#">🇹🇭 Thailand</a></li>
-                            <li><a class="dropdown-item" href="#">🇸🇬 Singapore</a></li>
-                            <li><a class="dropdown-item" href="#">🇮🇩 Jakarta</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Mobile Toggle (Right Side) -->
-            <button class="navbar-toggler d-xl-none ms-auto" type="button" id="mobileToggle">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="brand-logo-m">RW</div>
-            <div class="brand-info">
-                <h5>RW William</h5><span>Bridging Your Business</span>
-            </div>
-            <button id="mobileCloseBtn" class="mobile-menu-close" type="button" aria-label="Close menu">
-                <i class="bi bi-x-lg"></i></button>
-        </div>
-        <nav class="mobile-menu-nav">
-            <a href="index.html" class="mobile-nav-link active">Home <i class="bi bi-chevron-right"></i></a>
-            <a href="about.html" class="mobile-nav-link">About Us <i class="bi bi-chevron-right"></i></a>
-            <a href="services.html" class="mobile-nav-link">Services <i class="bi bi-chevron-right"></i></a>
-            <a href="team.html" class="mobile-nav-link">Our Team <i class="bi bi-chevron-right"></i></a>
-            <a href="gallery.html" class="mobile-nav-link">Gallery <i class="bi bi-chevron-right"></i></a>
-            <a href="clients.html" class="mobile-nav-link">Our Client <i class="bi bi-chevron-right"></i></a>
-            <a href="news-announcement.html" class="mobile-nav-link">News <i class="bi bi-chevron-right"></i></a>
-            <a href="career.html" class="mobile-nav-link">Career <i class="bi bi-chevron-right"></i></a>
-            <a href="contact.html" class="mobile-nav-link">Contact <i class="bi bi-chevron-right"></i></a>
-            <a href="#" class="mobile-nav-link" id="countryToggle">Country
-                <i class="bi bi-chevron-down"></i></a>
-            <div class="mobile-submenu" id="countrySubmenu">
-                <a href="#">🇲🇾 Malaysia</a>
-                <a href="#">🇹🇭 Thailand</a>
-                <a href="#">🇸🇬 Singapore</a>
-                <a href="#">🇮🇩 Jakarta</a>
-            </div>
-        </nav>
-        <div class="mobile-menu-footer">
-            <div class="social-icons mb-3"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i
-                        class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-instagram"></i></a></div>
-            <p>&copy; 2026 RW William PLT.</p>
-        </div>
-    </div>
+   
+	<?php
+	$banner_sql = "SELECT * FROM banner WHERE status='Active' ORDER BY sort ASC";
+	$banner_result = mysqli_query($conn, $banner_sql);
+	?>
 
     <!-- ===== FULLSCREEN HERO SLIDER ===== -->
-    <section class="hero-slider" id="heroSlider">
-        <!-- Slide 1  <div class="hero-slide-bg" style="background:linear-gradient(180deg,#0A1628 0%,#004B6E 100%)"></div> -->
-        <div class="hero-slide active">
-            <div class="hero-slide-bg" style="background-image: url('img/slider/slide1.jpg');"></div>
-            <div class="hero-slide-overlay"></div>
-            <div class="hero-slide-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="hero-label"><i class="bi bi-shield-check"></i> Trusted Since 2003</div>
-                            <h1 class="hero-title">Your Trusted <span>Chartered Accountants</span> in Malaysia</h1>
-                            <p class="hero-desc">Providing a higher standard of professional services with integrity,
-                                expertise, and dedication to over 2,000 clients across the nation.</p>
-                            <div class="hero-btns"><a href="services.html" class="btn-hero btn-hero-primary">Our
-                                    Services <i class="bi bi-arrow-right"></i></a><a href="about.html"
-                                    class="btn-hero btn-hero-outline">Learn More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="hero-slide">
-            <div class="hero-slide-bg" style="background-image: url('img/slider/slide2.jpg');"></div>
-            <div class="hero-slide-overlay"
-                style="background:linear-gradient(135deg,rgba(10,22,40,.8),rgba(0,136,191,.5),rgba(0,173,239,.3))">
-            </div>
-            <div class="hero-slide-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="hero-label"><i class="bi bi-building"></i> 6 Offices Nationwide</div>
-                            <h1 class="hero-title">Audit, Tax &amp; <span>Advisory</span> Excellence</h1>
-                            <p class="hero-desc">From statutory audits to strategic tax planning, e-invoicing, and MBRS
-                                compliance — comprehensive solutions for businesses of every size.</p>
-                            <div class="hero-btns"><a href="contact.html" class="btn-hero btn-hero-primary">Get in Touch
-                                    <i class="bi bi-arrow-right"></i></a><a href="team.html"
-                                    class="btn-hero btn-hero-outline">Meet Our Team</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="hero-slide">
-            <div class="hero-slide-bg" style="background-image: url('img/slider/slide3.jpg');"></div>
-            <div class="hero-slide-overlay"
-                style="background:linear-gradient(135deg,rgba(0,75,110,.85),rgba(0,106,148,.6),rgba(0,173,239,.35))">
-            </div>
-            <div class="hero-slide-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="hero-label"><i class="bi bi-globe"></i> RW William Network</div>
-                            <h1 class="hero-title">Growing Your Business <span>Across Borders</span></h1>
-                            <p class="hero-desc">With presence in Malaysia, Thailand, Singapore, and Jakarta — we're
-                                your trusted regional partner for cross-border advisory services.</p>
-                            <div class="hero-btns"><a href="career.html" class="btn-hero btn-hero-primary">Join Our Team
-                                    <i class="bi bi-arrow-right"></i></a><a href="clients.html"
-                                    class="btn-hero btn-hero-outline">Our Clients</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<section class="hero-slider" id="heroSlider">
 
-        <!-- Controls -->
-        <div class="hero-dots" id="heroDots">
-            <div class="hero-dot active" data-slide="0"></div>
-            <div class="hero-dot" data-slide="1"></div>
-            <div class="hero-dot" data-slide="2"></div>
-        </div>
-        <div class="hero-arrows">
-            <div class="hero-arrow" id="heroPrev"><i class="bi bi-chevron-left"></i></div>
-            <div class="hero-arrow" id="heroNext"><i class="bi bi-chevron-right"></i></div>
-        </div>
-        <div class="hero-scroll">
-            <div class="scroll-line"></div> Scroll
-        </div>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-num">23+</div>
-                <div class="hero-stat-label">Years</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-num">2.5K+</div>
-                <div class="hero-stat-label">Clients</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-num">80+</div>
-                <div class="hero-stat-label">Team</div>
-            </div>
-        </div>
-    </section>
+		<?php 
+		$first = true;
+		$i = 0;
 
+		while($banner = mysqli_fetch_assoc($banner_result)) { 
+
+		$title = $banner['title'];
+		$highlight = $banner['title_highlight'];
+
+		if(!empty($highlight)){
+			$title = str_replace($highlight, "<span>$highlight</span>", $title);
+		}
+		?>
+
+		<div class="hero-slide <?php if($first){ echo 'active'; } ?>">
+
+			<div class="hero-slide-bg" style="background-image: url('<?php echo "admin/".$banner['image']; ?>');"></div>
+
+			<div class="hero-slide-overlay"></div>
+
+			<div class="hero-slide-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8">
+
+							<?php if(!empty($banner['label_badge'])){ ?>
+							<div class="hero-label">
+								<i class="bi bi-shield-check"></i> <?php echo $banner['label_badge']; ?>
+							</div>
+							<?php } ?>
+
+							<h1 class="hero-title"><?php echo $title; ?></h1>
+
+							<p class="hero-desc">
+								<?php echo $banner['description']; ?>
+							</p>
+
+							<div class="hero-btns">
+
+								<?php if(!empty($banner['button_text_one'])){ ?>
+								<a href="<?php echo $banner['button_link_one']; ?>" class="btn-hero btn-hero-primary">
+									<?php echo $banner['button_text_one']; ?> <i class="bi bi-arrow-right"></i>
+								</a>
+								<?php } ?>
+
+								<?php if(!empty($banner['button_text_two'])){ ?>
+								<a href="<?php echo $banner['button_link_two']; ?>" class="btn-hero btn-hero-outline">
+									<?php echo $banner['button_text_two']; ?>
+								</a>
+								<?php } ?>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<?php 
+		$first = false;
+		$i++;
+		} 
+		?>
+
+		<!-- DOTS -->
+		<div class="hero-dots" id="heroDots">
+
+		<?php
+		for($d=0; $d<$i; $d++){
+		?>
+		<div class="hero-dot <?php if($d==0){ echo 'active'; } ?>" data-slide="<?php echo $d; ?>"></div>
+		<?php
+		}
+		?>
+
+		</div>
+
+		<div class="hero-arrows">
+			<div class="hero-arrow" id="heroPrev"><i class="bi bi-chevron-left"></i></div>
+			<div class="hero-arrow" id="heroNext"><i class="bi bi-chevron-right"></i></div>
+		</div>
+		<div class="hero-scroll">
+			<div class="scroll-line"></div> Scroll
+		</div>
+		<div class="hero-stats">
+			<div class="hero-stat">
+				<div class="hero-stat-num">23+</div>
+				<div class="hero-stat-label">Years</div>
+			</div>
+			<div class="hero-stat">
+				<div class="hero-stat-num">2.5K+</div>
+				<div class="hero-stat-label">Clients</div>
+			</div>
+			<div class="hero-stat">
+				<div class="hero-stat-num">80+</div>
+				<div class="hero-stat-label">Team</div>
+			</div>
+		</div>
+
+		</section>
+	
+    
     <!-- ===== ANNOUNCEMENTS ===== -->
     <section class="announcement-section" id="announcements">
         <div class="container">
-            <div class="row align-items-end mb-5">
+            
+			<div class="row align-items-end mb-5">
                 <div class="col-lg-7" data-aos="fade-right">
                     <div class="announcement-badge"><i class="bi bi-megaphone-fill"></i> Latest Updates</div>
                     <h2 class="section-title">Announcements &amp; News</h2>
@@ -230,62 +148,43 @@
                 </div>
 
                 <div class="col-lg-5 text-lg-end" data-aos="fade-left">
-                    <a href="news-announcement.html" class="btn-rw-outline"
-                        style="border-color:var(--rw-primary);color:var(--rw-primary);padding:10px 28px;font-size:13px">View
+                    <a href="news-announcement.php" class="btn-rw-outline" style="border-color:var(--rw-primary);color:var(--rw-primary);padding:10px 28px;font-size:13px">View
                         All Announcements <i class="bi bi-arrow-right ms-1"></i></a>
                 </div>
 
             </div>
+			
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card program-card">
-                        <div class="program-image">
-                            <img src="img/playground.jpg" alt="Playgroup" class="img-fluid">
-                            <div class="announcement-date-badge"><i class="bi bi-calendar3 me-1"></i> 10 Feb 2026</div>
-                        </div>
-                        <div class="announcement-body">
-
-                            <h4>E-Invoicing Phase 2: What You Need to Know</h4>
-                            <p>Starting July 2025, businesses with annual turnover above RM25 million must comply with
-                                mandatory e-invoicing requirements. Our team is ready to guide you.</p>
-                            <a href="news-announcement.html" class="btn-hero btn-hero-primary"
-                                style="padding:12px 30px;font-size:13px">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card program-card">
-                        <div class="program-image">
-                            <img src="img/playground.jpg" alt="Full Day" class="img-fluid">
-                            <div class="announcement-date-badge"><i class="bi bi-calendar3 me-1"></i> 10 Feb 2026</div>
-                        </div>
-                        <div class="announcement-body">
-
-                            <h4>RW William Opens New Klang Branch</h4>
-                            <p>We're excited to announce the opening of our newest branch in Klang, expanding our
-                                services to better serve clients in the Klang Valley region.</p>
-                            <a href="news-announcement.html" class="btn-hero btn-hero-primary"
-                                style="padding:12px 30px;font-size:13px">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card program-card">
-                        <div class="program-image">
-                            <img src="img/playground.jpg" alt="Full Day" class="img-fluid">
-                            <div class="announcement-date-badge"><i class="bi bi-calendar3 me-1"></i> 10 Feb 2026</div>
-                        </div>
-                        <div class="announcement-body">
-
-                            <h4>MBRS 2.0 Filing Deadline Reminder</h4>
-                            <p>Companies Commission of Malaysia has set the deadline for MBRS 2.0 compliance. Contact us
-                                to ensure your filings are completed on time.</p>
-                            <a href="news-announcement.html" class="btn-hero btn-hero-primary"
-                                style="padding:12px 30px;font-size:13px">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+               <?php 
+					$i=100;
+					$view_img="";
+					$result = mysqli_query($conn,"select * from news order by newsID desc");
+						while($row = mysqli_fetch_assoc($result)){
+							if($row['image']!="")
+							{
+								$image = $row['image'];
+								$view_img = "<img src='$image' alt='Playgroup' class='img-fluid'>";
+							}
+							
+					?>
+					   <div class="col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="<?php echo $i;?>">
+							<div class="card program-card">
+								<div class="program-image">
+									<?php echo $view_img;?><br/>
+									<div class="announcement-date-badge"><i class="bi bi-calendar3 me-1"></i> <?php echo date('d-m-Y',strtotime($row['publish_date']));?></div>
+								</div>
+								<div class="announcement-body">
+									<h4><?php echo $row['title'];?></h4>
+									<p><?php echo substr($row['description'], 0, 20) . "...";?></p>
+									<a href="news-announcement.php" class="btn-hero btn-hero-primary" style="padding:12px 30px;font-size:13px">Read More <i class="bi bi-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+					<?php
+					$i = $i+100;
+					}
+					?>
+			</div>
             <!-- Announcement cards - dynamic from backend via JS -->
 
         </div>
@@ -337,7 +236,7 @@
                                     style="font-size:12px;color:var(--rw-text-light)">LLP0022270-LCA</span></div>
                         </div>
                     </div>
-                    <a href="about.html" class="btn-hero btn-hero-primary"
+                    <a href="about.php" class="btn-hero btn-hero-primary"
                         style="padding:12px 30px;font-size:13px">Learn More About Us <i
                             class="bi bi-arrow-right"></i></a>
                 </div>
@@ -356,55 +255,55 @@
             </div>
             <div class="row g-4">
                 <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><a
-                        href="services.html#audit" class="sp-card d-block">
+                        href="services.php#audit" class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-shield-check"></i></div>
                         <h5>Audit &amp; Assurance</h5>
                         <p>Statutory &amp; internal audits</p>
                     </a></div>
                 <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><a
-                        href="services.html#taxation" class="sp-card d-block">
+                        href="services.php#taxation" class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-percent"></i></div>
                         <h5>Taxation</h5>
                         <p>Strategic tax planning</p>
                     </a></div>
                 <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150"><a
-                        href="services.html#accounting" class="sp-card d-block">
+                        href="services.php#accounting" class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-calculator"></i></div>
                         <h5>Accounting &amp; E-Invoicing</h5>
                         <p>Full accounting solutions</p>
                     </a></div>
                 <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200"><a
-                        href="services.html#corporate" class="sp-card d-block">
+                        href="services.php#corporate" class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-briefcase"></i></div>
                         <h5>Corporate Services</h5>
                         <p>Incorporation &amp; secretarial</p>
                     </a></div>
-                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><a href="services.html#sst"
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><a href="services.php#sst"
                         class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-receipt-cutoff"></i></div>
                         <h5>SST Advisory</h5>
                         <p>Sales &amp; service tax</p>
                     </a></div>
                 <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><a
-                        href="services.html#mbrs" class="sp-card d-block">
+                        href="services.php#mbrs" class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-database-check"></i></div>
                         <h5>MBRS Conversion</h5>
                         <p>XBRL compliance</p>
                     </a></div>
                 <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150"><a
-                        href="services.html#liquidation" class="sp-card d-block">
+                        href="services.php#liquidation" class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-building-down"></i></div>
                         <h5>Liquidation</h5>
                         <p>Winding up services</p>
                     </a></div>
                 <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200"><a
-                        href="services.html#payroll" class="sp-card d-block">
+                        href="services.php#payroll" class="sp-card d-block">
                         <div class="sp-icon"><i class="bi bi-wallet2"></i></div>
                         <h5>Payroll Services</h5>
                         <p>Complete payroll management</p>
                     </a></div>
             </div>
-            <div class="text-center mt-5" data-aos="fade-up"><a href="services.html" class="btn-hero btn-hero-primary"
+            <div class="text-center mt-5" data-aos="fade-up"><a href="services.php" class="btn-hero btn-hero-primary"
                     style="padding:12px 32px;font-size:13px;background:var(--rw-accent);border-color:var(--rw-accent)">View
                     All 10 Services <i class="bi bi-arrow-right"></i></a></div>
         </div>
@@ -467,13 +366,13 @@
                     <div class="section-label">Our Offices</div>
                     <h2 class="section-title">RW William Network</h2>
                     <p>Strategically located to serve clients across Malaysia and beyond.</p>
-                    <a href="contact.html" class="btn-hero btn-hero-primary mt-2"
+                    <a href="contact.php" class="btn-hero btn-hero-primary mt-2"
                         style="padding:12px 28px;font-size:13px">Contact Us <i class="bi bi-arrow-right"></i></a>
                 </div>
                 <div class="col-lg-8" data-aos="fade-left">
                     <div class="d-flex flex-wrap justify-content-lg-end">
 
-                        <a href="contact.html#petalingjaya" class="text-decoration-none">
+                        <a href="contact.php#petalingjaya" class="text-decoration-none">
                             <div class="office-pill">
                                 <div class="op-icon"><i class="bi bi-building"></i></div>
                                 <div class="op-info">
@@ -482,7 +381,7 @@
                             </div>
                         </a>
 
-                        <a href="contact.html#klang" class="text-decoration-none">
+                        <a href="contact.php#klang" class="text-decoration-none">
                             <div class="office-pill">
                                 <div class="op-icon"><i class="bi bi-building"></i></div>
                                 <div class="op-info">
@@ -491,7 +390,7 @@
                             </div>
                         </a>
 
-                        <a href="contact.html#ipoh" class="text-decoration-none">
+                        <a href="contact.php#ipoh" class="text-decoration-none">
                             <div class="office-pill">
                                 <div class="op-icon"><i class="bi bi-building"></i></div>
                                 <div class="op-info">
@@ -500,7 +399,7 @@
                             </div>
                         </a>
 
-                        <a href="contact.html#seremban" class="text-decoration-none">
+                        <a href="contact.php#seremban" class="text-decoration-none">
                             <div class="office-pill">
                                 <div class="op-icon"><i class="bi bi-building"></i></div>
                                 <div class="op-info">
@@ -509,7 +408,7 @@
                             </div>
                         </a>
 
-                        <a href="contact.html#johorbahru" class="text-decoration-none">
+                        <a href="contact.php#johorbahru" class="text-decoration-none">
                             <div class="office-pill">
                                 <div class="op-icon"><i class="bi bi-building"></i></div>
                                 <div class="op-info">
@@ -518,7 +417,7 @@
                             </div>
                         </a>
 
-                        <a href="contact.html#perai" class="text-decoration-none">
+                        <a href="contact.php#perai" class="text-decoration-none">
                             <div class="office-pill">
                                 <div class="op-icon"><i class="bi bi-building"></i></div>
                                 <div class="op-info">
@@ -542,8 +441,8 @@
                     <p class="mb-0">Let us help your business grow with our comprehensive range of professional
                         accounting services.</p>
                 </div>
-                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="contact.html"
-                        class="btn-rw-white me-2 mb-2">Get in Touch</a><a href="career.html"
+                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="contact.php"
+                        class="btn-rw-white me-2 mb-2">Get in Touch</a><a href="career.php"
                         class="btn-rw-outline mb-2">Join Our Team</a></div>
             </div>
         </div>
@@ -565,18 +464,18 @@
                 <div class="col-lg-2 col-md-4">
                     <h5 class="footer-title">Company</h5>
                     <ul class="footer-links p-0">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="career.html">Careers</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="team.php">Our Team</a></li>
+                        <li><a href="career.php">Careers</a></li>
+                        <li><a href="gallery.php">Gallery</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h5 class="footer-title">Quick Links</h5>
                     <ul class="footer-links p-0">
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="clients.html">Our Clients</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="services.php">Services</a></li>
+                        <li><a href="clients.php">Our Clients</a></li>
+                        <li><a href="contact.php">Contact</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>

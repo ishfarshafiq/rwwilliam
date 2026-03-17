@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Announcements | RW William PLT</title>
+    <title>Career | RW William PLT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap"
@@ -46,9 +46,7 @@
             background: var(--rw-white);
             overflow-x: hidden
         }
-.btn-primary{
-    background: var(--rw-primary);
-}
+
         #mainNavbar {
             position: fixed;
             top: 0;
@@ -1510,82 +1508,18 @@
         </div>
     </div>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-xl" id="mainNavbar">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="brand-logo">RW</div>
-                <div class="brand-text"><span class="brand-name">RW William</span><span class="brand-sub">Bridging Your
-                        Business</span></div>
-            </a>
-            <div class="desktop-nav d-none d-xl-flex align-items-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="clients.html">Our Client</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news-announcement.html">News</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="career.html">Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Country</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Malaysia</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Thailand</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Singapore</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Jakarta</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><button class="navbar-toggler d-xl-none ms-auto" type="button" id="mobileToggle">
-                <div class="hamburger"><span></span><span></span><span></span></div>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="brand-logo-m">RW</div>
-            <div class="brand-info">
-                <h5>RW William</h5><span>Bridging Your Business</span>
-            </div><button id="mobileCloseBtn" class="mobile-menu-close" type="button" aria-label="Close menu"><i
-                    class="bi bi-x-lg"></i></button>
-        </div>
-        <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <i
-                    class="bi bi-chevron-right"></i></a><a href="about.html" class="mobile-nav-link">About Us <i
-                    class="bi bi-chevron-right"></i></a><a href="services.html" class="mobile-nav-link">Services <i
-                    class="bi bi-chevron-right"></i></a><a href="team.html" class="mobile-nav-link">Our Team <i
-                    class="bi bi-chevron-right"></i></a><a href="gallery.html" class="mobile-nav-link">Gallery <i
-                    class="bi bi-chevron-right"></i></a><a href="clients.html" class="mobile-nav-link">Our Client <i
-                    class="bi bi-chevron-right"></i></a>
-                    <a href="news-announcement.html" class="mobile-nav-link">News <i
-                    class="bi bi-chevron-right"></i></a><a href="career.html" class="mobile-nav-link active">Career <i
-                    class="bi bi-chevron-right"></i></a><a href="contact.html" class="mobile-nav-link">Contact <i
-                    class="bi bi-chevron-right"></i></a><a href="#" class="mobile-nav-link" id="countryToggle">Country
-                <i class="bi bi-chevron-down"></i></a>
-            <div class="mobile-submenu" id="countrySubmenu"><a href="#">🇲🇾 Malaysia</a><a href="#">🇹🇭 Thailand</a><a
-                    href="#">🇸🇬 Singapore</a><a href="#">🇮🇩 Jakarta</a></div>
-        </nav>
-        <div class="mobile-menu-footer">
-            <div class="social-icons mb-3"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i
-                        class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-instagram"></i></a></div>
-            <p>&copy; 2026 RW William PLT.</p>
-        </div>
-    </div>
-
+	<?php include_once('includes/navbar.php'); ?>
+   
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="hero-pattern"></div>
         <div class="container position-relative">
             <div class="breadcrumb-nav mb-4" data-aos="fade-down"><a href="index.html">Home</a><span
-                    class="divider">/</span><span>News & Announcements</span></div>
+                    class="divider">/</span><span>Career</span></div>
             <div class="hero-line" data-aos="fade-right"></div>
-            <h1 data-aos="fade-up">News & Announcements</h1>
-            <p data-aos="fade-up" data-aos-delay="100">Stay updated with the latest regulatory changes, company news,
-                important deadlines, and insights from RW William PLT.</p>
+            <h1 data-aos="fade-up">Career</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Build your future with RW William PLT — where talent meets
+                opportunity across Malaysia.</p>
         </div>
     </section>
 
@@ -1593,80 +1527,252 @@
     <section class="welcome-section">
         <div class="container">
             <div class="row align-items-center g-5">
-                <div class="col-lg-12" data-aos="fade-right">
-                    
-                    <h2 class="section-title">News & Announcements</h2>
-                    
-                    <div class="row">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Image</th>
-                                        <th>Title</th>
-                                        <th>Published</th>
-                                        <th>Description</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><img src="admin/uploads/happening/689a9f4d3aed7.jpeg"
-                                                class="img-fluid rounded-3" style="max-width: 120px;" alt=""><i class="bi bi-newspaper"></i>
-                                        </td>
-                                        <td>New E-Invoicing </td>
-                                        <td><i class="bi bi-person"></i> Admin<br><i class="bi bi-clock"></i> Aug am,
-                                            2026</td>
-                                        <td>New E-Invoicing Implementation Guide for Malaysian Businesses...</td>
-                                        <td>
-                                            <a href="news-details.html" target="_blank"
-                                                class="btn btn-primary mt-5">Read More</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><img src="admin/uploads/happening/6898b3199997c.jpeg"
-                                                class="img-fluid rounded-3" style="max-width: 120px;" alt=""><i class="bi bi-newspaper"></i>
-                                        </td>
-                                        <td>MBRS 2.0 Filing Deadline Reminder</td>
-                                        <td><i class="bi bi-person"></i> Admin<br><i class="bi bi-clock"></i> Aug am,
-                                            2026</td>
-                                        <td>Companies Commission of Malaysia has set the deadline for MBRS 2.0 </td>
-                                        <td>
-                                            <a href="news-details.html" target="_blank"
-                                                class="btn btn-primary mt-5">Read More</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><img src="admin/uploads/happening/6879ed920c4c3.jpg"
-                                                class="img-fluid rounded-3" style="max-width: 120px;" alt=""><i class="bi bi-newspaper"></i>
-                                        </td>
-                                        <td> Top 20 Accounting Firms </td>
-                                        <td><i class="bi bi-person"></i> Admin<br><i class="bi bi-clock"></i> Jul am,
-                                            2026</td>
-                                        <td>RW William Named Among Top 20 Accounting Firms in Malaysia ...</td>
-                                        <td>
-                                            <a href="news-details.html" target="_blank"
-                                                class="btn btn-primary mt-5">Read More</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="section-label">Opportunities Await</div>
+                    <h2 class="section-title">Who We Are Looking For&hellip;</h2>
+                    <p style="font-size:17px;color:var(--rw-text);font-weight:400;line-height:1.9">RW William offers
+                        both <strong>short-term employment</strong> and <strong>long-term career opportunities</strong>
+                        to suitably qualified candidates. Whether you are a student, fresh graduate or experienced
+                        professional, we <strong style="color:var(--rw-primary)">WELCOME YOU</strong>. Join us today!
+                    </p>
+                    <div class="welcome-icon-row">
+                        <div class="welcome-icon-card" data-aos="fade-up" data-aos-delay="50">
+                            <div class="wic-icon"><i class="bi bi-mortarboard"></i></div>
+                            <h5>Students</h5>
+                            <p>Internship programmes to kickstart your career</p>
+                        </div>
+                        <div class="welcome-icon-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="wic-icon"><i class="bi bi-rocket-takeoff"></i></div>
+                            <h5>Fresh Graduates</h5>
+                            <p>Full-time roles with hands-on mentorship</p>
+                        </div>
+                        <div class="welcome-icon-card" data-aos="fade-up" data-aos-delay="150">
+                            <div class="wic-icon"><i class="bi bi-briefcase"></i></div>
+                            <h5>Professionals</h5>
+                            <p>Senior positions with growth pathways</p>
                         </div>
                     </div>
                 </div>
-
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="welcome-highlight">
+                        <h3><i class="bi bi-people-fill me-2"></i>Join a Team of 50+</h3>
+                        <p>Be part of a dynamic, growing firm with 20+ years of industry expertise, 7 offices across
+                            Malaysia, and over 2,000 clients trusting us with their business.</p>
+                    </div>
+                    <div class="welcome-highlight"
+                        style="background:linear-gradient(135deg,var(--rw-accent),var(--rw-dark));margin-top:16px">
+                        <h3><i class="bi bi-geo-alt-fill me-2"></i>Multiple Locations</h3>
+                        <p>Opportunities available in Petaling Jaya, Seremban, Ipoh, Penang, and Johor — work where it
+                            suits you best.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Why Join Us -->
+    <section class="why-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center" data-aos="fade-up">Benefits</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Why Join RW William?</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="50">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h4>Career Growth</h4>
+                        <p>Clear progression pathways from junior to partner level with mentorship at every stage.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-book"></i></div>
+                        <h4>Continuous Learning</h4>
+                        <p>In-house technical training, HRDF-approved courses, and support for professional
+                            certifications.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-globe-asia-australia"></i></div>
+                        <h4>Diverse Clients</h4>
+                        <p>Work with 2,000+ clients across industries — local SMEs to multinational corporations.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-heart"></i></div>
+                        <h4>Supportive Culture</h4>
+                        <p>A collegial environment that values teamwork, integrity, and work-life balance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Application Form -->
+    <section class="apply-section" id="apply">
+        <div class="container">
+            <div class="row g-4 g-lg-5">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="apply-form-card">
+                        <h2 style="font-size:30px;margin-bottom:6px">Apply Now</h2>
+                        <p style="margin-bottom:32px">Submit your application and take the first step towards a
+                            rewarding career.</p>
+
+                        <form id="careerForm">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="fullName" placeholder="Full Name"
+                                            required>
+                                        <label for="fullName"><i class="bi bi-person me-1"></i> Full Name *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Email"
+                                            required>
+                                        <label for="email"><i class="bi bi-envelope me-1"></i> Email Address *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
+                                        <label for="phone"><i class="bi bi-telephone me-1"></i> Phone Number *</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="employment"
+                                            placeholder="Current Employment / Institution" required>
+                                        <label for="employment"><i class="bi bi-building me-1"></i> Current Employment /
+                                            Institution *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="department" name="department" required>
+                                            <option value="" selected disabled>Select...</option>
+                                            <option value="Audit">Audit</option>
+                                            <option value="Accounting">Accounting</option>
+                                            <option value="Taxation">Taxation</option>
+                                            <option value="Administrative">Administrative</option>
+                                            <option value="Company Secretary">Company Secretary</option>
+                                        </select>
+                                        <label for="department"><i class="bi bi-diagram-3 me-1"></i> Department
+                                            *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="location" name="location" required>
+                                            <option value="" selected disabled>Select...</option>
+                                            <option value="Petaling Jaya">Petaling Jaya</option>
+                                            <option value="Klang">Klang</option>
+                                            <option value="Seremban AST">Seremban AST</option>
+                                            <option value="Ipoh">Ipoh</option>
+                                            <option value="Penang">Penang</option>
+                                            <option value="Johor">Johor</option>
+                                        </select>
+                                        <label for="location"><i class="bi bi-geo-alt me-1"></i> Preferred Location
+                                            *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="hire" name="hire" required>
+                                            <option value="" selected disabled>Select...</option>
+                                            <option value="Internship">Internship</option>
+                                            <option value="Full time">Full Time</option>
+                                        </select>
+                                        <label for="hire"><i class="bi bi-clock me-1"></i> Type of Hire *</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label
+                                        style="font-size:14px;font-weight:600;color:var(--rw-accent);margin-bottom:10px;display:block"><i
+                                            class="bi bi-file-earmark-arrow-up me-1"
+                                            style="color:var(--rw-primary)"></i> Upload Your Resume *</label>
+                                    <div class="file-upload-zone" id="fileUploadZone">
+                                        <div class="upload-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+                                        <h5>Drag & drop your resume here</h5>
+                                        <p>or <span class="browse-link">browse files</span> — PDF, DOC, DOCX (Max 5MB)
+                                        </p>
+                                        <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" style="display:none"
+                                            required>
+                                    </div>
+                                    <div class="file-name-display" id="fileNameDisplay">
+                                        <i class="bi bi-file-earmark-check"></i>
+                                        <span id="fileName"></span>
+                                        <button type="button" class="remove-file" id="removeFile"><i
+                                                class="bi bi-x-lg"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-submit">Submit Application <i
+                                            class="bi bi-send"></i></button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="form-success" id="formSuccess">
+                            <div class="success-icon"><i class="bi bi-check-lg"></i></div>
+                            <h3>Application Submitted!</h3>
+                            <p>Thank you for your interest in joining RW William PLT. Our HR team will review your
+                                application and get back to you soon.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="apply-info-card">
+                        <h3>How It Works</h3>
+                        <p>Our simple application process gets you connected with the right team quickly.</p>
+                        <div class="apply-step">
+                            <div class="apply-step-num">1</div>
+                            <div>
+                                <h5>Submit Your Application</h5>
+                                <p>Fill in the form with your details and upload your resume.</p>
+                            </div>
+                        </div>
+                        <div class="apply-step">
+                            <div class="apply-step-num">2</div>
+                            <div>
+                                <h5>Resume Screening</h5>
+                                <p>Our HR team reviews your qualifications and experience.</p>
+                            </div>
+                        </div>
+                        <div class="apply-step">
+                            <div class="apply-step-num">3</div>
+                            <div>
+                                <h5>Interview</h5>
+                                <p>Shortlisted candidates are invited for an interview with the team.</p>
+                            </div>
+                        </div>
+                        <div class="apply-step" style="margin-bottom:0">
+                            <div class="apply-step-num">4</div>
+                            <div>
+                                <h5>Welcome Aboard!</h5>
+                                <p>Successful candidates receive an offer and onboarding support.</p>
+                            </div>
+                        </div>
+                        <div class="apply-depts">
+                            <span class="dept-pill">Audit</span>
+                            <span class="dept-pill">Accounting</span>
+                            <span class="dept-pill">Taxation</span>
+                            <span class="dept-pill">Administrative</span>
+                            <span class="dept-pill">Company Secretary</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-     <footer class="site-footer">
+    <footer class="site-footer">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-4">
@@ -1702,27 +1808,30 @@
                         <li><i class="bi bi-geo-alt"></i><span>No. 9-3A, Mayang Plaza, Jalan SS 26/4, Taman Mayang Jaya,
                                 47301 Petaling Jaya</span></li>
                         <li><i class="bi bi-telephone"></i><span>+603-7805 3859</span></li>
-                        <li><i class="bi bi-envelope"></i><span><a href="mailto:richard@rwwilliam.com.my" target="_blank">richard@rwwilliam.com.my</a></span></li>
-                        
+                        <li><i class="bi bi-envelope"></i><span><a href="mailto:richard@rwwilliam.com.my"
+                                    target="_blank">richard@rwwilliam.com.my</a></span></li>
+
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="row align-items-center">
-                    <div class="col-md-12 text-center">                        
+                    <div class="col-md-12 text-center">
                         <p class="copyright"> <span>Copyright</span> ©
-                    <script> document.write(new Date().getFullYear())  </script>
-                    <span class="copyright">RW WILLIAM PLT </span> (201906003458 (LLP0022270-LCA) & AF1490)| <span> All Rights Reserved | Powered by :<a href="http://www.webprotechnologi.com/" target="_blank"> WebPro Design </span>
-                </p>
+                            <script> document.write(new Date().getFullYear())  </script>
+                            <span class="copyright">RW WILLIAM PLT </span> (201906003458 (LLP0022270-LCA) & AF1490)|
+                            <span> All Rights Reserved | Powered by :<a href="http://www.webprotechnologi.com/"
+                                    target="_blank"> WebPro Design </span>
+                        </p>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Sticky Social Sidebar -->
-    <div class="social-sidebar" id="socialSidebar">
+    <div id="socialSidebar" class="social-sidebar open">
         <div class="social-sidebar-links">
             <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="social-facebook">
                 <i class="bi bi-facebook"></i>

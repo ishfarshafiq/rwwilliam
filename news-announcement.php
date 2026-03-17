@@ -1,10 +1,15 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include("dbconnect.php");
+date_default_timezone_set("Asia/Kuala_Lumpur");
+?>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Clients | RW William PLT</title>
+    <title>News & Announcements | RW William PLT</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap"
@@ -46,7 +51,9 @@
             background: var(--rw-white);
             overflow-x: hidden
         }
-
+.btn-primary{
+    background: var(--rw-primary);
+}
         #mainNavbar {
             position: fixed;
             top: 0;
@@ -75,6 +82,7 @@
             transition: all .3s ease
         }
 
+        /* TOP BAR */
         .top-bar {
             background: var(--rw-primary);
             padding: 8px 0;
@@ -96,6 +104,7 @@
             opacity: .4
         }
 
+        /* NAVBAR */
         .navbar {
             background: var(--rw-white);
             padding: 0;
@@ -208,6 +217,7 @@
             color: var(--rw-primary)
         }
 
+        /* MOBILE MENU */
         .navbar-toggler {
             border: none;
             padding: 8px;
@@ -444,6 +454,7 @@
             transform: translateX(-100%)
         }
 
+        /* PAGE HERO */
         .page-hero {
             background: linear-gradient(135deg, var(--rw-primary) 0%, var(--rw-primary-dark) 40%, var(--rw-accent) 100%);
             padding: 100px 0 80px;
@@ -522,6 +533,7 @@
             margin: 0 10px
         }
 
+        /* SECTION STYLES */
         .section-label {
             font-size: 12px;
             text-transform: uppercase;
@@ -549,302 +561,484 @@
             line-height: 1.2
         }
 
-        /* STATS BAR */
-        .stats-bar {
-            background: var(--rw-white);
-            padding: 50px 0;
-            position: relative;
-            z-index: 2;
-            margin-top: -40px
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 16px;
-            background: var(--rw-white);
-            border: 1px solid var(--rw-border);
-            transition: all .3s ease
-        }
-
-        .stat-card:hover {
-            border-color: var(--rw-primary);
-            box-shadow: 0 10px 30px rgba(0, 173, 239, .1);
-            transform: translateY(-4px)
-        }
-
-        .stat-num {
-            font-family: var(--font-heading);
-            font-size: 48px;
-            color: var(--rw-primary);
-            line-height: 1
-        }
-
-        .stat-label {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--rw-text-light);
-            font-weight: 500;
-            margin-top: 8px
-        }
-
-        /* CLIENT LOGOS GRID */
-        .clients-section {
-            padding: 80px 0 100px
-        }
-
-        .client-logo-card {
-            background: var(--rw-white);
-            border: 2px solid var(--rw-border);
-            border-radius: 16px;
-            padding: 0;
-            height: 180px;
-            display: flex;
-            flex-direction: column;
-            transition: all .4s ease;
-            overflow: hidden;
-            position: relative
-        }
-
-        .client-logo-card:hover {
-            border-color: var(--rw-primary);
-            box-shadow: 0 15px 40px rgba(0, 173, 239, .12);
-            transform: translateY(-6px)
-        }
-
-        /*.client-logo-card:hover .client-logo-area {
-            background: var(--rw-primary-light)
-        }*/
-
-        .client-logo-area {
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: #fff;
-            transition: all .3s ease;
-            position: relative
-        }
-
-        /* When real logo images are available, use <img> inside .client-logo-area */
-        .client-logo-area img {
-            max-width: 80%;
-            object-fit: contain;
-            /*filter: grayscale(100%) opacity(.6); */
-            transition: all .4s ease
-        }
-
-        .client-logo-card:hover .client-logo-area img {
-            filter: grayscale(0%) opacity(1)
-        }
-
-        /* Placeholder monogram for when no logo image is available */
-        .client-monogram {
-            width: 60px;
-            height: 60px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--rw-primary), var(--rw-primary-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-heading);
-            font-size: 22px;
-            color: white;
-            letter-spacing: 1px;
-            transition: all .3s ease;
-            box-shadow: 0 4px 12px rgba(0, 173, 239, .2)
-        }
-
-        .client-logo-card:hover .client-monogram {
-            transform: scale(1.08);
-            box-shadow: 0 6px 20px rgba(0, 173, 239, .3)
-        }
-
-        .client-name-bar {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 14px;
-            text-align: center;
-            border-top: 1px solid var(--rw-border)
-        }
-
-        .client-name-bar span {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--rw-accent);
-            line-height: 1.3;
-            letter-spacing: .3px
-        }
-
-        .client-logo-card:hover .client-name-bar span {
-            color: var(--rw-primary)
-        }
-
-        /* INDUSTRY TAGS */
-        .industry-section {
-            padding: 80px 0;
-            background: var(--rw-off-white)
-        }
-
-        .industry-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--rw-white);
-            border: 1px solid var(--rw-border);
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--rw-text);
-            transition: all .3s ease;
-            margin: 5px
-        }
-
-        .industry-tag:hover {
-            border-color: var(--rw-primary);
-            background: var(--rw-primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 173, 239, .2)
-        }
-
-        .industry-tag i {
-            font-size: 16px;
-            color: var(--rw-primary)
-        }
-
-        .industry-tag:hover i {
-            color: white
-        }
-
-        /* CTA */
-        .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--rw-primary) 0%, var(--rw-primary-dark) 50%, var(--rw-accent) 100%);
+        /* WHO WE ARE LOOKING FOR */
+        .welcome-section {
+            padding: 100px 0;
             position: relative;
             overflow: hidden
         }
 
-        .cta-section::before {
+        .welcome-section::after {
             content: '';
             position: absolute;
-            top: -50%;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 173, 239, .04), transparent 70%);
+            border-radius: 50%
+        }
+
+        .welcome-icon-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap
+        }
+
+        .welcome-icon-card {
+            flex: 1;
+            min-width: 160px;
+            background: var(--rw-white);
+            border: 2px solid var(--rw-border);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all .4s ease
+        }
+
+        .welcome-icon-card:hover {
+            border-color: var(--rw-primary);
+            box-shadow: 0 15px 40px rgba(0, 173, 239, .12);
+            transform: translateY(-5px)
+        }
+
+        .welcome-icon-card .wic-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: var(--rw-primary-light);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--rw-primary);
+            transition: all .3s ease
+        }
+
+        .welcome-icon-card:hover .wic-icon {
+            background: var(--rw-primary);
+            color: white
+        }
+
+        .welcome-icon-card h5 {
+            font-size: 16px;
+            margin-bottom: 4px
+        }
+
+        .welcome-icon-card p {
+            font-size: 13px;
+            margin: 0
+        }
+
+        .welcome-highlight {
+            background: linear-gradient(135deg, var(--rw-primary), var(--rw-accent));
+            color: white;
+            border-radius: 16px;
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px
+        }
+
+        .welcome-highlight::before {
+            content: '';
+            position: absolute;
+            top: -40%;
             right: -15%;
-            width: 600px;
-            height: 600px;
+            width: 250px;
+            height: 250px;
             background: radial-gradient(circle, rgba(255, 255, 255, .08), transparent 70%);
             border-radius: 50%
         }
 
-        .cta-section h2 {
-            color: var(--rw-white);
-            font-size: 38px
-        }
-
-        .cta-section p {
-            color: rgba(255, 255, 255, .8);
-            font-size: 17px
-        }
-
-        .btn-rw-white {
-            background: white;
-            color: var(--rw-primary);
-            padding: 14px 36px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid white;
-            transition: all .3s ease;
-            display: inline-block
-        }
-
-        .btn-rw-white:hover {
-            background: transparent;
+        .welcome-highlight h3 {
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, .15)
+            font-size: 24px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1
         }
 
-        .btn-rw-outline {
-            background: transparent;
-            color: white;
-            padding: 14px 36px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid rgba(255, 255, 255, .4);
-            transition: all .3s ease;
-            display: inline-block
+        .welcome-highlight p {
+            color: rgba(255, 255, 255, .85);
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 16px
         }
 
-        .btn-rw-outline:hover {
-            background: white;
-            color: var(--rw-accent);
-            border-color: white;
-            transform: translateY(-2px)
+        /* WHY JOIN US */
+        .why-section {
+            padding: 100px 0;
+            background: var(--rw-off-white)
         }
 
-        /* MARQUEE */
-        .marquee-section {
-            padding: 40px 0;
+        .why-card {
             background: var(--rw-white);
-            overflow: hidden;
-            border-bottom: 1px solid var(--rw-border)
+            border: 1px solid var(--rw-border);
+            border-radius: 18px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all .4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden
         }
 
-        .marquee-track {
-            display: flex;
-            gap: 60px;
-            animation: marqueeScroll 100s linear infinite;
-            width: max-content
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--rw-primary);
+            transform: scaleX(0);
+            transition: transform .3s ease;
+            transform-origin: left
         }
 
-        .marquee-track:hover {
-            animation-play-state: paused
+        .why-card:hover::before {
+            transform: scaleX(1)
         }
 
-        .marquee-item {
+        .why-card:hover {
+            border-color: var(--rw-primary);
+            box-shadow: 0 15px 40px rgba(0, 173, 239, .1);
+            transform: translateY(-5px)
+        }
+
+        .why-card .why-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--rw-primary), var(--rw-primary-dark));
+            border-radius: 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-            flex-shrink: 0
+            justify-content: center;
+            font-size: 30px;
+            color: white
         }
 
-        .marquee-item .mq-dot {
-            width: 8px;
-            height: 8px;
+        .why-card h4 {
+            font-size: 20px;
+            margin-bottom: 8px
+        }
+
+        .why-card p {
+            font-size: 14px;
+            margin: 0
+        }
+
+        /* APPLICATION FORM */
+        .apply-section {
+            padding: 100px 0;
+            position: relative
+        }
+
+        .apply-form-card {
+            background: var(--rw-white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 75, 110, .08);
+            border: 1px solid var(--rw-border);
+            padding: 50px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .apply-form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--rw-primary), var(--rw-primary-dark), var(--rw-accent))
+        }
+
+        .form-floating {
+            margin-bottom: 20px
+        }
+
+        .form-floating>.form-control,
+        .form-floating>.form-select {
+            border: 2px solid var(--rw-border);
+            border-radius: 12px;
+            height: 56px;
+            padding: 26px;
+            font-size: 15px;
+            font-family: var(--font-body);
+            color: var(--rw-text);
+            transition: all .3s ease;
+            background: var(--rw-white)
+        }
+
+        .form-floating>.form-control:focus,
+        .form-floating>.form-select:focus {
+            border-color: var(--rw-primary);
+            box-shadow: 0 0 0 4px rgba(0, 173, 239, .1);
+            outline: none
+        }
+
+        .form-floating>label {
+            font-size: 14px;
+            color: var(--rw-text-light);
+            font-weight: 400;
+            padding: 16px
+        }
+
+        .btn-submit {
+            background: var(--rw-primary);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid var(--rw-primary);
+            transition: all .3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer
+        }
+
+        .btn-submit:hover {
+            background: var(--rw-primary-dark);
+            border-color: var(--rw-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 173, 239, .3);
+            color: white
+        }
+
+        .btn-submit i {
+            font-size: 18px;
+            transition: transform .3s ease
+        }
+
+        .btn-submit:hover i {
+            transform: translateX(4px)
+        }
+
+        /* File upload */
+        .file-upload-zone {
+            border: 2px dashed var(--rw-border);
+            border-radius: 14px;
+            padding: 36px;
+            text-align: center;
+            transition: all .3s ease;
+            cursor: pointer;
+            background: var(--rw-off-white)
+        }
+
+        .file-upload-zone:hover,
+        .file-upload-zone.dragover {
+            border-color: var(--rw-primary);
+            background: var(--rw-primary-light)
+        }
+
+        .file-upload-zone .upload-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 14px;
+            background: var(--rw-primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--rw-primary);
+            transition: all .3s ease
+        }
+
+        .file-upload-zone:hover .upload-icon {
+            background: var(--rw-primary);
+            color: white
+        }
+
+        .file-upload-zone h5 {
+            font-size: 16px;
+            margin-bottom: 4px
+        }
+
+        .file-upload-zone p {
+            font-size: 13px;
+            margin: 0
+        }
+
+        .file-upload-zone .browse-link {
+            color: var(--rw-primary);
+            font-weight: 600;
+            text-decoration: underline
+        }
+
+        .file-name-display {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            background: var(--rw-primary-light);
+            border: 1px solid rgba(0, 173, 239, .2);
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-top: 12px
+        }
+
+        .file-name-display.show {
+            display: flex
+        }
+
+        .file-name-display i {
+            color: var(--rw-primary);
+            font-size: 20px
+        }
+
+        .file-name-display span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--rw-accent);
+            flex: 1
+        }
+
+        .file-name-display .remove-file {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0
+        }
+
+        /* Success */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px
+        }
+
+        .form-success.show {
+            display: block
+        }
+
+        .form-success .success-icon {
+            width: 80px;
+            height: 80px;
             background: var(--rw-primary);
             border-radius: 50%;
-            flex-shrink: 0
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: white
         }
 
-        .marquee-item span {
+        .form-success h3 {
+            font-size: 26px;
+            margin-bottom: 10px
+        }
+
+        .form-success p {
+            font-size: 16px
+        }
+
+        /* Side info */
+        .apply-info-card {
+            background: linear-gradient(135deg, var(--rw-primary) 0%, var(--rw-primary-dark) 50%, var(--rw-accent) 100%);
+            border-radius: 20px;
+            padding: 44px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            height: auto
+        }
+
+        .apply-info-card::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, .08), transparent 70%);
+            border-radius: 50%
+        }
+
+        .apply-info-card>* {
+            position: relative;
+            z-index: 1
+        }
+
+        .apply-info-card h3 {
+            color: white;
+            font-size: 26px;
+            margin-bottom: 8px
+        }
+
+        .apply-info-card>p {
+            color: rgba(255, 255, 255, .7);
             font-size: 15px;
-            font-weight: 500;
-            color: var(--rw-text-light);
-            letter-spacing: .3px
+            margin-bottom: 32px
         }
 
-        @keyframes marqueeScroll {
-            0% {
-                transform: translateX(0)
-            }
-
-            100% {
-                transform: translateX(-50%)
-            }
+        .apply-step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px
         }
 
+        .apply-step-num {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, .15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: white
+        }
+
+        .apply-step h5 {
+            color: white;
+            font-size: 15px;
+            margin-bottom: 2px;
+            font-family: var(--font-body);
+            font-weight: 600
+        }
+
+        .apply-step p {
+            color: rgba(255, 255, 255, .6);
+            font-size: 13px;
+            margin: 0;
+            line-height: 1.5
+        }
+
+        .apply-depts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, .15)
+        }
+
+        .apply-depts .dept-pill {
+            background: rgba(255, 255, 255, .12);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: .5px
+        }
+
+        /* FOOTER */
         .site-footer {
             background: var(--rw-dark);
             padding: 80px 0 0
@@ -935,6 +1129,7 @@
             transform: translateY(-3px)
         }
 
+        /* SOCIAL SIDEBAR */
         .social-sidebar {
             position: fixed;
             left: 0;
@@ -1248,16 +1443,19 @@
                 font-size: 32px
             }
 
-            .clients-section {
-                padding: 60px 0 80px
+            .welcome-section,
+            .why-section,
+            .apply-section {
+                padding: 60px 0
             }
 
-            .client-logo-card {
-                height: 160px
+            .apply-form-card {
+                padding: 30px
             }
 
-            .stat-num {
-                font-size: 36px
+            .apply-info-card {
+                padding: 30px;
+                margin-top: 30px
             }
         }
 
@@ -1283,24 +1481,20 @@
                 display: none
             }
 
-            .client-logo-card {
-                height: 150px
+            .apply-form-card {
+                padding: 24px
             }
 
-            .client-monogram {
-                width: 50px;
-                height: 50px;
-                font-size: 18px
-            }
-
-            .stat-num {
-                font-size: 30px
+            .welcome-icon-card {
+                min-width: 130px;
+                padding: 20px 14px
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Top Bar -->
     <div class="top-bar d-none d-lg-block">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
@@ -1320,532 +1514,89 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-xl" id="mainNavbar">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="brand-logo">RW</div>
-                <div class="brand-text"><span class="brand-name">RW William</span><span class="brand-sub"> Bridging Your
-                        Business</span></div>
-            </a>
-            <div class="desktop-nav d-none d-xl-flex align-items-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="clients.html">Our Client</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news-announcement.html">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Country</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Malaysia</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Thailand</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Singapore</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Jakarta</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><button class="navbar-toggler d-xl-none ms-auto" type="button" id="mobileToggle">
-                <div class="hamburger"><span></span><span></span><span></span></div>
-            </button>
-        </div>
-    </nav>
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="brand-logo-m">RW</div>
-            <div class="brand-info">
-                <h5>RW William</h5><span>Bridging Your Business</span>
-            </div>
-            <button id="mobileCloseBtn" class="mobile-menu-close" type="button" aria-label="Close menu"><i
-                    class="bi bi-x-lg"></i></button>
-        </div>
-        <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <i
-                    class="bi bi-chevron-right"></i></a><a href="about.html" class="mobile-nav-link">About Us <i
-                    class="bi bi-chevron-right"></i></a><a href="services.html" class="mobile-nav-link">Services <i
-                    class="bi bi-chevron-right"></i></a><a href="team.html" class="mobile-nav-link">Our Team <i
-                    class="bi bi-chevron-right"></i></a><a href="gallery.html" class="mobile-nav-link">Gallery <i
-                    class="bi bi-chevron-right"></i></a><a href="clients.html" class="mobile-nav-link active">Our Client
-                <i class="bi bi-chevron-right"></i></a>
-                <a href="news-announcement.html" class="mobile-nav-link">News <i
-                    class="bi bi-chevron-right"></i></a><a href="career.html" class="mobile-nav-link">Career <i
-                    class="bi bi-chevron-right"></i></a><a href="contact.html" class="mobile-nav-link">Contact <i
-                    class="bi bi-chevron-right"></i></a><a href="#" class="mobile-nav-link" id="countryToggle">Country
-                <i class="bi bi-chevron-down"></i></a>
-            <div class="mobile-submenu" id="countrySubmenu"><a href="#">🇲🇾 Malaysia</a><a href="#">🇹🇭 Thailand</a><a
-                    href="#">🇸🇬 Singapore</a><a href="#">🇮🇩 Jakarta</a></div>
-        </nav>
-        <div class="mobile-menu-footer">
-            <div class="social-icons mb-3"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i
-                        class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-instagram"></i></a></div>
-            <p>&copy; 2026 RW William PLT.</p>
-        </div>
-    </div>
 
+	<?php include_once('includes/navbar.php'); ?>
+   
+    <!-- Page Hero -->
     <section class="page-hero">
         <div class="hero-pattern"></div>
         <div class="container position-relative">
             <div class="breadcrumb-nav mb-4" data-aos="fade-down"><a href="index.html">Home</a><span
-                    class="divider">/</span><span>Our Clients</span></div>
+                    class="divider">/</span><span>News & Announcements</span></div>
             <div class="hero-line" data-aos="fade-right"></div>
-            <h1 data-aos="fade-up">Our Clients</h1>
-            <p data-aos="fade-up" data-aos-delay="100">Trusted by leading organizations across diverse industries — from
-                local SMEs to multinational corporations and international bodies.</p>
+            <h1 data-aos="fade-up">News & Announcements</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Stay updated with the latest regulatory changes, company news,
+                important deadlines, and insights from RW William PLT.</p>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="stats-bar">
+    <!-- Who We Are Looking For -->
+    <section class="welcome-section">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-6 col-lg-3" data-aos="fade-up">
-                    <div class="stat-card">
-                        <div class="stat-num">2,500+</div>
-                        <div class="stat-label">Clients Served</div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
-                    <div class="stat-card">
-                        <div class="stat-num">20+</div>
-                        <div class="stat-label">Industries</div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-card">
-                        <div class="stat-num">5,000+</div>
-                        <div class="stat-label">Featured Clients</div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
-                    <div class="stat-card">
-                        <div class="stat-num">23+</div>
-                        <div class="stat-label">Years of Trust</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Client Marquee -->
-    <section class="marquee-section">
-        <div class="marquee-track" id="marqueeTrack"></div>
-    </section>
-
-    <!-- Client Logo Grid -->
-    <!--  <section class="clients-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <div class="section-label justify-content-center" data-aos="fade-up">Trusted Partners</div>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Featured Clients</h2>
-                <p class="mx-auto" style="max-width:600px" data-aos="fade-up" data-aos-delay="100">A selection of
-                    organizations that trust RW William PLT for their audit, tax, and advisory needs.</p>
-            </div>
-            <div class="row g-4" id="clientGrid"></div>
-        </div>
-    </section> -->
-    <section class="clients-section">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="section-label">Trusted Partners</span>
-                <h2 class="section-title">Featured Clients</h2>
-                <p class="mx-auto" style="max-width:600px;">A selection of organizations that trust RW William PLT for
-                    their audit, tax, and advisory needs.</p>
-            </div>
-
-            <div class="row g-3" id="clientGrid">
-
-                <!-- Asia Propel -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="30">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/01.jpg">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-12" data-aos="fade-right">
+                    
+                    <h2 class="section-title">News & Announcements</h2>
+                    
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Published</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+								  <?php 
+									$i=1;
+									$view_img="";
+									$result = mysqli_query($conn,"select * from news order by newsID desc");
+										while($row = mysqli_fetch_assoc($result)){
+											
+												$image = $row['image'];
+												$icon = $row['icon'];
+											
+											
+									?>
+                                    <tr>
+                                        <td><?php echo $i;?></td>
+                                        <td>
+											<?php if($image != "") { ?>
+												<img src="<?php echo $image;?>" class="img-fluid rounded-3" style="max-width: 120px;" alt="">
+											<?php } else { ?>
+												<i class="<?php echo $icon;?>"></i>
+											<?php }  ?>
+											
+											
+                                        </td>
+                                        <td><?php echo $row['title'];?> </td>
+                                        <td><i class="bi bi-person"></i> <?php echo $row['author'];?><br><i class="bi bi-clock"></i><?php echo date('M d, Y',strtotime($row['publish_date']));?></td>
+                                        <td><?php echo substr($row['description'], 0, 40) . "...";?></td>
+                                        <td>
+                                            <a href="news-details.php?newsID=<?php echo $row['newsID'];?>" target="_blank" class="btn btn-primary mt-5">Read More</a>
+                                        </td>
+                                    </tr>
+									<?php
+										$i++;
+									}
+									?>
+                                   
+								</tbody>
+                            </table>
                         </div>
-                        <div class="client-name-bar"><span>Asia Propel Sdn. Bhd.</span></div>
                     </div>
                 </div>
 
-                <!-- Butter & Olive Group -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/03.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Butter &amp; Olive Group</span></div>
-                    </div>
-                </div>
-
-                <!-- Hankyu Hanshin Group -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="90">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/02.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Hankyu Hanshin Group</span></div>
-                    </div>
-                </div>
-
-                <!-- MC Mitra -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="120">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/18.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>MC Mitra Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- Ambersoft -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/05.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Ambersoft Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- Allegion -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="180">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/06.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Allegion (Malaysia) Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- Roca Malaysia -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="30">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/07.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Roca Malaysia Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- Restoran BBQ Nights -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/19.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Restoran BBQ Nights (M) Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- OSIM -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="90">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/20.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>OSIM (M) Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- HCK Education -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="120">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/hck.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>HCK Education Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- NHTC Wellness -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/nhtc.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>NHTC Wellness Products Malaysia Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- Langkawi Duty Free -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="180">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/langkawi.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Langkawi Duty Free (M) Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- LOL Events -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="30">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/asia.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>LOL Events (M) Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- Justlogin -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/22.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Justlogin Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- Majlis Paralimpik Malaysia -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="90">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/17.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Majlis Paralimpik Malaysia</span></div>
-                    </div>
-                </div>
-
-                <!-- The Mineraw -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="120">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/mineraw.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>The Mineraw Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- Fifa Development Zurich -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/fifa.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Fifa Development Zurich Ltd</span></div>
-                    </div>
-                </div>
-
-                <!-- Recording Industry Association of Malaysia -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="180">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/23.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Recording Industry Association of Malaysia (RIM)</span></div>
-                    </div>
-                </div>
-
-                <!-- Caring Pharmacy -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="30">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/24.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Caring Pharmacy Retail Management Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- PJ De Inn -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/pjdeen.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>PJ De Inn Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- Corida -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="90">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/26.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Corida Sendirian Berhad</span></div>
-                    </div>
-                </div>
-
-                <!-- Melamine Marketing -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="120">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/melamine.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Melamine Marketing (KL) Sdn Bhd</span></div>
-                    </div>
-                </div>
-
-                <!-- Magnet Group -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/magnet.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Magnet Group Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- SRS Power Switchgear -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="180">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/citata.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Citatah Marble</span></div>
-                    </div>
-                </div>
-                <!-- Tsubaki Power Transmission -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="90">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                             <img src="img/clients/tsubaki.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Tsubaki Power Transmission (Malaysia) Sdn Bhd</span></div>
-                    </div>
-                </div>
-                <!-- Persatuan Yoga Isha Malaysia -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="30">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                           <img src="img/clients/pioneer.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Pioneer Engineering</span></div>
-                    </div>
-                </div>
-
-                <!-- First Ambulans -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/first-ambulans.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>First Ambulans</span></div>
-                    </div>
-                </div>
-                <!-- Beaconhouse Malaysia -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <img src="img/clients/beconhouse.jpg">
-                        </div>
-                        <div class="client-name-bar"><span>Beaconhouse Malaysia Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-                    <!-- Beaconhouse Malaysia -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <div class="client-monogram">YI</div>
-                        </div>
-                        <div class="client-name-bar"><span>Persatuan Yoga Isha Malaysia </span></div>
-                    </div>
-                </div>
-
-                <!-- Sette Colli -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="120">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <div class="client-monogram">SC</div>
-                        </div>
-                        <div class="client-name-bar"><span>Sette Colli Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- Seppia & Polpo -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <div class="client-monogram">SP</div>
-                        </div>
-                        <div class="client-name-bar"><span>Seppia &amp; Polpo Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- Green Ampere -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="180">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <div class="client-monogram">GA</div>
-                        </div>
-                        <div class="client-name-bar"><span>Green Ampere Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-                <!-- Minconsult Group -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="30">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <div class="client-monogram">MN</div>
-                        </div>
-                        <div class="client-name-bar"><span>Minconsult Group</span></div>
-                    </div>
-                </div>
-
-                <!-- Leaderonomics Group -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="60">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <div class="client-monogram">LG</div>
-                        </div>
-                        <div class="client-name-bar"><span>Leaderonomics Group</span></div>
-                    </div>
-                </div>
-
-                <!-- Taier Malaysia -->
-                <div class="col-lg-2 col-md-3 col-4" data-aos="fade-up" data-aos-delay="90">
-                    <div class="client-logo-card">
-                        <div class="client-logo-area">
-                            <div class="client-monogram">TI</div>
-                        </div>
-                        <div class="client-name-bar"><span>Taier Malaysia Sdn. Bhd.</span></div>
-                    </div>
-                </div>
-
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </section>
-    <!-- Industries -->
-    <section class="industry-section">
-        <div class="container">
-            <div class="text-center mb-4">
-                <div class="section-label justify-content-center" data-aos="fade-up">Diverse Expertise</div>
-                <h2 class="section-title" data-aos="fade-up">Industries We Serve</h2>
-            </div>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                <span class="industry-tag"><i class="bi bi-building"></i> Property & Real Estate</span>
-                <span class="industry-tag"><i class="bi bi-cup-hot"></i> F&B & Hospitality</span>
-                <span class="industry-tag"><i class="bi bi-train-front"></i> Transportation</span>
-                <span class="industry-tag"><i class="bi bi-cpu"></i> Technology</span>
-                <span class="industry-tag"><i class="bi bi-heart-pulse"></i> Healthcare & Wellness</span>
-                <span class="industry-tag"><i class="bi bi-mortarboard"></i> Education</span>
-                <span class="industry-tag"><i class="bi bi-cart4"></i> Retail & E-Commerce</span>
-                <span class="industry-tag"><i class="bi bi-gear"></i> Manufacturing</span>
-                <span class="industry-tag"><i class="bi bi-globe"></i> International Bodies</span>
-                <span class="industry-tag"><i class="bi bi-music-note-beamed"></i> Entertainment & Media</span>
-                <span class="industry-tag"><i class="bi bi-lightning"></i> Energy & Utilities</span>
-                <span class="industry-tag"><i class="bi bi-person-workspace"></i> Professional Services</span>
-                <span class="industry-tag"><i class="bi bi-trophy"></i> Sports & Associations</span>
-                <span class="industry-tag"><i class="bi bi-shop"></i> Duty Free & Trade</span>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <!-- <section class="cta-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-right">
-                    <h2>Ready to Partner With Us?</h2>
-                    <p class="mb-0">Join over 2,000 clients who trust RW William PLT for their audit, tax, and advisory
-                        needs.</p>
-                </div>
-                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="contact.html"
-                        class="btn-rw-white me-2 mb-2">Get in Touch</a><a href="services.html"
-                        class="btn-rw-outline mb-2">Our Services</a></div>
-            </div>
-        </div>
-    </section>-->
+
 
     <!-- Footer -->
      <footer class="site-footer">
@@ -1903,7 +1654,8 @@
         </div>
     </footer>
 
-    <div id="socialSidebar" class="social-sidebar open">
+    <!-- Sticky Social Sidebar -->
+    <div class="social-sidebar" id="socialSidebar">
         <div class="social-sidebar-links">
             <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="social-facebook">
                 <i class="bi bi-facebook"></i>
@@ -1945,59 +1697,13 @@
             <span class="toggle-label d-none d-md-none">Follow Us</span>
         </button>
     </div>
+
     <button class="scroll-top" id="scrollTop"><i class="bi bi-chevron-up"></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-
     <script>
         AOS.init({ duration: 700, once: true, offset: 80 });
-
-        // Client data
-        const clients = [
-            { name: "Asia Propel Sdn. Bhd.", mono: "AP" },
-            { name: "Butter & Olive Group", mono: "BO" },
-            { name: "Hankyu Hanshin Group", mono: "HH" },
-            { name: "MC Mitra Sdn. Bhd.", mono: "MC" },
-            { name: "Ambersoft Sdn Bhd", mono: "AS" },
-            { name: "Allegion (Malaysia) Sdn. Bhd.", mono: "AL" },
-            { name: "Roca Malaysia Sdn. Bhd.", mono: "RM" },
-            { name: "Restoran BBQ Nights (M) Sdn Bhd", mono: "BQ" },
-            { name: "OSIM (M) Sdn Bhd", mono: "OS" },
-            { name: "HCK Education Sdn Bhd", mono: "HE" },
-            { name: "NHTC Wellness Products Malaysia Sdn Bhd", mono: "NW" },
-            { name: "Langkawi Duty Free (M) Sdn Bhd", mono: "LD" },
-            { name: "LOL Events (M) Sdn Bhd", mono: "LE" },
-            { name: "Justlogin Sdn. Bhd.", mono: "JL" },
-            { name: "Majlis Paralimpik Malaysia", mono: "MP" },
-            { name: "The Mineraw Sdn Bhd", mono: "TM" },
-            { name: "Fifa Development Zurich Ltd", mono: "FD" },
-            { name: "Recording Industry Association of Malaysia (RIM)", mono: "RI" },
-            { name: "Caring Pharmacy Retail Management Sdn Bhd", mono: "CP" },
-            { name: "PJ De Inn Sdn Bhd", mono: "PD" },
-            { name: "Corida Sendirian Berhad", mono: "CS" },
-            { name: "Melamine Marketing (KL) Sdn Bhd", mono: "MM" },
-            { name: "Magnet Group Sdn. Bhd.", mono: "MG" },
-            { name: "SRS Power Switchgear Sdn Bhd", mono: "SP" },
-            { name: "Persatuan Yoga Isha Malaysia", mono: "YI" },
-            { name: "Beaconhouse Malaysia Sdn. Bhd.", mono: "BM" },
-            { name: "Tsubaki Power Transmission (Malaysia) Sdn Bhd", mono: "TP" },
-            { name: "Sette Colli Sdn. Bhd.", mono: "SC" },
-            { name: "Seppia & Polpo Sdn. Bhd.", mono: "SP" },
-            { name: "Green Ampere Sdn. Bhd.", mono: "GA" },
-            { name: "Minconsult Group", mono: "MN" },
-            { name: "Leaderonomics Group", mono: "LG" },
-            { name: "Taier Malaysia Sdn. Bhd.", mono: "TI" }
-        ];
-
-
-
-        // Render marquee
-        const track = document.getElementById('marqueeTrack');
-        let marqueeHTML = '';
-        clients.forEach(c => { marqueeHTML += `<div class="marquee-item"><div class="mq-dot"></div><span>${c.name}</span></div>` });
-        track.innerHTML = marqueeHTML + marqueeHTML;
 
         // Mobile menu
         const mobileToggle = document.getElementById('mobileToggle'),
@@ -2050,6 +1756,31 @@
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', function () { scrollTopBtn.classList.toggle('visible', window.scrollY > 400) });
         scrollTopBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }) });
+
+        // File upload
+        const zone = document.getElementById('fileUploadZone'), fileInput = document.getElementById('resumeFile'), fileDisplay = document.getElementById('fileNameDisplay'), fileNameEl = document.getElementById('fileName'), removeBtn = document.getElementById('removeFile');
+        zone.addEventListener('click', function () { fileInput.click() });
+        zone.addEventListener('dragover', function (e) { e.preventDefault(); zone.classList.add('dragover') });
+        zone.addEventListener('dragleave', function () { zone.classList.remove('dragover') });
+        zone.addEventListener('drop', function (e) { e.preventDefault(); zone.classList.remove('dragover'); if (e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; showFile() } });
+        fileInput.addEventListener('change', showFile);
+        function showFile() { if (fileInput.files.length) { const f = fileInput.files[0]; if (f.size > 5 * 1024 * 1024) { alert('File size must be under 5MB'); fileInput.value = ''; return } fileNameEl.textContent = f.name; fileDisplay.classList.add('show'); zone.style.display = 'none' } }
+        removeBtn.addEventListener('click', function () { fileInput.value = ''; fileDisplay.classList.remove('show'); zone.style.display = '' });
+
+        // Form submission
+        document.getElementById('careerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!fileInput.files.length) { alert('Please upload your resume.'); return }
+            const btn = this.querySelector('.btn-submit');
+            btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Submitting...';
+            btn.style.pointerEvents = 'none';
+            setTimeout(function () {
+                document.getElementById('careerForm').style.display = 'none';
+                document.querySelector('.apply-form-card h2').style.display = 'none';
+                document.querySelector('.apply-form-card > p').style.display = 'none';
+                document.getElementById('formSuccess').classList.add('show');
+            }, 1500);
+        });
     </script>
 </body>
 

@@ -8,94 +8,113 @@ include("dbconnect.php");
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $datetimes = date("Y-m-d h:i:s");
 
-
-if (isset($_POST['addHappening'])) {
+if (isset($_POST['addBanner'])) {
     
-    $happeningTitle = $_POST['happeningTitle'];
-    $happeningDate = $_POST['happeningDate'];
-	$eventAuthor = $_POST['eventAuthor'];
-	$happeningStatus = $_POST['happeningStatus'];
-	$happeningDescription = $_POST['happeningDescription'];
-	$happeningDescription = str_replace(["'", "’"], "", $happeningDescription);
+    $label_badge = $_POST['label_badge'];
+    $title = $_POST['title'];
+	$title_highlight = $_POST['title_highlight'];
+	$button_text_one = $_POST['button_text_one'];
+	$button_link_one = $_POST['button_link_one'];
+	$button_text_two = $_POST['button_text_two'];
+	$button_link_two = $_POST['button_link_two'];
+	$status = $_POST['status'];
+	$sort = $_POST['sort'];
+	$description = $_POST['description'];
+	$description = str_replace(["'", "’"], "", $description);
+	$uploadOk = 1;
+	
+	$target_dir = "uploads/banners/";
+	$target_file = $target_dir . basename($_FILES["image"]["name"]);
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	
+	if($_FILES["image"]["tmp_name"]!=""){ $uploadOk = 1; }else{ $uploadOk = 0; }
 
-    // Handling the file upload
-    if (isset($_FILES['happeningImage']) && $_FILES['happeningImage']['error'] == 0) {
-       
-        $fileName = $_FILES['happeningImage']['name'];
-        $fileTmpName = $_FILES['happeningImage']['tmp_name'];
-        $fileSize = $_FILES['happeningImage']['size'];
-        $fileType = $_FILES['happeningImage']['type'];
-        
-        $uploadDir = 'uploads/happening/';
-        
-        $fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
-        $newFileName = uniqid() . '.' . $fileExt;
-        $uploadPath = $uploadDir . $newFileName;
-        
-        
-        if (move_uploaded_file($fileTmpName, $uploadPath)) {
-           
-            if(mysqli_query($conn,"insert into happening(happeningTitle, happeningDate, happeningImage, happeningDescription, eventAuthor, happeningStatus) values ('$happeningTitle', '$happeningDate','$uploadPath','$happeningDescription', '$eventAuthor', '$happeningStatus')")){
-				
-				echo "<script>
-							swal({
-							  title: 'Success',
-							  text: 'Happening Added',
-							  icon: 'success',
-							  buttons: true,
-							})
-							.then((isUpdate) => {
-							  if (isUpdate) {
-								location.href='index.php';
-							  }else{
-								  location.href='index.php';
-							  }
-							});
-					</script>";
-				
-			}
-        }
-		else 
+    if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
+        $uploadOk = 0;
+    }
+	
+	if ($uploadOk == 0) {
+		
+		if(mysqli_query($conn,"insert into banner
+		(label_badge, title, title_highlight, button_text_one, button_link_one, button_text_two, button_link_two, status, sort, description) 
+			values 
+		('$label_badge', '$title', '$title_highlight', '$button_text_one', '$button_link_one', '$button_text_two', '$button_link_two', '$status', '$sort', '$description')"))
 		{
 			echo "<script>
-							swal({
-							  title: 'Error',
-							  text: 'There was an error uploading the file.',
-							  icon: 'error',
-							  buttons: true,
-							})
-							.then((isUpdate) => {
-							  if (isUpdate) {
-								location.href='index.php';
-							  }else{
-								  location.href='index.php';
-							  }
-							});
-					</script>";
+					swal({
+					  title: 'Success',
+					  text: 'Data saved',
+					  icon: 'success',
+					  buttons: true,
+					})
+					.then((isUpdate) => {
+					  if (isUpdate) {
+						location.href='banners.php';
+					  }else{
+						  location.href='banners.php';
+					  }
+					});
+			</script>";
+		}
+	  
+	  
+	  
+	} 
+	else 
+	{
+		  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 			
-          
-        }
-    }
+			if(mysqli_query($conn,"insert into banner
+									(label_badge, title, title_highlight, button_text_one, button_link_one, button_text_two, button_link_two, status, sort, description, image) 
+										values 
+									('$label_badge', '$title', '$title_highlight', '$button_text_one', '$button_link_one', '$button_text_two', '$button_link_two', '$status', '$sort', '$description', '$target_file')"))
+			{
+				echo "<script>
+						swal({
+						  title: 'Success',
+						  text: 'Data saved',
+						  icon: 'success',
+						  buttons: true,
+						})
+						.then((isUpdate) => {
+						  if (isUpdate) {
+							location.href='banners.php';
+						  }else{
+							  location.href='banners.php';
+						  }
+						});
+				</script>";
+			}
+			
+			 
+			
+		  }
+	}
 
    
 }
 
-if (isset($_POST['editHappening'])) {
+if (isset($_POST['editBanner'])) {
 	
-	$happeningID = $_POST['happeningID'];
-	$happeningTitle = $_POST['happeningTitle'];
-    $happeningDate = $_POST['happeningDate'];
-	$eventAuthor = $_POST['eventAuthor'];
-	$happeningStatus = $_POST['happeningStatus'];
-	$happeningDescription = $_POST['happeningDescription'];
-	$happeningDescription = str_replace(["'", "’"], "", $happeningDescription);
+	$bannerID = $_POST['bannerID'];
+	$label_badge = $_POST['edit_label_badge'];
+    $title = $_POST['edit_title'];
+	$title_highlight = $_POST['edit_title_highlight'];
+	$button_text_one = $_POST['edit_button_text_one'];
+	$button_link_one = $_POST['edit_button_link_one'];
+	$button_text_two = $_POST['edit_button_text_two'];
+	$button_link_two = $_POST['edit_button_link_two'];
+	$status = $_POST['edit_status'];
+	$sort = $_POST['edit_sort'];
+	$description = $_POST['edit_description'];
+	$description = str_replace(["'", "’"], "", $description);
 	$uploadOk = 1;
 
-  $target_dir = "uploads/happening/";
-  $target_file = $target_dir . basename($_FILES["happeningImage"]["name"]);
+  $target_dir = "uploads/banners/";
+  $target_file = $target_dir . basename($_FILES["edit_image"]["name"]);
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	
-  if($_FILES["happeningImage"]["tmp_name"]!=""){ $uploadOk = 1; }else{ $uploadOk = 0; }
+  if($_FILES["edit_image"]["tmp_name"]!=""){ $uploadOk = 1; }else{ $uploadOk = 0; }
 
 
 	if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
@@ -104,7 +123,18 @@ if (isset($_POST['editHappening'])) {
 
 	if ($uploadOk == 0) {
 	  
-	  if(mysqli_query($conn,"update happening set happeningTitle='$happeningTitle', happeningDate='$happeningDate', eventAuthor='$eventAuthor', happeningStatus='$happeningStatus', happeningDescription='$happeningDescription' where happeningID = $happeningID")){
+	  if(mysqli_query($conn,"update banner set 
+								label_badge='$label_badge',
+								title='$title',
+								title_highlight='$title_highlight',
+								description='$description',
+								button_text_one='$button_text_one',
+								button_link_one='$button_link_one',
+								button_text_two='$button_text_two',
+								button_link_two='$button_link_two',
+								status='$status',
+								sort='$sort'
+								where bannerID = $bannerID")){
 			
 			echo "<script>
 							swal({
@@ -115,9 +145,9 @@ if (isset($_POST['editHappening'])) {
 							})
 							.then((isUpdate) => {
 							  if (isUpdate) {
-								location.href='edit_happening.php?happeningID=$happeningID';
+								location.href='banners.php';
 							  }else{
-								  location.href='index.php';
+								  location.href='banners.php';
 							  }
 							});
 					</script>";
@@ -128,18 +158,30 @@ if (isset($_POST['editHappening'])) {
 	} 
 	else 
 	{
-	  if (move_uploaded_file($_FILES["happeningImage"]["tmp_name"], $target_file)) {
+	  if (move_uploaded_file($_FILES["edit_image"]["tmp_name"], $target_file)) {
 		
-		$sql="SELECT happeningImage FROM happening where happeningID = $happeningID limit 1";
+		$sql="SELECT image FROM banner where bannerID = $bannerID limit 1";
 		$result=mysqli_query($conn,$sql);
 		if(mysqli_num_rows($result) > 0){
 			$row = mysqli_fetch_assoc($result);
-			if($row['happeningImage'] != ""){
-				unlink($row['happeningImage']);
+			if($row['image'] != ""){
+				unlink($row['image']);
 			}
 		}
 		
-		if(mysqli_query($conn,"update happening set happeningTitle='$happeningTitle', happeningDate='$happeningDate', eventAuthor='$eventAuthor', happeningStatus='$happeningStatus', happeningDescription='$happeningDescription', happeningImage ='$target_file' where happeningID = $happeningID")){
+		if(mysqli_query($conn,"update banner set 
+								label_badge='$label_badge',
+								title='$title',
+								title_highlight='$title_highlight',
+								description='$description',
+								button_text_one='$button_text_one',
+								button_link_one='$button_link_one',
+								button_text_two='$button_text_two',
+								button_link_two='$button_link_two',
+								status='$status',
+								sort='$sort',
+								image='$target_file'
+								where bannerID = $bannerID")){
 			
 			
 			echo "<script>
@@ -151,9 +193,9 @@ if (isset($_POST['editHappening'])) {
 							})
 							.then((isUpdate) => {
 							  if (isUpdate) {
-								location.href='edit_happening.php?happeningID=$happeningID';
+								location.href='banners.php';
 							  }else{
-								  location.href='index.php';
+								  location.href='banners.php';
 							  }
 							});
 					</script>";
@@ -171,9 +213,192 @@ if (isset($_POST['editHappening'])) {
 							})
 							.then((isUpdate) => {
 							  if (isUpdate) {
-								location.href='index.php';
+								location.href='banners.php';
 							  }else{
-								  location.href='index.php';
+								  location.href='banners.php';
+							  }
+							});
+					</script>";
+		
+	  }
+	}
+
+   
+}
+
+if (isset($_POST['addAnnouncement'])) {
+    
+    $title = $_POST['title'];
+    $category = $_POST['category'];
+	$date = $_POST['publish_date'];
+	$author = $_POST['author'];
+	$icon = $_POST['icon'];
+	$status = $_POST['status'];
+	$description = $_POST['description'];
+	$description = str_replace(["'", "’"], "", $description);
+	$uploadOk = 1;
+	
+	$target_dir = "uploads/announcement/";
+	$target_file = $target_dir . basename($_FILES["image"]["name"]);
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	
+	if($_FILES["image"]["tmp_name"]!=""){ $uploadOk = 1; }else{ $uploadOk = 0; }
+
+    if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
+        $uploadOk = 0;
+    }
+	
+	if ($uploadOk == 0) {
+		
+		if(mysqli_query($conn,"insert into news(category, title, publish_date, author, description, icon, status) values ('$category', '$title', '$date', '$author', '$description', '$icon', '$status')"))
+		{
+			echo "<script>
+					swal({
+					  title: 'Success',
+					  text: 'Data saved',
+					  icon: 'success',
+					  buttons: true,
+					})
+					.then((isUpdate) => {
+					  if (isUpdate) {
+						location.href='announcements.php';
+					  }else{
+						  location.href='announcements.php';
+					  }
+					});
+			</script>";
+		}
+	  
+	  
+	  
+	} 
+	else 
+	{
+		  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+			
+			if(mysqli_query($conn,"insert into news(category, title, publish_date, author, description, icon, status, image) values ('$category', '$title', '$date', '$author', '$description', '$icon', '$status', '$target_file')"))
+			{
+				echo "<script>
+						swal({
+						  title: 'Success',
+						  text: 'Data saved',
+						  icon: 'success',
+						  buttons: true,
+						})
+						.then((isUpdate) => {
+						  if (isUpdate) {
+							location.href='announcements.php';
+						  }else{
+							  location.href='announcements.php';
+						  }
+						});
+				</script>";
+			}
+			
+			 
+			
+		  }
+	}
+
+   
+}
+
+if (isset($_POST['editAnnouncement'])) {
+	
+	$newsID = $_POST['newsID'];
+	$title = $_POST['edit_title'];
+    $category = $_POST['edit_category'];
+	$publish_date = $_POST['edit_publish_date'];
+	$author = $_POST['edit_author'];
+	$icon = $_POST['edit_icon'];
+	$status = $_POST['edit_status'];
+	$description = $_POST['edit_description'];
+	$description = str_replace(["'", "’"], "", $description);
+	$uploadOk = 1;
+
+  $target_dir = "uploads/announcement/";
+  $target_file = $target_dir . basename($_FILES["edit_image"]["name"]);
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	
+  if($_FILES["edit_image"]["tmp_name"]!=""){ $uploadOk = 1; }else{ $uploadOk = 0; }
+
+
+	if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
+        $uploadOk = 0;
+    }
+
+	if ($uploadOk == 0) {
+	  
+	  if(mysqli_query($conn,"update news set category='$category', title='$title', publish_date='$publish_date', author='$author', description='$description', icon='$icon', status='$status' where newsID = $newsID")){
+			
+			echo "<script>
+							swal({
+							  title: 'Success',
+							  text: 'Save changes',
+							  icon: 'success',
+							  buttons: true,
+							})
+							.then((isUpdate) => {
+							  if (isUpdate) {
+								location.href='announcements.php';
+							  }else{
+								  location.href='announcements.php';
+							  }
+							});
+					</script>";
+			
+		}
+
+
+	} 
+	else 
+	{
+	  if (move_uploaded_file($_FILES["edit_image"]["tmp_name"], $target_file)) {
+		
+		$sql="SELECT image FROM news where newsID = $newsID limit 1";
+		$result=mysqli_query($conn,$sql);
+		if(mysqli_num_rows($result) > 0){
+			$row = mysqli_fetch_assoc($result);
+			if($row['image'] != ""){
+				unlink($row['image']);
+			}
+		}
+		
+		if(mysqli_query($conn,"update news set category='$category', title='$title', publish_date='$publish_date', author='$author', description='$description', icon='$icon', status='$status', image='$target_file' where newsID = $newsID")){
+			
+			
+			echo "<script>
+							swal({
+							  title: 'Success',
+							  text: 'Save changes',
+							  icon: 'success',
+							  buttons: true,
+							})
+							.then((isUpdate) => {
+							  if (isUpdate) {
+								location.href='announcements.php';
+							  }else{
+								  location.href='announcements.php';
+							  }
+							});
+					</script>";
+			
+		}
+		
+	  } else {
+		
+		echo "<script>
+							swal({
+							  title: 'Error',
+							  text: 'Sorry, there was an error uploading your file.',
+							  icon: 'error',
+							  buttons: true,
+							})
+							.then((isUpdate) => {
+							  if (isUpdate) {
+								location.href='announcements.php';
+							  }else{
+								  location.href='announcements.php';
 							  }
 							});
 					</script>";
@@ -215,35 +440,34 @@ if(isset($_POST['addGalleryMain']))
 }
 
 
-
 if (isset($_POST['saveGalleryMain'])) {
 	
-	//Sambung
-	// $gallery_mainID = $_POST['gallery_mainID'];
-	// $category_title = $_POST['category_title'];
-	// $descriptions = $_POST['descriptions'];
-	// $descriptions = str_replace(["'", "’"], "", $descriptions);
-	// $date = $_POST['date'];
-	// $status = $_POST['status'];
+	$gallery_mainID = $_POST['gallery_mainID'];
+	$title = $_POST['edit_title'];
+	$category = $_POST['edit_category'];
+	$date = $_POST['edit_date'];
+	$description = $_POST['edit_description'];
+	$description = str_replace(["'", "’"], "", $description);
+	$status = $_POST['edit_status'];
 	
-	// if(mysqli_query($conn,"update gallery_main set category_title='$category_title', date='$date', descriptions='$descriptions', status='$status' where gallery_mainID = $gallery_mainID")){
+	if(mysqli_query($conn,"update gallery_main set title='$title', category='$category', date='$date', description='$description', status='$status' where gallery_mainID = $gallery_mainID")){
 				
-				// echo "<script>
-							// swal({
-							  // title: 'Success',
-							  // text: 'Data saved!',
-							  // icon: 'success',
-							  // buttons: true,
-							// })
-							// .then((isUpdate) => {
-							  // if (isUpdate) {
-								// location.href='edit_gallery_main.php?gallery_mainID=$gallery_mainID';
-							  // }else{
-								  // location.href='gallery.php';
-							  // }
-							// });
-					// </script>";
-			// }
+				echo "<script>
+							swal({
+							  title: 'Success',
+							  text: 'Data saved!',
+							  icon: 'success',
+							  buttons: true,
+							})
+							.then((isUpdate) => {
+							  if (isUpdate) {
+								location.href='gallery.php';
+							  }else{
+								  location.href='gallery.php';
+							  }
+							});
+					</script>";
+			}
  
 }
 
@@ -290,91 +514,4 @@ if(isset($_POST['UploadBtn'])) {
     echo "<script>location.href='gallery_image.php?gallery_mainID=$gallery_mainID'</script>";
 }
 
-
-// if(isset($_POST['UploadBtn'])) {
-    // $gallery_mainID = $_POST['gallery_mainID'];
-
-    // $images = $_FILES['imageName'];
-
-    // $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'heic'];
-	
-	
-    // for($i = 0; $i < count($images['name']); $i++) {
-        // $image = $images['name'][$i];
-        // $tmp_name = $images['tmp_name'][$i];
-		
-        // if(!empty($image)) {
-			
-            // $filename = stripslashes($image);
-            // $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-			
-            // if(!in_array($extension, $allowed_extensions)) {
-                // echo "<script>alert('Invalid image extension for $filename');</script>";
-                // continue; // Skip this image
-            // }
-			
-			// if($extension == "jpg" || $extension == "jpeg") { 
-				// $src = fixImageOrientation($tmp_name); // Fix orientation and load the image
-			// } else if($extension == "png") {
-				// $src = imagecreatefrompng($tmp_name);
-			// } else {
-				// $src = imagecreatefromgif($tmp_name);
-			// }
-			
-            // list($width, $height) = getimagesize($tmp_name);
-
-            // $newwidth = 360;
-            // $newheight = ($height / $width) * $newwidth;
-            // $tmp = imagecreatetruecolor($newwidth, $newheight);
-
-            // imagecopyresampled($tmp, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
-            // $randomCode = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'), 0, 6);
-            // $timestamp = date("Ymd_His") . "_" . $i; // Add $i to make sure filenames are unique per loop
-            // $newFileName = $randomCode . "_" . $timestamp . "." . $extension;
-
-            // $filenameOriginal = "uploads/gallery/" . $newFileName;
-			
-            // imagejpeg($tmp, $filenameOriginal, 100);
-
-            // $sql = "INSERT INTO gallery_image(gallery_mainID, image) VALUES ($gallery_mainID, '$filenameOriginal')";
-
-            // mysqli_query($conn, $sql);
-			
-		
-        // }
-		
-    // }
-
-    // echo "<script>location.href='gallery_image.php?gallery_mainID=$gallery_mainID'</script>";
-// }
-
-function fixImageOrientation($filename) {
-    if (function_exists('exif_read_data')) {
-        $exif = @exif_read_data($filename);
-        if ($exif && isset($exif['Orientation'])) {
-            $orientation = $exif['Orientation'];
-            $image = imagecreatefromjpeg($filename);
-
-            switch ($orientation) {
-                case 3:
-                    $image = imagerotate($image, 180, 0);
-                    break;
-                case 6:
-                    $image = imagerotate($image, -90, 0);
-                    break;
-                case 8:
-                    $image = imagerotate($image, 90, 0);
-                    break;
-                default:
-                    // No rotation needed
-                    return $image;
-            }
-
-            imagejpeg($image, $filename, 100);
-            return $image;
-        }
-    }
-    return imagecreatefromjpeg($filename); // fallback
-}
 ?>

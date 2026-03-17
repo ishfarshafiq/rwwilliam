@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | RW William PLT</title>
+    <title>Contact Us | RW William PLT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap"
@@ -32,7 +32,7 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
         html {
@@ -162,7 +162,7 @@
             letter-spacing: .3px;
             text-transform: uppercase;
             position: relative;
-            transition: color .3s
+            transition: color .3s ease
         }
 
         .navbar .nav-link::after {
@@ -174,7 +174,7 @@
             height: 3px;
             background: var(--rw-primary);
             transform: scaleX(0);
-            transition: transform .3s;
+            transition: transform .3s ease;
             border-radius: 3px 3px 0 0
         }
 
@@ -202,7 +202,7 @@
             padding: 10px 16px;
             font-size: 14px;
             color: var(--rw-text);
-            transition: all .2s
+            transition: all .2s ease
         }
 
         .navbar .dropdown-item:hover {
@@ -265,7 +265,7 @@
             z-index: 1040;
             opacity: 0;
             visibility: hidden;
-            transition: all .4s
+            transition: all .4s ease
         }
 
         .mobile-menu-overlay.active {
@@ -343,7 +343,7 @@
             font-weight: 500;
             letter-spacing: .5px;
             text-transform: uppercase;
-            transition: all .3s;
+            transition: all .3s ease;
             border-left: 3px solid transparent
         }
 
@@ -363,7 +363,7 @@
             max-height: 0;
             overflow: hidden;
             background: rgba(0, 0, 0, .15);
-            transition: max-height .4s
+            transition: max-height .4s ease
         }
 
         .mobile-submenu.open {
@@ -375,7 +375,7 @@
             padding: 12px 24px 12px 40px;
             color: rgba(255, 255, 255, .8);
             font-size: 14px;
-            transition: all .3s
+            transition: all .3s ease
         }
 
         .mobile-submenu a:hover {
@@ -447,7 +447,7 @@
             transform: translateX(-100%)
         }
 
-        /* HERO */
+        /* PAGE HERO */
         .page-hero {
             background: linear-gradient(135deg, var(--rw-primary) 0%, var(--rw-primary-dark) 40%, var(--rw-accent) 100%);
             padding: 100px 0 80px;
@@ -462,18 +462,7 @@
             right: -20%;
             width: 700px;
             height: 700px;
-            background: radial-gradient(circle, rgba(255, 255, 255, .08), transparent 70%);
-            border-radius: 50%
-        }
-
-        .page-hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 255, 255, .05), transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, .08) 0%, transparent 70%);
             border-radius: 50%
         }
 
@@ -537,7 +526,229 @@
             margin: 0 10px
         }
 
-        /* SHARED */
+        /* CONTACT FORM SECTION */
+        .contact-section {
+            padding: 100px 0;
+            position: relative
+        }
+
+        .contact-form-wrapper {
+            background: var(--rw-white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 75, 110, .08);
+            border: 1px solid var(--rw-border);
+            padding: 50px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--rw-primary), var(--rw-primary-dark), var(--rw-accent))
+        }
+
+        .form-floating {
+            margin-bottom: 20px
+        }
+
+        .form-floating>.form-control,
+        .form-floating>.form-select {
+            border: 2px solid var(--rw-border);
+            border-radius: 12px;
+            height: 56px;
+            padding: 16px;
+            font-size: 15px;
+            font-family: var(--font-body);
+            color: var(--rw-text);
+            transition: all .3s ease;
+            background: var(--rw-white)
+        }
+
+        .form-floating>.form-control:focus,
+        .form-floating>.form-select:focus {
+            border-color: var(--rw-primary);
+            box-shadow: 0 0 0 4px rgba(0, 173, 239, .1);
+            outline: none
+        }
+
+        .form-floating>label {
+            font-size: 14px;
+            color: var(--rw-text-light);
+            font-weight: 400;
+            padding: 16px
+        }
+
+        .form-floating>textarea.form-control {
+            height: 140px
+        }
+
+        .btn-submit {
+            background: var(--rw-primary);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid var(--rw-primary);
+            transition: all .3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer
+        }
+
+        .btn-submit:hover {
+            background: var(--rw-primary-dark);
+            border-color: var(--rw-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 173, 239, .3);
+            color: white
+        }
+
+        .btn-submit i {
+            font-size: 18px;
+            transition: transform .3s ease
+        }
+
+        .btn-submit:hover i {
+            transform: translateX(4px)
+        }
+
+        /* Contact info sidebar */
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--rw-primary) 0%, var(--rw-primary-dark) 50%, var(--rw-accent) 100%);
+            border-radius: 20px;
+            padding: 44px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            height: 100%
+        }
+
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, .08), transparent 70%);
+            border-radius: 50%
+        }
+
+        .contact-info-card::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -15%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 255, 255, .05), transparent 70%);
+            border-radius: 50%
+        }
+
+        .contact-info-card>* {
+            position: relative;
+            z-index: 1
+        }
+
+        .contact-info-card h3 {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 8px
+        }
+
+        .contact-info-card>p {
+            color: rgba(255, 255, 255, .7);
+            font-size: 15px;
+            margin-bottom: 36px
+        }
+
+        .ci-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px
+        }
+
+        .ci-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, .12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white
+        }
+
+        .ci-item h5 {
+            color: white;
+            font-size: 15px;
+            margin-bottom: 2px;
+            font-family: var(--font-body);
+            font-weight: 600
+        }
+
+        .ci-item p {
+            color: rgba(255, 255, 255, .7);
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.6
+        }
+
+        .ci-item a {
+            color: rgba(255, 255, 255, .85);
+            font-size: 14px
+        }
+
+        .ci-item a:hover {
+            color: white
+        }
+
+        .ci-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, .15)
+        }
+
+        .ci-social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 17px;
+            transition: all .3s ease
+        }
+
+        .ci-social a:hover {
+            background: white;
+            color: var(--rw-primary);
+            transform: translateY(-3px)
+        }
+
+        /* OFFICES SECTION */
+        .offices-section {
+            padding: 100px 0;
+            background: var(--rw-off-white);
+            position: relative
+        }
+
         .section-label {
             font-size: 12px;
             text-transform: uppercase;
@@ -565,503 +776,148 @@
             line-height: 1.2
         }
 
-        /* ===== GALLERY FILTER TABS ===== */
-        .gallery-section {
-            padding: 80px 0
-        }
-
-        .filter-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 50px;
-            justify-content: center
-        }
-
-        .filter-tab {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .office-card {
             background: var(--rw-white);
-            border: 2px solid var(--rw-border);
-            border-radius: 50px;
-            padding: 10px 24px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--rw-text);
-            cursor: pointer;
-            transition: all .3s;
-            text-transform: uppercase;
-            letter-spacing: .5px
-        }
-
-        .filter-tab:hover {
-            border-color: var(--rw-primary);
-            color: var(--rw-primary)
-        }
-
-        .filter-tab.active {
-            background: var(--rw-primary);
-            border-color: var(--rw-primary);
-            color: white;
-            box-shadow: 0 6px 20px rgba(0, 173, 239, .3)
-        }
-
-        .filter-tab .tab-count {
-            background: rgba(0, 0, 0, .08);
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700
-        }
-
-        .filter-tab.active .tab-count {
-            background: rgba(255, 255, 255, .2)
-        }
-
-        /* ===== GALLERY ALBUM ===== */
-        .gallery-album {
-            margin-bottom: 60px;
-            padding-bottom: 60px;
-            border-bottom: 1px solid var(--rw-border);
-            animation: fadeInUp .6s ease forwards;
-            opacity: 0
-        }
-
-        .gallery-album:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0
-        }
-
-        .gallery-album.visible {
-            opacity: 1
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        .album-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            gap: 12px
-        }
-
-        .album-info h3 {
-            font-size: 28px;
-            margin-bottom: 6px
-        }
-
-        .album-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap
-        }
-
-        .album-date {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--rw-primary);
-            color: white;
-            padding: 5px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .5px
-        }
-
-        .album-category {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--rw-primary-light);
-            color: var(--rw-primary);
-            padding: 5px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .5px;
-            text-transform: uppercase
-        }
-
-        .album-count {
-            color: var(--rw-text-light);
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 4px
-        }
-
-        .album-desc {
-            font-size: 15px;
-            color: var(--rw-text-light);
-            margin-bottom: 20px;
-            max-width: 700px
-        }
-
-        /* Photo Grid */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px
-        }
-
-        .photo-item {
-            position: relative;
-            border-radius: 12px;
+            border: 1px solid var(--rw-border);
+            border-radius: 18px;
             overflow: hidden;
-            cursor: pointer;
-            aspect-ratio: 4/3;
-            background: var(--rw-primary-lighter)
+            transition: all .4s ease;
+            height: 100%
         }
 
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform .5s ease
+        .office-card:hover {
+            border-color: var(--rw-primary);
+            box-shadow: 0 20px 50px rgba(0, 173, 239, .12);
+            transform: translateY(-6px)
         }
 
-        .photo-item:hover img {
-            transform: scale(1.08)
-        }
-
-        .photo-item .photo-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(0, 75, 110, .7) 100%);
-            opacity: 0;
-            transition: opacity .3s;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding: 16px
-        }
-
-        .photo-item:hover .photo-overlay {
-            opacity: 1
-        }
-
-        .photo-overlay .zoom-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--rw-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(.7);
-            opacity: 0;
-            transition: all .3s
-        }
-
-        .photo-item:hover .zoom-icon {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1)
-        }
-
-        /* Photo placeholder (no real images) */
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--rw-primary-light), var(--rw-primary-lighter));
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px
-        }
-
-        .photo-placeholder i {
-            font-size: 32px;
-            color: var(--rw-primary);
-            opacity: .4
-        }
-
-        .photo-placeholder span {
-            font-size: 11px;
-            color: var(--rw-primary);
-            opacity: .5;
-            font-weight: 500
-        }
-
-        /* Expand / collapse */
-        .photos-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 16px;
-            color: var(--rw-primary);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 8px 20px;
-            border: 2px solid var(--rw-primary);
-            border-radius: 8px;
-            transition: all .3s;
-            background: transparent
-        }
-
-        .photos-toggle:hover {
-            background: var(--rw-primary);
-            color: white
-        }
-
-        .photo-grid .photo-item.hidden-photo {
-            display: none
-        }
-
-        .photo-grid.expanded .photo-item.hidden-photo {
-            display: block
-        }
-
-        /* ===== LIGHTBOX ===== */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 22, 40, .95);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity .3s
-        }
-
-        .lightbox.active {
-            display: flex;
-            opacity: 1
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, .1);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all .3s;
-            z-index: 10
-        }
-
-        .lightbox-close:hover {
-            background: var(--rw-primary);
-            transform: rotate(90deg)
-        }
-
-        .lightbox-body {
-            max-width: 90vw;
-            max-height: 85vh;
-            position: relative
-        }
-
-        .lightbox-body img {
-            max-width: 100%;
-            max-height: 85vh;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, .5)
-        }
-
-        .lightbox-body .lb-placeholder {
-            width: 70vw;
-            max-width: 800px;
-            height: 60vh;
-            background: rgba(255, 255, 255, .05);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            border: 2px dashed rgba(255, 255, 255, .15)
-        }
-
-        .lb-placeholder i {
-            font-size: 64px;
-            color: rgba(255, 255, 255, .15)
-        }
-
-        .lb-placeholder span {
-            color: rgba(255, 255, 255, .3);
-            font-size: 14px
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, .1);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-size: 22px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all .3s;
-            z-index: 10
-        }
-
-        .lightbox-nav:hover {
-            background: var(--rw-primary)
-        }
-
-        .lightbox-prev {
-            left: 20px
-        }
-
-        .lightbox-next {
-            right: 20px
-        }
-
-        .lightbox-info {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: rgba(255, 255, 255, .6);
-            font-size: 13px;
-            font-weight: 500
-        }
-
-        .lightbox-counter {
-            background: rgba(255, 255, 255, .1);
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, .5)
-        }
-
-        /* ===== EMPTY STATE ===== */
-        .gallery-empty {
-            text-align: center;
-            padding: 80px 20px
-        }
-
-        .gallery-empty i {
-            font-size: 64px;
-            color: var(--rw-border);
-            margin-bottom: 20px;
-            display: block
-        }
-
-        .gallery-empty h4 {
-            font-size: 24px;
-            margin-bottom: 10px
-        }
-
-        .gallery-empty p {
-            max-width: 400px;
-            margin: 0 auto
-        }
-
-        /* ===== CTA ===== */
-        .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--rw-primary) 0%, var(--rw-primary-dark) 50%, var(--rw-accent) 100%);
+        .office-card-header {
+            background: linear-gradient(135deg, var(--rw-primary), var(--rw-primary-dark));
+            padding: 24px 28px;
             position: relative;
             overflow: hidden
         }
 
-        .cta-section::before {
+        .office-card-header::before {
             content: '';
             position: absolute;
             top: -50%;
-            right: -15%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 255, 255, .08), transparent 70%);
+            right: -30%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 255, 255, .1), transparent 70%);
             border-radius: 50%
         }
 
-        .cta-section h2 {
-            color: var(--rw-white);
-            font-size: 38px
+        .office-card-header h4 {
+            color: white;
+            font-size: 20px;
+            margin: 0;
+            position: relative;
+            z-index: 1
         }
 
-        .cta-section p {
-            color: rgba(255, 255, 255, .8);
-            font-size: 17px
-        }
-
-        .btn-rw-white {
-            background: white;
-            color: var(--rw-primary);
-            padding: 14px 36px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
+        .office-card-header .office-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, .2);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid white;
-            transition: all .3s;
-            display: inline-block
+            letter-spacing: 1.5px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-top: 6px;
+            position: relative;
+            z-index: 1
         }
 
-        .btn-rw-white:hover {
-            background: transparent;
+        .office-card-body {
+            padding: 28px
+        }
+
+        .office-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px
+        }
+
+        .office-detail:last-child {
+            margin-bottom: 0
+        }
+
+        .office-detail i {
+            color: var(--rw-primary);
+            font-size: 16px;
+            margin-top: 3px;
+            flex-shrink: 0
+        }
+
+        .office-detail p {
+            font-size: 14px;
+            color: var(--rw-text);
+            margin: 0;
+            line-height: 1.6;
+            font-weight: 400
+        }
+
+        .office-detail a {
+            color: var(--rw-primary);
+            font-weight: 500
+        }
+
+        .office-detail a:hover {
+            color: var(--rw-primary-dark)
+        }
+
+        .office-map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--rw-primary-light);
+            color: var(--rw-primary);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            transition: all .3s ease;
+            margin-top: 8px
+        }
+
+        .office-map-btn:hover {
+            background: var(--rw-primary);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, .15)
+            box-shadow: 0 6px 16px rgba(0, 173, 239, .25)
         }
 
-        .btn-rw-outline {
-            background: transparent;
-            color: white;
-            padding: 14px 36px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid rgba(255, 255, 255, .4);
-            transition: all .3s;
-            display: inline-block
+        .office-map-btn i {
+            font-size: 14px
         }
 
-        .btn-rw-outline:hover {
-            background: white;
-            color: var(--rw-accent);
-            border-color: white;
-            transform: translateY(-2px)
+        /* MAP SECTION */
+        .map-section {
+            position: relative
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--rw-primary), var(--rw-primary-dark), var(--rw-accent));
+            z-index: 2
         }
 
         /* FOOTER */
@@ -1101,7 +957,7 @@
         .footer-links a {
             color: rgba(255, 255, 255, .45);
             font-size: 14px;
-            transition: all .3s
+            transition: all .3s ease
         }
 
         .footer-links a:hover {
@@ -1146,7 +1002,7 @@
             justify-content: center;
             color: rgba(255, 255, 255, .4);
             margin-left: 8px;
-            transition: all .3s
+            transition: all .3s ease
         }
 
         .footer-social a:hover {
@@ -1179,7 +1035,7 @@
             color: white;
             font-size: 20px;
             cursor: pointer;
-            transition: all .3s;
+            transition: all .3s ease;
             box-shadow: 4px 4px 15px rgba(0, 173, 239, .3);
             position: relative;
             z-index: 2
@@ -1225,7 +1081,7 @@
             border-radius: 0 10px 10px 0;
             position: relative;
             overflow: hidden;
-            transition: all .3s;
+            transition: all .3s ease;
             transform: translateX(-60px)
         }
 
@@ -1251,7 +1107,7 @@
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
-            transition: all .3s;
+            transition: all .3s ease;
             margin-left: 10px
         }
 
@@ -1420,6 +1276,7 @@
             }
         }
 
+        /* SCROLL TOP */
         .scroll-top {
             position: fixed;
             bottom: 30px;
@@ -1437,7 +1294,7 @@
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: all .3s;
+            transition: all .3s ease;
             z-index: 999;
             box-shadow: 0 6px 20px rgba(0, 173, 239, .35)
         }
@@ -1452,6 +1309,40 @@
             background: var(--rw-primary-dark)
         }
 
+        /* SUCCESS MESSAGE */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px
+        }
+
+        .form-success.show {
+            display: block
+        }
+
+        .form-success .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--rw-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: white
+        }
+
+        .form-success h3 {
+            font-size: 26px;
+            margin-bottom: 10px
+        }
+
+        .form-success p {
+            font-size: 16px
+        }
+
+        /* RESPONSIVE */
         @media(max-width:991.98px) {
             .desktop-nav {
                 display: none !important
@@ -1469,8 +1360,21 @@
                 font-size: 32px
             }
 
-            .photo-grid {
-                grid-template-columns: repeat(3, 1fr)
+            .contact-section {
+                padding: 60px 0
+            }
+
+            .offices-section {
+                padding: 60px 0
+            }
+
+            .contact-form-wrapper {
+                padding: 30px
+            }
+
+            .contact-info-card {
+                padding: 30px;
+                margin-top: 30px
             }
         }
 
@@ -1496,16 +1400,12 @@
                 display: none
             }
 
-            .photo-grid {
-                grid-template-columns: repeat(2, 1fr)
+            .contact-form-wrapper {
+                padding: 24px
             }
 
-            .album-info h3 {
-                font-size: 22px
-            }
-
-            .cta-section h2 {
-                font-size: 28px
+            .contact-info-card {
+                padding: 24px
             }
         }
     </style>
@@ -1516,118 +1416,337 @@
     <div class="top-bar d-none d-lg-block">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <div><a href="mailto:richard@rwwilliam.com.my"><i class="bi bi-envelope me-1"></i>
-                        richard@rwwilliam.com.my</a><span class="separator">|</span><a href="tel:+60378053859"><i
-                            class="bi bi-telephone me-1"></i> +603-7805 3859</a></div>
-                <div><a href="#" class="me-3"><i class="bi bi-facebook"></i></a><a href="#" class="me-3"><i
-                            class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-instagram"></i></a></div>
+                <div>
+                    <a href="mailto:richard@rwwilliam.com.my"><i class="bi bi-envelope me-1"></i>
+                        richard@rwwilliam.com.my</a>
+                    <span class="separator">|</span>
+                    <a href="tel:+6037805 3859"><i class="bi bi-telephone me-1"></i> +603-7805 3859</a>
+                </div>
+                <div>
+                    <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="me-3"><i
+                            class="bi bi-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/rwwilliam" target="_blank" class="me-3"><i
+                            class="bi bi-linkedin"></i></a>
+                    <a href="https://www.instagram.com/rw_william/" target="_blank"><i class="bi bi-instagram"></i></a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-xl" id="mainNavbar">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="brand-logo">RW</div>
-                <div class="brand-text"><span class="brand-name">RW William</span><span class="brand-sub">Bridging Your
-                        Business</span></div>
-            </a>
-            <div class="desktop-nav d-none d-xl-flex align-items-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="clients.html">Our Client</a></li>
-                     <li class="nav-item"><a class="nav-link" href="news-announcement.html">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Country</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Malaysia</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Thailand</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Singapore</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Jakarta</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><button class="navbar-toggler d-xl-none ms-auto" type="button" id="mobileToggle">
-                <div class="hamburger"><span></span><span></span><span></span></div>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="brand-logo-m">RW</div>
-            <div class="brand-info">
-                <h5>RW William</h5><span>Bridging Your Business</span>
-            </div><button id="mobileCloseBtn" class="mobile-menu-close" type="button" aria-label="Close menu"><i
-                    class="bi bi-x-lg"></i></button>
-        </div>
-        <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <i
-                    class="bi bi-chevron-right"></i></a><a href="about.html" class="mobile-nav-link">About Us <i
-                    class="bi bi-chevron-right"></i></a><a href="services.html" class="mobile-nav-link">Services <i
-                    class="bi bi-chevron-right"></i></a><a href="team.html" class="mobile-nav-link">Our Team <i
-                    class="bi bi-chevron-right"></i></a><a href="gallery.html" class="mobile-nav-link active">Gallery <i
-                    class="bi bi-chevron-right"></i></a><a href="clients.html" class="mobile-nav-link">Our Client <i
-                    class="bi bi-chevron-right"></i></a>
-                    <a href="news-announcement.html" class="mobile-nav-link">News <i
-                    class="bi bi-chevron-right"></i></a><a href="career.html" class="mobile-nav-link">Career <i
-                    class="bi bi-chevron-right"></i></a><a href="contact.html" class="mobile-nav-link">Contact <i
-                    class="bi bi-chevron-right"></i></a><a href="#" class="mobile-nav-link" id="countryToggle">Country
-                <i class="bi bi-chevron-down"></i></a>
-            <div class="mobile-submenu" id="countrySubmenu"><a href="#">🇲🇾 Malaysia</a><a href="#">🇹🇭 Thailand</a><a
-                    href="#">🇸🇬 Singapore</a><a href="#">🇮🇩 Jakarta</a></div>
-        </nav>
-        <div class="mobile-menu-footer">
-            <div class="social-icons mb-3"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i
-                        class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-instagram"></i></a></div>
-            <p>&copy; 2026 RW William PLT.</p>
-        </div>
-    </div>
-
-    <!-- Hero -->
+   <?php include_once('includes/navbar.php'); ?>
+   
+    <!-- Page Hero -->
     <section class="page-hero">
         <div class="hero-pattern"></div>
         <div class="container position-relative">
-            <div class="breadcrumb-nav mb-4" data-aos="fade-down" data-aos-delay="100"><a
-                    href="index.html">Home</a><span class="divider">/</span><span>Gallery</span></div>
-            <div class="hero-line" data-aos="fade-right" data-aos-delay="200"></div>
-            <h1 data-aos="fade-up" data-aos-delay="300">Our Gallery</h1>
-            <p data-aos="fade-up" data-aos-delay="400">Capturing moments and milestones across events, workshops, team
-                activities, and celebrations at RW William PLT.</p>
+            <div class="breadcrumb-nav mb-4" data-aos="fade-down"><a href="index.html">Home</a><span
+                    class="divider">/</span><span>Contact Us</span></div>
+            <div class="hero-line" data-aos="fade-right"></div>
+            <h1 data-aos="fade-up">Contact Us</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Have a question or ready to get started? Reach out to our team —
+                we'd love to hear from you.</p>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery-section">
+    <!-- Contact Form + Info -->
+    <section class="contact-section">
         <div class="container">
-            <!-- Filter Tabs -->
-            <div class="filter-tabs" id="filterTabs"></div>
-            <!-- Album Container -->
-            <div id="galleryAlbums"></div>
-        </div>
-    </section>
+            <div class="row g-4 g-lg-5">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="contact-form-wrapper">
+                        <h2 style="font-size:30px;margin-bottom:6px">Send Us a Message</h2>
+                        <p style="margin-bottom:32px">Fill in the form below and our team will get back to you within 24
+                            hours.</p>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-right">
-                    <h2>Want to Be Part of Our Story?</h2>
-                    <p class="mb-0">Join RW William PLT and grow your career in a dynamic, professional, and supportive
-                        environment.</p>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="firstName" placeholder="First Name"
+                                            required>
+                                        <label for="firstName"><i class="bi bi-person me-1"></i> First Name *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+                                            required>
+                                        <label for="lastName"><i class="bi bi-person me-1"></i> Last Name *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Email"
+                                            required>
+                                        <label for="email"><i class="bi bi-envelope me-1"></i> Email Address *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Phone">
+                                        <label for="phone"><i class="bi bi-telephone me-1"></i> Phone Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="company" placeholder="Company">
+                                        <label for="company"><i class="bi bi-building me-1"></i> Company Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="service">
+                                            <option value="" selected disabled>Select a service</option>
+                                            <option>Audit & Assurance</option>
+                                            <option>Unaudited Financial Statements</option>
+                                            <option>Taxation</option>
+                                            <option>SST</option>
+                                            <option>Liquidation</option>
+                                            <option>Corporate Services</option>
+                                            <option>Accounting & E-Invoicing</option>
+                                            <option>MBRS Conversion</option>
+                                            <option>Technical Training</option>
+                                            <option>Payroll Services</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <label for="service"><i class="bi bi-briefcase me-1"></i> Service Interested
+                                            In</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" placeholder="Message"
+                                            style="height:140px" required></textarea>
+                                        <label for="message"><i class="bi bi-chat-dots me-1"></i> Your Message *</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-submit">Send Message <i
+                                            class="bi bi-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="form-success" id="formSuccess">
+                            <div class="success-icon"><i class="bi bi-check-lg"></i></div>
+                            <h3>Message Sent!</h3>
+                            <p>Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="career.html"
-                        class="btn-rw-white me-2 mb-2">View Careers</a><a href="contact.html"
-                        class="btn-rw-outline mb-2">Contact Us</a></div>
+
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="contact-info-card">
+                        <h3>Get in Touch</h3>
+                        <p>We're here to help your business grow. Contact our headquarters or visit any of our 6 offices
+                            across Malaysia.</p>
+                        <div class="ci-item">
+                            <div class="ci-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                            <div>
+                                <h5>Head Office</h5>
+                                <p>No. 9-3A, Mayang Plaza, Jalan SS 26/4<br>Taman Mayang Jaya, 47301 Petaling
+                                    Jaya<br>Selangor Darul Ehsan</p>
+                            </div>
+                        </div>
+                        <div class="ci-item">
+                            <div class="ci-icon"><i class="bi bi-telephone-fill"></i></div>
+                            <div>
+                                <h5>Phone</h5><a href="tel:+60378053859">+603-7805 3859</a><br>
+                                <p style="font-size:13px;margin-top:2px">Fax: +603-7805 3871</p>
+                            </div>
+                        </div>
+                        <div class="ci-item">
+                            <div class="ci-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div>
+                                <h5>Email</h5><a href="mailto:richard@rwwilliam.com.my">richard@rwwilliam.com.my</a>
+                            </div>
+                        </div>
+                        <div class="ci-item">
+                            <div class="ci-icon"><i class="bi bi-clock-fill"></i></div>
+                            <div>
+                                <h5>Business Hours</h5>
+                                <p>Mon – Fri: 8:30 AM – 5:30 PM<br>Sat – Sun: Closed</p>
+                            </div>
+                        </div>
+                        <div class="ci-social">
+                            <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/rwwilliam" target="_blank">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/rw_william/" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+
+                            <a href="https://wa.me/60123806039?text=Enquiry from Website: Hi There! I am Looking for Audit and Assurance..."
+                                target="_blank">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                            <a href="https://www.tiktok.com/@rwwilliamplt" target="_blank">
+                                <i class="bi bi-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- Our Offices -->
+    <section class="offices-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center" data-aos="fade-up">Nationwide Presence</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Our Offices</h2>
+                <p class="mx-auto" style="max-width:600px" data-aos="fade-up" data-aos-delay="100">6 offices
+                    strategically located across Malaysia to serve you better.</p>
+            </div>
+            <div class="row g-4">
+                <!-- PJ -->
+                <div id="petalingjaya" class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+                    <div class="office-card">
+                        <div class="office-card-header">
+                            <h4>Petaling Jaya</h4><span class="office-tag">Headquarters</span>
+                        </div>
+                        <div class="office-card-body">
+                            <div class="office-detail"><i class="bi bi-geo-alt-fill"></i>
+                                <p>No. 9-3A, Mayang Plaza, Jalan SS 26/4, Taman Mayang Jaya, 47301 Petaling Jaya,
+                                    Selangor Darul Ehsan.</p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-telephone-fill"></i>
+                                <p><a href="tel:+60378053859">+603-7805 3859</a><br><span
+                                        style="color:var(--rw-text-light);font-size:13px">Fax: +603-7805 3871</span></p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-envelope-fill"></i>
+                                <p><a href="mailto:richard@rwwilliam.com.my">richard@rwwilliam.com.my</a></p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Mayang+Plaza+Petaling+Jaya" target="_blank"
+                                class="office-map-btn"><i class="bi bi-map"></i> View on Map</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Klang -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="office-card" id="klang">
+                        <div class="office-card-header">
+                            <h4>Klang</h4>
+                        </div>
+                        <div class="office-card-body">
+                            <div class="office-detail"><i class="bi bi-geo-alt-fill"></i>
+                                <p>Suite A, No.21A, 1st Floor Jalan Bayu Tinggi 7, Taman Bayu Tinggi, 41200 Klang,
+                                    Selangor Darul Ehsan.</p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-telephone-fill"></i>
+                                <p><a href="tel:+60333247062">+603-3324 7062</a><br><span
+                                        style="color:var(--rw-text-light);font-size:13px">Fax: +603-3324 7063</span></p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-envelope-fill"></i>
+                                <p><a href="mailto:auditklang@rwwilliam.com.my">auditklang@rwwilliam.com.my</a></p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Taman+Bayu+Tinggi+Klang" target="_blank"
+                                class="office-map-btn"><i class="bi bi-map"></i> View on Map</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ipoh -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="office-card" id="ipoh">
+                        <div class="office-card-header">
+                            <h4>Ipoh</h4>
+                        </div>
+                        <div class="office-card-body">
+                            <div class="office-detail"><i class="bi bi-geo-alt-fill"></i>
+                                <p>No.52A, Jalan Medan Ipoh 1E, Medan Ipoh Bistari, 31400 Ipoh, Perak.</p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-telephone-fill"></i>
+                                <p><a href="tel:+6055415115">+605-541 5115</a></p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-envelope-fill"></i>
+                                <p><a href="mailto:jassen@rwwilliam.com.my">jassen@rwwilliam.com.my</a></p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Medan+Ipoh+Bistari+Ipoh" target="_blank"
+                                class="office-map-btn"><i class="bi bi-map"></i> View on Map</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Seremban -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+                    <div class="office-card" id="seremban">
+                        <div class="office-card-header">
+                            <h4>Seremban</h4>
+                        </div>
+                        <div class="office-card-body">
+                            <div class="office-detail"><i class="bi bi-geo-alt-fill"></i>
+                                <p>265-B-1, Taman AST Jalan Sg. Ujong, 70200 Seremban, Negeri Sembilan.</p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-telephone-fill"></i>
+                                <p><a href="tel:+6067628330">+606-762 8330 / 764 8330</a><br><span
+                                        style="color:var(--rw-text-light);font-size:13px">Fax: +606-763 3684</span></p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-envelope-fill"></i>
+                                <p><a href="mailto:auditns@rwwilliam.com.my">auditns@rwwilliam.com.my</a></p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Taman+AST+Seremban" target="_blank"
+                                class="office-map-btn"><i class="bi bi-map"></i> View on Map</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Johor Bahru -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="office-card" id="johorbahru">
+                        <div class="office-card-header">
+                            <h4>Johor Bahru</h4>
+                        </div>
+                        <div class="office-card-body">
+                            <div class="office-detail"><i class="bi bi-geo-alt-fill"></i>
+                                <p>39-A, Jalan Sagu 15, Taman Daya, 81100 Johor Bahru, Johor Darul Takzim.</p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-telephone-fill"></i>
+                                <p><a href="tel:+6077102181">+607-710 2181</a></p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-envelope-fill"></i>
+                                <p><a href="mailto:auditjb@rwwilliam.com.my">auditjb@rwwilliam.com.my</a></p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Taman+Daya+Johor+Bahru" target="_blank"
+                                class="office-map-btn"><i class="bi bi-map"></i> View on Map</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Penang -->
+                <div id="perai" class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="office-card">
+                        <div class="office-card-header">
+                            <h4>Perai, Penang</h4>
+                        </div>
+                        <div class="office-card-body">
+                            <div class="office-detail"><i class="bi bi-geo-alt-fill"></i>
+                                <p>1311-B, 1st Floor, Jalan Baru, Taman Chai Leng, 13700 Perai, Penang.</p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-telephone-fill"></i>
+                                <p><a href="tel:+6043999203">+604-399 9203</a></p>
+                            </div>
+                            <div class="office-detail"><i class="bi bi-envelope-fill"></i>
+                                <p><a href="mailto:kugan@rwwilliam.com.my">kugan@rwwilliam.com.my</a></p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Taman+Chai+Leng+Perai+Penang" target="_blank"
+                                class="office-map-btn"><i class="bi bi-map"></i> View on Map</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Map (HQ) -->
+    <section class="map-section">
+        <div class="map-overlay"></div>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.003!2d101.6145!3d3.1165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4f5a8e5b5e3d%3A0x0!2sMayang+Plaza!5e0!3m2!1sen!2smy!4v1"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <!-- Footer -->
@@ -1667,26 +1786,29 @@
                         <li><i class="bi bi-geo-alt"></i><span>No. 9-3A, Mayang Plaza, Jalan SS 26/4, Taman Mayang Jaya,
                                 47301 Petaling Jaya</span></li>
                         <li><i class="bi bi-telephone"></i><span>+603-7805 3859</span></li>
-                        <li><i class="bi bi-envelope"></i><span><a href="mailto:richard@rwwilliam.com.my" target="_blank">richard@rwwilliam.com.my</a></span></li>
-                        
+                        <li><i class="bi bi-envelope"></i><span><a href="mailto:richard@rwwilliam.com.my"
+                                    target="_blank">richard@rwwilliam.com.my</a></span></li>
+
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="row align-items-center">
-                    <div class="col-md-12 text-center">                        
+                    <div class="col-md-12 text-center">
                         <p class="copyright"> <span>Copyright</span> ©
-                    <script> document.write(new Date().getFullYear())  </script>
-                    <span class="copyright">RW WILLIAM PLT </span> (201906003458 (LLP0022270-LCA) & AF1490)| <span> All Rights Reserved | Powered by :<a href="http://www.webprotechnologi.com/" target="_blank"> WebPro Design </span>
-                </p>
+                            <script> document.write(new Date().getFullYear())  </script>
+                            <span class="copyright">RW WILLIAM PLT </span> (201906003458 (LLP0022270-LCA) & AF1490)|
+                            <span> All Rights Reserved | Powered by :<a href="http://www.webprotechnologi.com/"
+                                    target="_blank"> WebPro Design </span>
+                        </p>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Social Sidebar -->
+    <!-- Sticky Social Sidebar -->
     <div id="socialSidebar" class="social-sidebar open">
         <div class="social-sidebar-links">
             <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="social-facebook">
@@ -1730,17 +1852,7 @@
         </button>
     </div>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lbClose"><i class="bi bi-x-lg"></i></button>
-        <button class="lightbox-nav lightbox-prev" id="lbPrev"><i class="bi bi-chevron-left"></i></button>
-        <button class="lightbox-nav lightbox-next" id="lbNext"><i class="bi bi-chevron-right"></i></button>
-        <div class="lightbox-body" id="lbBody"></div>
-        <div class="lightbox-info"><span id="lbCaption"></span>
-            <div class="lightbox-counter mt-2" id="lbCounter"></div>
-        </div>
-    </div>
-
+    <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop"><i class="bi bi-chevron-up"></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -1748,156 +1860,7 @@
     <script>
         AOS.init({ duration: 700, once: true, offset: 80 });
 
-        // ===================================================================
-        // GALLERY DATA — Replace this with a fetch() to your backend API/CMS
-        // Each album: { id, title, date, category, description, photos:[] }
-        // Each photo: { src: "url", caption: "..." } — use src:"" for placeholder
-        // ===================================================================
-        const galleryAlbums = [
-            {
-                id: 1, title: "Training 2025", date: "18 Jan 2025", category: "Company Training",
-                description: "Training and teamwork across all 7 offices.",
-                photos: [
-                    { src: "img/gallery/1.jpg", caption: "Training 2025" }, { src: "img/gallery/5.jpg", caption: "Training 2025" },
-                    { src: "img/gallery/2.jpg", caption: "Training 2025" }, { src: "img/gallery/6.jpg", caption: "Training 2025" },
-                    { src: "img/gallery/3.jpg", caption: "Training 2025" }, { src: "img/gallery/7.jpg", caption: "Training 2025" },
-                    { src: "img/gallery/4.jpg", caption: "Training 2025" }, { src: "img/gallery/8.jpg", caption: "Training 2025" }
-                ]
-            }
-            
-        ];
-
-        // ===== RENDER FILTER TABS =====
-        const categories = ['All', ...[...new Set(galleryAlbums.map(a => a.category))]];
-        const tabsEl = document.getElementById('filterTabs');
-        const categoryCounts = {};
-        galleryAlbums.forEach(a => { categoryCounts[a.category] = (categoryCounts[a.category] || 0) + 1 });
-        tabsEl.innerHTML = categories.map((c, i) => {
-            const count = c === 'All' ? galleryAlbums.length : categoryCounts[c];
-            return `<div class="filter-tab${i === 0 ? ' active' : ''}" data-cat="${c}"><i class="bi bi-${c === 'All' ? 'grid-3x3-gap' : c === 'Company Events' ? 'building' : c === 'Workshops & Seminars' ? 'mortarboard' : c === 'Team Activities' ? 'people' : c === 'Celebrations' ? 'balloon' : 'camera'}"></i>${c}<span class="tab-count">${count}</span></div>`;
-        }).join('');
-
-        // ===== RENDER ALBUMS =====
-        const albumsEl = document.getElementById('galleryAlbums');
-        const INITIAL_SHOW = 8; // show first 8 photos, rest hidden
-
-        function renderAlbums(filter = 'All') {
-            const filtered = filter === 'All' ? galleryAlbums : galleryAlbums.filter(a => a.category === filter);
-            if (!filtered.length) {
-                albumsEl.innerHTML = '<div class="gallery-empty"><i class="bi bi-images"></i><h4>No Albums Found</h4><p>No gallery albums in this category yet. Check back soon!</p></div>';
-                return;
-            }
-            albumsEl.innerHTML = filtered.map((album, ai) => {
-                const photosHtml = album.photos.map((p, pi) => {
-                    const hidden = pi >= INITIAL_SHOW ? ' hidden-photo' : '';
-                    const placeholder = !p.src ? `<div class="photo-placeholder"><i class="bi bi-image"></i><span>Photo ${pi + 1}</span></div>` : `<img src="${p.src}" alt="${p.caption}" loading="lazy">`;
-                    return `<div class="photo-item${hidden}" data-album="${album.id}" data-index="${pi}" data-src="${p.src}" data-caption="${p.caption}">${placeholder}<div class="photo-overlay"><div class="zoom-icon"><i class="bi bi-arrows-fullscreen"></i></div></div></div>`;
-                }).join('');
-                const hasMore = album.photos.length > INITIAL_SHOW;
-                const moreCount = album.photos.length - INITIAL_SHOW;
-                return `
-            <div class="gallery-album visible" data-album-id="${album.id}" style="animation-delay:${ai * 0.1}s">
-                <div class="album-header">
-                    <div class="album-info">
-                        <h3>${album.title}</h3>
-                        <div class="album-meta">
-                            <span class="album-date"><i class="bi bi-calendar3"></i> ${album.date}</span>
-                            <span class="album-category"><i class="bi bi-tag"></i> ${album.category}</span>
-                            <span class="album-count"><i class="bi bi-images"></i> ${album.photos.length} Photos</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="album-desc">${album.description}</p>
-                <div class="photo-grid" id="grid-${album.id}">${photosHtml}</div>
-                ${hasMore ? `<button class="photos-toggle" data-grid="grid-${album.id}" data-more="${moreCount}"><i class="bi bi-plus-circle"></i> Show ${moreCount} More Photos</button>` : ''}
-            </div>`;
-            }).join('');
-
-            // Rebind events
-            bindPhotoClicks();
-            bindToggleButtons();
-        }
-
-        // ===== FILTER TAB CLICKS =====
-        document.querySelectorAll('.filter-tab').forEach(tab => {
-            tab.addEventListener('click', function () {
-                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                renderAlbums(this.dataset.cat);
-            });
-        });
-
-        // ===== PHOTO EXPAND/COLLAPSE =====
-        function bindToggleButtons() {
-            document.querySelectorAll('.photos-toggle').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const grid = document.getElementById(this.dataset.grid);
-                    const isExpanded = grid.classList.toggle('expanded');
-                    if (isExpanded) {
-                        this.innerHTML = '<i class="bi bi-dash-circle"></i> Show Less';
-                    } else {
-                        this.innerHTML = `<i class="bi bi-plus-circle"></i> Show ${this.dataset.more} More Photos`;
-                    }
-                });
-            });
-        }
-
-        // ===== LIGHTBOX =====
-        let lbPhotos = [], lbIndex = 0;
-        const lightbox = document.getElementById('lightbox');
-        const lbBody = document.getElementById('lbBody');
-        const lbCaption = document.getElementById('lbCaption');
-        const lbCounter = document.getElementById('lbCounter');
-
-        function openLightbox(albumId, photoIndex) {
-            const album = galleryAlbums.find(a => a.id == albumId);
-            if (!album) return;
-            lbPhotos = album.photos;
-            lbIndex = photoIndex;
-            showLbPhoto();
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        function showLbPhoto() {
-            const p = lbPhotos[lbIndex];
-            if (p.src) {
-                lbBody.innerHTML = `<img src="${p.src}" alt="${p.caption}">`;
-            } else {
-                lbBody.innerHTML = `<div class="lb-placeholder"><i class="bi bi-image"></i><span>Image Placeholder — Upload from Backend</span></div>`;
-            }
-            lbCaption.textContent = p.caption;
-            lbCounter.textContent = `${lbIndex + 1} / ${lbPhotos.length}`;
-        }
-        function lbNext() { lbIndex = (lbIndex + 1) % lbPhotos.length; showLbPhoto() }
-        function lbPrev() { lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length; showLbPhoto() }
-
-        document.getElementById('lbClose').addEventListener('click', closeLightbox);
-        document.getElementById('lbNext').addEventListener('click', lbNext);
-        document.getElementById('lbPrev').addEventListener('click', lbPrev);
-        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox() });
-        document.addEventListener('keydown', e => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight') lbNext();
-            if (e.key === 'ArrowLeft') lbPrev();
-        });
-
-        function bindPhotoClicks() {
-            document.querySelectorAll('.photo-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    openLightbox(parseInt(item.dataset.album), parseInt(item.dataset.index));
-                });
-            });
-        }
-
-        // Initial render
-        renderAlbums();
-
-        // ===== STANDARD FUNCTIONS =====
+        // Mobile menu
         const mobileToggle = document.getElementById('mobileToggle'),
             mobileMenu = document.getElementById('mobileMenu'),
             mobileOverlay = document.getElementById('mobileOverlay'),
@@ -1935,15 +1898,34 @@
         document.querySelectorAll('.mobile-menu-nav a:not(#countryToggle), .mobile-menu-nav .mobile-nav-link:not(#countryToggle)').forEach(a => a.addEventListener('click', () => closeMobileMenu(true)));
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) closeMobileMenu(true); });
         document.getElementById('countryToggle').addEventListener('click', function (e) { e.preventDefault(); document.getElementById('countrySubmenu').classList.toggle('open'); const i = this.querySelector('i'); i.classList.toggle('bi-chevron-down'); i.classList.toggle('bi-chevron-up') });
+        window.addEventListener('scroll', function () { document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 50) });
         document.querySelectorAll('.mobile-nav-link:not(#countryToggle)').forEach(l => l.addEventListener('click', () => closeMobileMenu(true)));
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu() });
-        window.addEventListener('scroll', () => { document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 50) });
-        const socialSidebar = document.getElementById('socialSidebar');
-        document.getElementById('socialToggle').addEventListener('click', () => socialSidebar.classList.toggle('open'));
-        document.addEventListener('click', e => { if (!socialSidebar.contains(e.target) && socialSidebar.classList.contains('open')) socialSidebar.classList.remove('open') });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMobileMenu() });
+
+        // Social sidebar
+        const socialSidebar = document.getElementById('socialSidebar'), socialToggle = document.getElementById('socialToggle');
+        socialToggle.addEventListener('click', function () { socialSidebar.classList.toggle('open') });
+        document.addEventListener('click', function (e) { if (!socialSidebar.contains(e.target) && socialSidebar.classList.contains('open')) socialSidebar.classList.remove('open') });
+
+        // Scroll top
         const scrollTopBtn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
-        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        window.addEventListener('scroll', function () { scrollTopBtn.classList.toggle('visible', window.scrollY > 400) });
+        scrollTopBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }) });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const form = this;
+            const btn = form.querySelector('.btn-submit');
+            btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
+            btn.style.pointerEvents = 'none';
+            setTimeout(function () {
+                form.style.display = 'none';
+                document.querySelector('.contact-form-wrapper h2').style.display = 'none';
+                document.querySelector('.contact-form-wrapper > p').style.display = 'none';
+                document.getElementById('formSuccess').classList.add('show');
+            }, 1500);
+        });
     </script>
 </body>
 

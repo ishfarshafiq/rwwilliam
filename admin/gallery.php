@@ -67,7 +67,10 @@ include_once('includes/authentication.php');
 							</thead>
 							<tbody id="tableBody">
 							<?php 
-							$result = mysqli_query($conn,"SELECT * FROM gallery_main order by gallery_mainID desc");
+							$result = mysqli_query($conn,"SELECT a.*, count(b.gallery_mainID) as no_img FROM gallery_main a
+															left join gallery_image b on a.gallery_mainID = b.gallery_mainID
+															group by a.gallery_mainID
+															order by a.gallery_mainID desc;");
 							if(mysqli_num_rows($result) > 0){
 								$i=1;
 								while($row = mysqli_fetch_assoc($result)){
@@ -78,13 +81,14 @@ include_once('includes/authentication.php');
 								<td><strong><?php echo $row['title'];?></strong></td>
 								<td><span class="status-badge active" style="background:rgba(0,173,239,.1);color:var(--admin-primary)"><?php echo $row['category'];?></span></td>
 								<td><?php echo date('d-m-Y',strtotime($row['date']));?></td>
-								<td></td>
+								<td><?php echo $row['no_img'];?></td>
 								<td><span class="status-badge <?php echo $status;?>"><?php echo $status;?></span></td>
 								
 								<td>
 									<div class="action-btns">
 										<button class="action-btn" onclick="viewAlbum(<?php echo $row['gallery_mainID'];?>)" data-bs-toggle="modal" data-bs-target="#editAlbum" title="Edit"><i class="bi bi-pencil"></i></button>
-										<button class="action-btn delete" onclick="deleteItem('${a.id}')" title="Delete"><i class="bi bi-trash"></i></button>
+										<a class="action-btn" href="gallery_image.php?gallery_mainID=<?php echo $row['gallery_mainID'];?>"><i class="bi bi-file-text"></i></a>
+										<button class="action-btn delete" onclick='confirmation_gallerymain_delete(<?php echo $row['gallery_mainID']; ?>)' title="Delete"><i class="bi bi-trash"></i></button>
 									</div>
 								</td>
 								
@@ -240,7 +244,7 @@ include_once('includes/authentication.php');
     <div class="confirm-overlay" id="confirmDialog"><div class="confirm-box"><div class="confirm-icon"><i class="bi bi-exclamation-triangle"></i></div><h5>Are you sure?</h5><p id="confirmMsg">This action cannot be undone.</p><div class="confirm-btns"><button class="btn-cancel" onclick="closeConfirm()">Cancel</button><button class="btn-save" style="background:var(--admin-danger)" id="confirmYes">Delete</button></div></div></div>
     <div class="toast-container" id="toastContainer"></div>
 
-    <!--<script src="admin-shared.js"></script>-->
+    <script src="admin-shared.js"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
