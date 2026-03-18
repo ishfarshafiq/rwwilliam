@@ -1,6 +1,9 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include("dbconnect.php");
+date_default_timezone_set("Asia/Kuala_Lumpur");
+?>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1532,13 +1535,49 @@
         <div class="hero-pattern"></div>
         <div class="container position-relative">
             <div class="breadcrumb-nav mb-4" data-aos="fade-down" data-aos-delay="100"><a
-                    href="index.html">Home</a><span class="divider">/</span><span>Gallery</span></div>
+                    href="index.php">Home</a><span class="divider">/</span><span>Gallery</span></div>
             <div class="hero-line" data-aos="fade-right" data-aos-delay="200"></div>
             <h1 data-aos="fade-up" data-aos-delay="300">Our Gallery</h1>
             <p data-aos="fade-up" data-aos-delay="400">Capturing moments and milestones across events, workshops, team
                 activities, and celebrations at RW William PLT.</p>
         </div>
     </section>
+
+<?php
+$galleryAlbums = [];
+
+$sql = "SELECT * FROM gallery_main WHERE status='Active' ORDER BY date DESC";
+
+$result = mysqli_query($conn, $sql);
+
+while($row = mysqli_fetch_assoc($result)){
+
+    $albumID = $row['gallery_mainID'];
+
+    $photos = [];
+
+    $img_sql = "SELECT * FROM gallery_image 
+                WHERE gallery_mainID='$albumID'";
+
+    $img_result = mysqli_query($conn, $img_sql);
+
+    while($img = mysqli_fetch_assoc($img_result)){
+        $photos[] = [
+            "src" => "admin/".$img['image'],
+            "caption" => $row['title']
+        ];
+    }
+
+    $galleryAlbums[] = [
+        "id" => $row['gallery_mainID'],
+        "title" => $row['title'],
+        "date" => date("d M Y", strtotime($row['date'])),
+        "category" => $row['category'],
+        "description" => $row['description'],
+        "photos" => $photos
+    ];
+}
+?>
 
     <!-- Gallery Section -->
     <section class="gallery-section">
@@ -1559,125 +1598,14 @@
                     <p class="mb-0">Join RW William PLT and grow your career in a dynamic, professional, and supportive
                         environment.</p>
                 </div>
-                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="career.html"
-                        class="btn-rw-white me-2 mb-2">View Careers</a><a href="contact.html"
+                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="careers.php"
+                        class="btn-rw-white me-2 mb-2">View Careers</a><a href="contacts.php"
                         class="btn-rw-outline mb-2">Contact Us</a></div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="footer-brand">
-                        <div class="brand-name">RW William PLT</div>
-                        <p>A trusted name in chartered accounting since 2003. Providing professional excellence across
-                            Malaysia with offices in 7 strategic locations.</p>
-                        <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:8px">201906003458
-                            (LLP0022270-LCA) & AF 1490</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="footer-title">Company</h5>
-                    <ul class="footer-links p-0">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="career.html">Careers</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="footer-title">Quick Links</h5>
-                    <ul class="footer-links p-0">
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="clients.html">Our Clients</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <h5 class="footer-title">Head Office</h5>
-                    <ul class="footer-contact p-0">
-                        <li><i class="bi bi-geo-alt"></i><span>No. 9-3A, Mayang Plaza, Jalan SS 26/4, Taman Mayang Jaya,
-                                47301 Petaling Jaya</span></li>
-                        <li><i class="bi bi-telephone"></i><span>+603-7805 3859</span></li>
-                        <li><i class="bi bi-envelope"></i><span><a href="mailto:richard@rwwilliam.com.my" target="_blank">richard@rwwilliam.com.my</a></span></li>
-                        
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="row align-items-center">
-                    <div class="col-md-12 text-center">                        
-                        <p class="copyright"> <span>Copyright</span> ©
-                    <script> document.write(new Date().getFullYear())  </script>
-                    <span class="copyright">RW WILLIAM PLT </span> (201906003458 (LLP0022270-LCA) & AF1490)| <span> All Rights Reserved | Powered by :<a href="http://www.webprotechnologi.com/" target="_blank"> WebPro Design </span>
-                </p>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Social Sidebar -->
-    <div id="socialSidebar" class="social-sidebar open">
-        <div class="social-sidebar-links">
-            <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="social-facebook">
-                <i class="bi bi-facebook"></i>
-                <span class="social-tooltip">Facebook</span>
-            </a>
-            <a href="https://www.tiktok.com/@rwwilliamplt" target="_blank" class="social-tiktok">
-                <i class="bi bi-tiktok"></i>
-                <span class="social-tooltip">TikTok</span>
-            </a>
-
-            <a href="https://wa.me/60123806039?text=Enquiry from Website: Hi There! I am Looking for Audit and Assurance..."
-                target="_blank" class="social-whatsapp">
-                <i class="bi bi-whatsapp"></i>
-                <span class="social-tooltip">WhatsApp</span>
-            </a>
-            <a href="https://www.linkedin.com/in/rwwilliam" target="_blank" class="social-linkedin">
-                <i class="bi bi-linkedin"></i>
-                <span class="social-tooltip">LinkedIn</span>
-            </a>
-            <a href="mailto:richard@rwwilliam.com.my" class="social-email">
-                <i class="bi bi-envelope-fill"></i>
-                <span class="social-tooltip">Email Us</span>
-            </a>
-            <a href="https://twitter.com/rwwilliamplt" target="_blank" class="social-twitter">
-                <i class="bi bi-twitter"></i>
-                <span class="social-tooltip">Twitter</span>
-            </a>
-            <a href="https://www.instagram.com/rw_william/" target="_blank" class="social-instagram">
-                <i class="bi bi-instagram"></i>
-                <span class="social-tooltip">Instagram</span>
-            </a>
-            <a href="https://www.youtube.com/channel/UCesZWUo9bHkU7soOS_0huFg" target="_blank" class="social-youtube">
-                <i class="bi bi-youtube"></i>
-                <span class="social-tooltip">YouTube</span>
-            </a>
-        </div>
-        <button class="social-sidebar-toggle" id="socialToggle" title="Connect with us">
-            <span class="toggle-icon"><i class="bi bi-share-fill"></i></span>
-            <span class="toggle-label d-none d-md-none">Follow Us</span>
-        </button>
-    </div>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lbClose"><i class="bi bi-x-lg"></i></button>
-        <button class="lightbox-nav lightbox-prev" id="lbPrev"><i class="bi bi-chevron-left"></i></button>
-        <button class="lightbox-nav lightbox-next" id="lbNext"><i class="bi bi-chevron-right"></i></button>
-        <div class="lightbox-body" id="lbBody"></div>
-        <div class="lightbox-info"><span id="lbCaption"></span>
-            <div class="lightbox-counter mt-2" id="lbCounter"></div>
-        </div>
-    </div>
-
-    <button class="scroll-top" id="scrollTop"><i class="bi bi-chevron-up"></i></button>
+    <?php include_once('includes/footer.php'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -1689,26 +1617,43 @@
         // Each album: { id, title, date, category, description, photos:[] }
         // Each photo: { src: "url", caption: "..." } — use src:"" for placeholder
         // ===================================================================
-        const galleryAlbums = [
-            {
-                id: 1, title: "Training 2025", date: "18 Jan 2025", category: "Company Training",
-                description: "Training and teamwork across all 7 offices.",
-                photos: [
-                    { src: "img/gallery/1.jpg", caption: "Training 2025" }, { src: "img/gallery/5.jpg", caption: "Training 2025" },
-                    { src: "img/gallery/2.jpg", caption: "Training 2025" }, { src: "img/gallery/6.jpg", caption: "Training 2025" },
-                    { src: "img/gallery/3.jpg", caption: "Training 2025" }, { src: "img/gallery/7.jpg", caption: "Training 2025" },
-                    { src: "img/gallery/4.jpg", caption: "Training 2025" }, { src: "img/gallery/8.jpg", caption: "Training 2025" }
-                ]
-            }
+        // const galleryAlbums = [
+            // {
+                // id: 1, title: "Training 2025", date: "18 Jan 2025", category: "Company Training",
+                // description: "Training and teamwork across all 7 offices.",
+                // photos: [
+                    // { src: "img/gallery/1.jpg", caption: "Training 2025" }, { src: "img/gallery/5.jpg", caption: "Training 2025" },
+                    // { src: "img/gallery/2.jpg", caption: "Training 2025" }, { src: "img/gallery/6.jpg", caption: "Training 2025" },
+                    // { src: "img/gallery/3.jpg", caption: "Training 2025" }, { src: "img/gallery/7.jpg", caption: "Training 2025" },
+                    // { src: "img/gallery/4.jpg", caption: "Training 2025" }, { src: "img/gallery/8.jpg", caption: "Training 2025" }
+                // ]
+            // }
             
-        ];
+        // ];
+		const galleryAlbums = <?php echo json_encode($galleryAlbums); ?>;
 
         // ===== RENDER FILTER TABS =====
         const categories = ['All', ...[...new Set(galleryAlbums.map(a => a.category))]];
         const tabsEl = document.getElementById('filterTabs');
-        const categoryCounts = {};
-        galleryAlbums.forEach(a => { categoryCounts[a.category] = (categoryCounts[a.category] || 0) + 1 });
-        tabsEl.innerHTML = categories.map((c, i) => {
+		
+        // const categoryCounts = {};
+        // galleryAlbums.forEach(a => { categoryCounts[a.category] = (categoryCounts[a.category] || 0) + 1 });
+        
+		const categoryCounts = {};
+
+		galleryAlbums.forEach(album => {
+
+			const photoCount = album.photos.length;
+
+			if (!categoryCounts[album.category]) {
+				categoryCounts[album.category] = 0;
+			}
+
+			categoryCounts[album.category] += photoCount;
+
+		});
+		
+		tabsEl.innerHTML = categories.map((c, i) => {
             const count = c === 'All' ? galleryAlbums.length : categoryCounts[c];
             return `<div class="filter-tab${i === 0 ? ' active' : ''}" data-cat="${c}"><i class="bi bi-${c === 'All' ? 'grid-3x3-gap' : c === 'Company Events' ? 'building' : c === 'Workshops & Seminars' ? 'mortarboard' : c === 'Team Activities' ? 'people' : c === 'Celebrations' ? 'balloon' : 'camera'}"></i>${c}<span class="tab-count">${count}</span></div>`;
         }).join('');

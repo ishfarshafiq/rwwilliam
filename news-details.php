@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include("dbconnect.php");
+date_default_timezone_set("Asia/Kuala_Lumpur");
+
+if(isset($_GET['newsID']))
+{
+	$newsID = $_GET['newsID'];
+	$result = mysqli_query($conn,"select * from news where newsID = $newsID");
+	$row = mysqli_fetch_assoc($result);
+	$title = $row['title'];
+	$description = $row['description'];
+}
+?>
 <html lang="en">
 
 <head>
@@ -1542,75 +1555,13 @@
         </div>
     </div>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-xl" id="mainNavbar">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="brand-logo">RW</div>
-                <div class="brand-text"><span class="brand-name">RW William</span><span class="brand-sub">Bridging Your
-                        Business</span></div>
-            </a>
-            <div class="desktop-nav d-none d-xl-flex align-items-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="clients.html">Our Client</a></li>
-                     <li class="nav-item"><a class="nav-link" href="news-announcement.html">News</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="career.html">Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Country</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Malaysia</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Thailand</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Singapore</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-geo-alt me-2"></i>Jakarta</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><button class="navbar-toggler d-xl-none ms-auto" type="button" id="mobileToggle">
-                <div class="hamburger"><span></span><span></span><span></span></div>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="brand-logo-m">RW</div>
-            <div class="brand-info">
-                <h5>RW William</h5><span>Bridging Your Business</span>
-            </div><button id="mobileCloseBtn" class="mobile-menu-close" type="button" aria-label="Close menu"><i
-                    class="bi bi-x-lg"></i></button>
-        </div>
-        <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <i
-                    class="bi bi-chevron-right"></i></a><a href="about.html" class="mobile-nav-link">About Us <i
-                    class="bi bi-chevron-right"></i></a><a href="services.html" class="mobile-nav-link">Services <i
-                    class="bi bi-chevron-right"></i></a><a href="team.html" class="mobile-nav-link">Our Team <i
-                    class="bi bi-chevron-right"></i></a><a href="gallery.html" class="mobile-nav-link">Gallery <i
-                    class="bi bi-chevron-right"></i></a><a href="clients.html" class="mobile-nav-link">Our Client <i
-                    class="bi bi-chevron-right"></i></a><a href="career.html" class="mobile-nav-link active">Career <i
-                    class="bi bi-chevron-right"></i></a><a href="contact.html" class="mobile-nav-link">Contact <i
-                    class="bi bi-chevron-right"></i></a><a href="#" class="mobile-nav-link" id="countryToggle">Country
-                <i class="bi bi-chevron-down"></i></a>
-            <div class="mobile-submenu" id="countrySubmenu"><a href="#">🇲🇾 Malaysia</a><a href="#">🇹🇭 Thailand</a><a
-                    href="#">🇸🇬 Singapore</a><a href="#">🇮🇩 Jakarta</a></div>
-        </nav>
-        <div class="mobile-menu-footer">
-            <div class="social-icons mb-3"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i
-                        class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-instagram"></i></a></div>
-            <p>&copy; 2026 RW William PLT.</p>
-        </div>
-    </div>
-
+	<?php include_once('includes/navbar.php'); ?>
+   
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="hero-pattern"></div>
         <div class="container position-relative">
-            <div class="breadcrumb-nav mb-4" data-aos="fade-down"><a href="index.html">Home</a><span
+            <div class="breadcrumb-nav mb-4" data-aos="fade-down"><a href="index.php">Home</a><span
                     class="divider">/</span><span>News & Announcements</span></div>
             <div class="hero-line" data-aos="fade-right"></div>
             <h1 data-aos="fade-up">News & Announcements Details</h1>
@@ -1626,32 +1577,12 @@
 
                     <div class="row">
                         <div class="article-card aos-init aos-animate" data-aos="fade-up">
-                            <a href="news-announcement.html" class="back-btn"><i class="bi bi-arrow-left"></i> Back to News & Announcements</a>
+                            <a href="news-announcement.php" class="back-btn"><i class="bi bi-arrow-left"></i> Back to News & Announcements</a>
 
                             <div class="article-content" id="articleContent">
-                                  <h2 class="section-title">New E-Invoicing Implementation Guide for Malaysian Businesses</h2>
-                                <p>The Inland Revenue Board of Malaysia (LHDN) has officially released updated
-                                    implementation guidelines for the mandatory e-invoicing initiative, marking a
-                                    significant milestone in Malaysia's digital transformation journey. This
-                                    comprehensive guide outlines the key requirements, timelines, and technical
-                                    specifications that businesses must adhere to.</p>
-
-                                <blockquote>"E-invoicing is not just a compliance requirement — it's an opportunity for
-                                    businesses to modernize their financial processes and gain real-time visibility into
-                                    their transactions."</blockquote>
-
-                                <h2 id="section-1">Key Implementation Phases</h2>
-                                <p>The rollout follows a phased approach based on annual turnover thresholds, ensuring
-                                    businesses of all sizes have adequate time to prepare and transition their systems.
-                                </p>
-                                <ul>
-                                    <li><strong>Phase 1 (August 2024):</strong> Businesses with annual turnover
-                                        exceeding RM100 million</li>
-                                    <li><strong>Phase 2 (January 2025):</strong> Businesses with annual turnover
-                                        exceeding RM25 million</li>
-                                    <li><strong>Phase 3 (July 2025):</strong> All remaining businesses regardless of
-                                        turnover</li>
-                                </ul>
+                                  <h2 class="section-title"><?php echo $title;?></h2>
+                               
+								<?php echo $description;?>
 
                             </div>
 
@@ -1665,106 +1596,7 @@
 
 
 
-    <!-- Footer -->
-     <footer class="site-footer">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="footer-brand">
-                        <div class="brand-name">RW William PLT</div>
-                        <p>A trusted name in chartered accounting since 2003. Providing professional excellence across
-                            Malaysia with offices in 7 strategic locations.</p>
-                        <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:8px">201906003458
-                            (LLP0022270-LCA) & AF 1490</p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="footer-title">Company</h5>
-                    <ul class="footer-links p-0">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="career.html">Careers</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="footer-title">Quick Links</h5>
-                    <ul class="footer-links p-0">
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="clients.html">Our Clients</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <h5 class="footer-title">Head Office</h5>
-                    <ul class="footer-contact p-0">
-                        <li><i class="bi bi-geo-alt"></i><span>No. 9-3A, Mayang Plaza, Jalan SS 26/4, Taman Mayang Jaya,
-                                47301 Petaling Jaya</span></li>
-                        <li><i class="bi bi-telephone"></i><span>+603-7805 3859</span></li>
-                        <li><i class="bi bi-envelope"></i><span><a href="mailto:richard@rwwilliam.com.my" target="_blank">richard@rwwilliam.com.my</a></span></li>
-                        
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="row align-items-center">
-                    <div class="col-md-12 text-center">                        
-                        <p class="copyright"> <span>Copyright</span> ©
-                    <script> document.write(new Date().getFullYear())  </script>
-                    <span class="copyright">RW WILLIAM PLT </span> (201906003458 (LLP0022270-LCA) & AF1490)| <span> All Rights Reserved | Powered by :<a href="http://www.webprotechnologi.com/" target="_blank"> WebPro Design </span>
-                </p>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Sticky Social Sidebar -->
-    <div class="social-sidebar" id="socialSidebar">
-        <div class="social-sidebar-links">
-            <a href="https://www.facebook.com/profile.php?id=100063468196295" target="_blank" class="social-facebook">
-                <i class="bi bi-facebook"></i>
-                <span class="social-tooltip">Facebook</span>
-            </a>
-            <a href="https://www.tiktok.com/@rwwilliamplt" target="_blank" class="social-tiktok">
-                <i class="bi bi-tiktok"></i>
-                <span class="social-tooltip">TikTok</span>
-            </a>
-
-            <a href="https://wa.me/60123806039?text=Enquiry from Website: Hi There! I am Looking for Audit and Assurance..."
-                target="_blank" class="social-whatsapp">
-                <i class="bi bi-whatsapp"></i>
-                <span class="social-tooltip">WhatsApp</span>
-            </a>
-            <a href="https://www.linkedin.com/in/rwwilliam" target="_blank" class="social-linkedin">
-                <i class="bi bi-linkedin"></i>
-                <span class="social-tooltip">LinkedIn</span>
-            </a>
-            <a href="mailto:richard@rwwilliam.com.my" class="social-email">
-                <i class="bi bi-envelope-fill"></i>
-                <span class="social-tooltip">Email Us</span>
-            </a>
-            <a href="https://twitter.com/rwwilliamplt" target="_blank" class="social-twitter">
-                <i class="bi bi-twitter"></i>
-                <span class="social-tooltip">Twitter</span>
-            </a>
-            <a href="https://www.instagram.com/rw_william/" target="_blank" class="social-instagram">
-                <i class="bi bi-instagram"></i>
-                <span class="social-tooltip">Instagram</span>
-            </a>
-            <a href="https://www.youtube.com/channel/UCesZWUo9bHkU7soOS_0huFg" target="_blank" class="social-youtube">
-                <i class="bi bi-youtube"></i>
-                <span class="social-tooltip">YouTube</span>
-            </a>
-        </div>
-        <button class="social-sidebar-toggle" id="socialToggle" title="Connect with us">
-            <span class="toggle-icon"><i class="bi bi-share-fill"></i></span>
-            <span class="toggle-label d-none d-md-none">Follow Us</span>
-        </button>
-    </div>
-
-    <button class="scroll-top" id="scrollTop"><i class="bi bi-chevron-up"></i></button>
+  <?php include_once('includes/footer.php'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

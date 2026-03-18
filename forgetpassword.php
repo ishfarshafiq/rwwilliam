@@ -144,9 +144,9 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
         <!-- Right Login Form -->
         <div class="login-right">
             <div class="login-header">
-                <a href="index.php" class="back-link"><i class="bi bi-arrow-left"></i> Back to Website</a>
-                <h2>Welcome Back</h2>
-                <p>Sign in to access the admin panel</p>
+                <a href="login.php" class="back-link"><i class="bi bi-arrow-left"></i> Back to Login</a>
+                <h2>Forget Password</h2>
+                <p>Enter your email ID</p>
             </div>
 
             <!--<div class="credentials-hint">
@@ -156,35 +156,19 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 
             <div class="login-error" id="loginError">
                 <i class="bi bi-exclamation-circle"></i>
-                <span id="loginErrorMsg">Invalid username or password</span>
+                <span id="loginErrorMsg">Invalid email ID</span>
             </div>
 
-            <form id="loginForm" onsubmit="handleLogin(event)">
+            <form id="CheckEmailForm" onsubmit="CheckEmail(event)">
                 <div class="form-group">
-                    <label>Username</label>
+                    <label>Email ID</label>
                     <div class="input-wrap">
                         <i class="bi bi-person input-icon"></i>
-                        <input type="text" id="loginUser" placeholder="Enter your username" autocomplete="username" required>
+                        <input type="text" id="email" placeholder="Enter your email ID" autocomplete="username" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <div class="input-wrap">
-                        <i class="bi bi-lock input-icon"></i>
-                        <input type="password" id="loginPass" placeholder="Enter your password" autocomplete="current-password" required>
-                        <button type="button" class="toggle-pw" onclick="togglePassword()" tabindex="-1"><i class="bi bi-eye" id="pwIcon"></i></button>
-                    </div>
-                </div>
-                <div class="form-options">
-                    <label class="remember-me">
-                        <input type="checkbox" id="rememberMe">
-                        <div class="custom-check"><i class="bi bi-check2"></i></div>
-                        Remember me
-                    </label>
-                    <a href="forgetpassword.php" class="forgot-link">Forgot password?</a>
-                </div>
-                <button type="submit" class="btn-login" id="btnLogin">
-                    <span class="btn-text"><i class="bi bi-box-arrow-in-right"></i> Sign In</span>
+                <button type="submit" class="btn-login" id="btnCheckEmail">
+                    <span class="btn-text"><i class="bi bi-box-arrow-in-right"></i> Submit</span>
                     <div class="spinner"></div>
                 </button>
             </form>

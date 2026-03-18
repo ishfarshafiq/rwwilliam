@@ -92,3 +92,112 @@
     document.getElementById('loginPass').addEventListener('keydown', e => {
         if(e.key === 'Enter') document.getElementById('loginForm').requestSubmit();
     });
+	
+	
+	
+function CheckEmail(e){
+	e.preventDefault();
+
+	const email = document.getElementById('email').value.trim();
+	const btn = document.getElementById('btnCheckEmail');
+	const errorEl = document.getElementById('loginError');
+
+	// Hide previous errors
+	errorEl.classList.remove('show');
+
+	// Show loading
+	btn.classList.add('loading');
+
+	$.ajax({
+		url: "Controller.php",
+		type: "POST",
+		data: {
+			email: email
+		},
+		dataType: "json",
+		success: function(response){
+
+			if(response.status === "success"){
+				
+				// Redirect
+				window.location.href = "setpassword.php";
+
+			}else{
+
+				btn.classList.remove('loading');
+				errorEl.classList.add('show');
+				document.getElementById('loginErrorMsg').textContent = "Invalid email ID. Please try again.";
+
+				// Shake effect
+				document.getElementById('CheckEmailForm').style.animation = 'shake .4s ease';
+				setTimeout(() => {
+					document.getElementById('CheckEmailForm').style.animation = '';
+				}, 400);
+			}
+		},
+		error: function(){
+			btn.classList.remove('loading');
+			alert("Server error");
+		}
+	});
+
+
+}
+
+function SetPassword(e){
+	e.preventDefault();
+
+	const email = document.getElementById('email').value.trim();
+	const password = document.getElementById('loginPass').value.trim();
+	const btn = document.getElementById('btnSetPassword');
+	const errorEl = document.getElementById('loginError');
+
+	// Hide previous errors
+	errorEl.classList.remove('show');
+
+	// Show loading
+	btn.classList.add('loading');
+
+	$.ajax({
+		url: "Controller.php",
+		type: "POST",
+		data: {
+			email1: email,
+			password1: password
+		},
+		dataType: "json",
+		success: function(response){
+
+			if(response.status === "success"){
+				
+				// Redirect
+				alert("New password is set!");
+				window.location.href = "login.php";
+
+			}else{
+
+				btn.classList.remove('loading');
+				errorEl.classList.add('show');
+				document.getElementById('loginErrorMsg').textContent = "Unable to set password. Please try again later.";
+
+				// Shake effect
+				document.getElementById('SetPasswordForm').style.animation = 'shake .4s ease';
+				setTimeout(() => {
+					document.getElementById('SetPasswordForm').style.animation = '';
+				}, 400);
+			}
+		},
+		error: function(xhr, status, error){
+
+				btn.classList.remove('loading');
+
+				console.log("XHR:", xhr.responseText);
+				console.log("Status:", status);
+				console.log("Error:", error);
+
+				alert("Server error: " + xhr.responseText);
+			}
+	});
+
+
+}

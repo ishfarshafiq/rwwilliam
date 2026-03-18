@@ -49,7 +49,8 @@ function viewAnnouncement(newsID)
 						document.getElementById('edit_category').value = response.category;
 						document.getElementById('edit_publish_date').value = response.publish_date;
 						document.getElementById('edit_author').value = response.author;
-						document.getElementById('edit_description').value = response.description;
+						nicEditors.findEditor('edit_description').setContent(response.description);
+						//document.getElementById('edit_description').value = response.description;
 						document.getElementById('edit_icon').value = response.icon;
 						document.getElementById('edit_status').value = response.status;
 						 if(response.image){

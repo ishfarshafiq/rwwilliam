@@ -1609,7 +1609,7 @@
     <section class="page-hero">
         <div class="hero-pattern"></div>
         <div class="container position-relative">
-            <div class="breadcrumb-nav mb-4" data-aos="fade-down"><a href="index.html">Home</a><span
+            <div class="breadcrumb-nav mb-4" data-aos="fade-down"><a href="index.php">Home</a><span
                     class="divider">/</span><span>Our Team</span></div>
             <div class="hero-line" data-aos="fade-right"></div>
             <h1 data-aos="fade-up">Our Team</h1>
@@ -2602,8 +2602,8 @@
                     <p class="mb-0">We're always looking for talented professionals. Explore career opportunities at RW
                         William PLT.</p>
                 </div>
-                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="career.html"
-                        class="btn-rw-white me-2 mb-2">View Careers</a><a href="contact.html"
+                <div class="col-lg-5 text-lg-end" data-aos="fade-left"><a href="career.php"
+                        class="btn-rw-white me-2 mb-2">View Careers</a><a href="contact.php"
                         class="btn-rw-outline mb-2">Contact Us</a></div>
             </div>
         </div>
@@ -2625,18 +2625,18 @@
                 <div class="col-lg-2 col-md-4">
                     <h5 class="footer-title">Company</h5>
                     <ul class="footer-links p-0">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="career.html">Careers</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="team.php">Our Team</a></li>
+                        <li><a href="career.php">Careers</a></li>
+                        <li><a href="gallery.php">Gallery</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <h5 class="footer-title">Quick Links</h5>
                     <ul class="footer-links p-0">
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="clients.html">Our Clients</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="services.php">Services</a></li>
+                        <li><a href="clients.php">Our Clients</a></li>
+                        <li><a href="contacts.php">Contact</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>

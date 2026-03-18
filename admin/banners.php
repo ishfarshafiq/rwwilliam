@@ -149,7 +149,7 @@ include_once('includes/authentication.php');
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Button 1 Link</label>
-								<input class="form-input" id="button_link_one" name="button_link_one" placeholder="e.g. services.html">
+								<input class="form-input" id="button_link_one" name="button_link_one" placeholder="e.g. services.php">
 							</div>
 						</div>
 					</div>
@@ -163,7 +163,7 @@ include_once('includes/authentication.php');
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Button 2 Link</label>
-								<input class="form-input" id="button_link_two" name="button_link_two" placeholder="e.g. about.html">
+								<input class="form-input" id="button_link_two" name="button_link_two" placeholder="e.g. about.php">
 							</div>
 						</div>
 					</div>
@@ -249,7 +249,7 @@ include_once('includes/authentication.php');
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Button 1 Link</label>
-								<input class="form-input" id="edit_button_link_one" name="edit_button_link_one" placeholder="e.g. services.html">
+								<input class="form-input" id="edit_button_link_one" name="edit_button_link_one" placeholder="e.g. services.php">
 							</div>
 						</div>
 					</div>
@@ -263,7 +263,7 @@ include_once('includes/authentication.php');
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Button 2 Link</label>
-								<input class="form-input" id="edit_button_link_two" name="edit_button_link_two" placeholder="e.g. about.html">
+								<input class="form-input" id="edit_button_link_two" name="edit_button_link_two" placeholder="e.g. about.php">
 							</div>
 						</div>
 					</div>

@@ -17,8 +17,19 @@ include_once('includes/authentication.php');
 	
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+	
+
+<script>
+bkLib.onDomLoaded(function() {
+    new nicEditor({fullPanel : true}).panelInstance('description');
+    new nicEditor({fullPanel : true}).panelInstance('edit_description');
+});
+</script>
 	
 	 <script type="text/javascript">
+	 
+	  //bkLib.onDomLoaded(nicEditors.allTextAreas);
 
 		function confirmation_announcement_delete(newsID) {
 		  swal({
@@ -80,14 +91,15 @@ include_once('includes/authentication.php');
 												<?php
 												if($image != ""){
 												?>
-												<img src="<?php echo $image;?>">
+													<img src="<?php echo $image;?>">
 												<?php } else {?>
 													<i class="<?php echo $icon;?>"></i>
 												<?php }?>
 											
 											</div>
 										</td>
-										<td><strong><?php echo $row['title'];?></strong><br><small style="color:var(--admin-text-light)"><?php echo substr($row['description'], 0, 20) . "...";?></small></td>
+										<td><strong><?php echo $row['title'];?></strong><br>
+											<small style="color:var(--admin-text-light)"><?php echo substr(strip_tags($row['description']), 0, 20) . "..."; ?></small></td>
 										<td><span class="status-badge active" style="background:rgba(0,173,239,.1);color:var(--admin-primary)"><?php echo $row['category'];?></span></td>
 										<td><small><?php echo date('d-m-Y',strtotime($row['publish_date']));?></small></td>
 										<td><span class="status-badge <?php echo $row['status'];?>"><?php echo $row['status'];?></span></td>
@@ -145,7 +157,7 @@ include_once('includes/authentication.php');
 					
 					<div class="form-group">
 						<label>Excerpt / Summary <span class="required">*</span></label>
-						<textarea class="form-input" id="description" name="description" placeholder="Brief summary shown on homepage..."></textarea>
+						<textarea class="form-input" id="description" name="description" style="width:700%; height:200px;" placeholder="Brief summary shown on homepage..."></textarea>
 					</div>
 					
 					<div class="form-group">
@@ -237,7 +249,7 @@ include_once('includes/authentication.php');
 					
 					<div class="form-group">
 						<label>Excerpt / Summary <span class="required">*</span></label>
-						<textarea class="form-input" id="edit_description" name="edit_description" placeholder="Brief summary shown on homepage..."></textarea>
+						<textarea class="form-input" id="edit_description" name="edit_description" style="width:700%; height:200px;" placeholder="Brief summary shown on homepage..."></textarea>
 					</div>
 					
 					<div class="form-group">
