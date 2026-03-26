@@ -1604,8 +1604,22 @@ while($row = mysqli_fetch_assoc($result)){
             </div>
         </div>
     </section>
+	
+	 <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lbClose"><i class="bi bi-x-lg"></i></button>
+        <button class="lightbox-nav lightbox-prev" id="lbPrev"><i class="bi bi-chevron-left"></i></button>
+        <button class="lightbox-nav lightbox-next" id="lbNext"><i class="bi bi-chevron-right"></i></button>
+        <div class="lightbox-body" id="lbBody"></div>
+        <div class="lightbox-info"><span id="lbCaption"></span>
+            <div class="lightbox-counter mt-2" id="lbCounter"></div>
+        </div>
+    </div>
+
 
     <?php include_once('includes/footer.php'); ?>
+	
+	
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

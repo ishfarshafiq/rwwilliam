@@ -175,7 +175,7 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 								</div>
 								<div class="announcement-body">
 									<h4><?php echo $row['title'];?></h4>
-									<p><?php echo substr(strip_tags($row['description']), 0, 20) . "..."; ?></p>
+									<p><?php echo substr(strip_tags($row['description']), 0, 200) . "..."; ?></p>
 									<a href="news-details.php?newsID=<?php echo $row['newsID'];?>" class="btn-hero btn-hero-primary" style="padding:12px 30px;font-size:13px">Read More <i class="bi bi-arrow-right"></i></a>
 								</div>
 							</div>

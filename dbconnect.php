@@ -2,9 +2,9 @@
 date_default_timezone_set("Asia/Kuala_Lumpur");
 
 // $host="localhost";
-// $user="mookhuth_mookuthipalace";
-// $password="WD;DWd@B-9~6x0%L";
-// $database="mookhuth_mookuthipalace";
+// $user="rwwilliam_project";
+// $password="Nsynf2semjmv8F69ehe7";
+// $database="rwwilliam_project";
 
 $host="localhost";
 $user="root";
