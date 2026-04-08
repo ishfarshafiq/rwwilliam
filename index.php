@@ -158,7 +158,7 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
                <?php 
 					$i=100;
 					$view_img="";
-					$result = mysqli_query($conn,"select * from news where status = 'Active' order by newsID desc");
+					$result = mysqli_query($conn,"select * from news where status = 'Active' order by newsID desc limit 3");
 						while($row = mysqli_fetch_assoc($result)){
 							if($row['image']!="")
 							{
