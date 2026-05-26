@@ -77,7 +77,7 @@ bkLib.onDomLoaded(function() {
 								</thead>
 								<tbody id="tableBody">
 								<?php 
-									$result = mysqli_query($conn,"select * from news order by newsID desc");
+									$result = mysqli_query($conn,"select * from news order by publish_date desc");
 									if(mysqli_num_rows($result) > 0){
 										$i=1;
 										while($row = mysqli_fetch_assoc($result)){
